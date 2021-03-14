@@ -22,6 +22,7 @@ collections:
           preview: false
         fields:
           - { label: Site Name, name: sitename, widget: string, hint: 'This is used for the site title' }
+          - { label: Email Contact, name: contact, widget: string, hint: 'This email is used for the contact form' }
           - {
               label: Site Description,
               name: sitedescription,
@@ -33,6 +34,7 @@ collections:
               name: sitelang,
               widget: string,
               pattern: ['^[a-z]{2}([-])?([A-Za-z]{2})?$', 'Must match "xx" or "xx-XX" syntax (ex. "en" or "sv-SE")'],
+              hint: 'The default website language'
             }
           # - { label: Site Email, name: siteemail, widget: string, required: false }
   - name: 'blog'

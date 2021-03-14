@@ -134,15 +134,15 @@ export default {
   },
   pwa: {
     icon: {
-      source: 'static/icon.png',
-      filename: 'icon.png'
+      source: 'static/logo-mini.png',
+      filename: 'logo-mini.png'
     },
     manifest: { name: SITE_INFO.sitename || process.env.npm_package_name || '', lang: process.env.lang },
     meta: {
       name: SITE_INFO.sitename || process.env.npm_package_name || '',
       lang: process.env.lang,
       ogHost: process.env.URL,
-      ogImage: '/preview.jpg'
+      ogImage: '/logo-mini.jpg'
     }
   }
 }
