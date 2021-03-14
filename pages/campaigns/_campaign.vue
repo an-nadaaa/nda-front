@@ -9,6 +9,9 @@
         <img v-if="campaign.cover" class="cover-image" :src="campaign.cover" />
         <!-- <h6 class="inline py-1 px-2 mr-1 bg-gray text-white text-sm font-medium rounded-sm">{{ post.category }}</h6> -->
         <h1 class="">{{ campaign.title }}</h1>
+        <div class="w-full">
+          <button class="mx-auto bg-yellow-300 text-orange-600 border border-orange-600 px-5 py-2">Donate</button>
+        </div>
       </article>
     </section>
   </main>
