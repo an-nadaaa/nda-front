@@ -9,6 +9,24 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+i18n:
+  # Required and can be one of multiple_folders, multiple_files or single_file
+  # multiple_folders - persists files in `<folder>/<locale>/<slug>.<extension>`
+  # multiple_files - persists files in `<folder>/<slug>.<locale>.<extension>`
+  # single_file - persists a single file in `<folder>/<slug>.<extension>`
+  structure: multiple_folders
+
+  # Required - a list of locales to show in the editor UI
+  # en - English
+  # ar - Arabic
+  # ms - Malay
+  # sw - Swahili
+  locales: [en, ar, ms, sw]
+
+  # Optional, defaults to the first item in locales.
+  # The locale to be used for fields validation and as a baseline for the entry.
+  default_locale: en
+
 # Docs: https://www.netlifycms.org/docs/configuration-options/#collections
 collections:
   - label: 'Site settings'
@@ -41,47 +59,49 @@ collections:
     label: 'Blog'
     folder: 'content/blog'
     create: true
+    i18n: true
     format: 'frontmatter'
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     # editor:
     #   preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string', required: false }
+      - { label: 'Title', name: 'title', widget: 'string', required: true, i18n: true }
+      - { label: 'Description', name: 'description', widget: 'string', required: false, i18n: true }
       - { label: 'Body', name: 'body', widget: 'markdown', required: false }
-  - name: 'projects'
-    label: 'Projects'
-    label_singular: 'Project'
-    folder: 'content/projects'
-    create: true
-    format: 'frontmatter'
-    slug: '{{slug}}'
-    preview_path: 'projects/{{slug}}'
-    fields:
-      - {
-          label: 'Project Category',
-          name: 'category',
-          widget: 'select',
-          default: 'animals',
-          options: [{ label: 'Animals', value: 'animals' }, { label: 'Food', value: 'food' }],
-        }
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string', required: false }
-      - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
-      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
-      - {
-          label: 'Gallery',
-          name: 'gallery',
-          widget: 'list',
-          required: false,
-          summary: '{{fields.image}}',
-          field: { label: 'Image', name: 'image', widget: 'image' },
-        }
+  # - name: 'projects'
+  #   label: 'Projects'
+  #   label_singular: 'Project'
+  #   folder: 'content/projects'
+  #   create: true
+  #   format: 'frontmatter'
+  #   slug: '{{slug}}'
+  #   preview_path: 'projects/{{slug}}'
+  #   fields:
+  #     - {
+  #         label: 'Project Category',
+  #         name: 'category',
+  #         widget: 'select',
+  #         default: 'animals',
+  #         options: [{ label: 'Animals', value: 'animals' }, { label: 'Food', value: 'food' }],
+  #       }
+  #     - { label: 'Title', name: 'title', widget: 'string', required: true }
+  #     - { label: 'Description', name: 'description', widget: 'string', required: false }
+  #     - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
+  #     - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+  #     - {
+  #         label: 'Gallery',
+  #         name: 'gallery',
+  #         widget: 'list',
+  #         required: false,
+  #         summary: '{{fields.image}}',
+  #         field: { label: 'Image', name: 'image', widget: 'image' },
+  #       }
   - name: 'campaigns'
     label: 'campaigns'
     label_singular: 'Campaign'
     folder: 'content/campaigns'
     create: true
+    i18n: true
     format: 'frontmatter'
     slug: '{{slug}}'
     preview_path: 'campaigns/{{slug}}'
@@ -90,12 +110,13 @@ collections:
           label: 'Campaign tag',
           name: 'tags',
           widget: 'list',
+          i18n: true,
           default: ['zakat'],
           min: 1,
           max: 3
         }
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string', required: false }
+      - { label: 'Title', name: 'title', widget: 'string', i18n: true, required: true }
+      - { label: 'Description', name: 'description', widget: 'string', i18n: true, required: false }
       - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
       - { label: 'Content', name: 'body', widget: 'markdown', required: true }
       - {
