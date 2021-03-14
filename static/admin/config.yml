@@ -1,5 +1,5 @@
-site_url: https://ntn-boilerplate.netlify.app/
-logo_url: https://ntn-boilerplate.netlify.app/icon.png
+site_url: https://zen-lamport-e0cb9a.netlify.app/
+logo_url: https://zen-lamport-e0cb9a.netlify.app/logo.png
 
 publish_mode: editorial_workflow
 backend:
@@ -67,6 +67,35 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string', required: false }
       - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
       - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+      - {
+          label: 'Gallery',
+          name: 'gallery',
+          widget: 'list',
+          required: false,
+          summary: '{{fields.image}}',
+          field: { label: 'Image', name: 'image', widget: 'image' },
+        }
+  - name: 'campaigns'
+    label: 'campaigns'
+    label_singular: 'Campaign'
+    folder: 'content/campaigns'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    preview_path: 'campaigns/{{slug}}'
+    fields:
+      - {
+          label: 'Campaign tag',
+          name: 'tags',
+          widget: 'list',
+          default: ['zakat'],
+          min: 1,
+          max: 3
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string', required: false }
+      - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: true }
       - {
           label: 'Gallery',
           name: 'gallery',

@@ -3,5 +3,6 @@
     <Header />
     <nuxt />
     <ColorModePicker />
+    <GlobalFooter />
   </div>
 </template>

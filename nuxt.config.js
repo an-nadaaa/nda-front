@@ -9,12 +9,15 @@ import { COLOR_MODE_FALLBACK } from './utils/globals.js'
 export default {
   target: 'static',
   components: true,
+  server: {
+    port: 8000 // default is 3000
+  },
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
   env: {
     url:
       process.env.NODE_ENV === 'production'
         ? process.env.URL || 'http://createADotEnvFileAndSetURL'
-        : 'http://localhost:3000',
+        : 'http://localhost:8000',
     lang: SITE_INFO.sitelang || 'en-US'
   },
   /*

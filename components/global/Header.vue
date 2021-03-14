@@ -10,6 +10,9 @@
       <li class="flex-1 ml-2">
         <nuxt-link class="btn block" to="/projects">Projects</nuxt-link>
       </li>
+      <li class="flex-1 ml-2">
+        <nuxt-link class="btn block" to="/campaigns">Campaigns</nuxt-link>
+      </li>
     </ul>
   </nav>
 </template>
@@ -45,7 +48,7 @@ export default {
   & .scrim-bg {
     &::after {
       animation-name: fadeIn2;
-      background: linear-gradient(to bottom, #F3F4F6, cubic-bezier(0.15, 0, 0.45, 1), transparent);
+      background: linear-gradient(to bottom, #f3f4f6, cubic-bezier(0.15, 0, 0.45, 1), transparent);
     }
   }
   & .nuxt-link-exact-active {
@@ -55,11 +58,19 @@ export default {
 
 /* Need two because of smoother switching between color modes */
 @keyframes fadeIn1 {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fadeIn2 {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
