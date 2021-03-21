@@ -1,7 +1,7 @@
 <template>
   <main>
     <section class="self-center flex flex-col flex-1 items-center justify-center">
-      <h1 class="title text-center">An-Nadaa website</h1>
+      <h1 class="title text-cente bg-blue-500">An-Nadaa website</h1>
       <img src="~/static/logo.png" />
       <h2 class="subtitle text-center">Work in progress</h2>
     </section>

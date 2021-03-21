@@ -1,79 +1,67 @@
 <template>
-  <nav class="scrim-bg fixed z-40 top-0 inset-x-0 pt-3 px-3" aria-label="Main Menu">
-    <ul class="flex">
-      <li class="flex-1">
-        <nuxt-link class="btn block" to="/">Home</nuxt-link>
-      </li>
-      <li class="flex-1 ml-2">
-        <nuxt-link class="btn block" to="/blog">Blog</nuxt-link>
-      </li>
-      <li class="flex-1 ml-2">
-        <nuxt-link class="btn block" to="/projects">Projects</nuxt-link>
-      </li>
-      <li class="flex-1 ml-2">
-        <nuxt-link class="btn block" to="/campaigns">Campaigns</nuxt-link>
-      </li>
-      <li class="flex-1 ml-2">
-        <nuxt-link class="btn block" to="/contact">Contact</nuxt-link>
-      </li>
-    </ul>
-  </nav>
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap px-6 flex-col md:flex-row items-center">
+      <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+        <nuxt-link v-for="(link, i) in links" class="mr-5 hover:text-gray-900" :to="localePath(link.path)" :key="i">{{
+          $t(`LAYOUT.navbar['${link.name}']`)
+        }}</nuxt-link>
+      </nav>
+      <a
+        class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0"
+      >
+        <img class="w-20 h-20" src="~/static/logo-mini.png" alt="logo" />
+      </a>
+      <div class="lg:w-2/5 ml-5 lg:ml-0 flex flex-col lg:justify-end items-end">
+        <button
+          @click="showLanguages = !showLanguages"
+          class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+        >
+          {{ currentLocaleName }}
+        </button>
+        <div class="flex flex-col absolute top-20 bg-white pb-3">
+          <nuxt-link
+            v-show="showLanguages"
+            class="text-center py-1 px-2 hover:bg-gray-100"
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            :to="switchLocalePath(locale.code)"
+            @click="showLanguages = false"
+            >{{ locale.name }}</nuxt-link
+          >
+        </div>
+      </div>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      showLanguages: false,
+      links: [
+        { path: '/', name: 'home' },
+        { path: '/about', name: 'about' },
+        { path: '/campaigns', name: 'campaigns' },
+        { path: '/blog', name: 'blog' },
+        { path: '/contact', name: 'contact' }
+      ]
+    }
+  },
+  computed: {
+    availableLocales() {
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+    },
+    currentLocaleName() {
+      return this.$i18n.locales.filter(l => l.code === this.$i18n.locale)[0].name
+    }
+  }
 }
 </script>
 
 <style lang="postcss" scoped>
-.scrim-bg {
-  &::before {
-    content: '';
-    z-index: -1;
-    background-color: var(--bg);
-    @apply absolute bottom-0 inset-x-0 h-12 mb-4 transition-colors duration-200 ease-in-out;
-  }
-  &::after {
-    content: '';
-    z-index: -1;
-    opacity: 1;
-    animation: fadeIn1 500ms ease-in-out;
-    @apply pointer-events-none absolute bottom-0 inset-x-0 h-16 -mb-12;
-    background: linear-gradient(to bottom, #111827, cubic-bezier(0.15, 0, 0.45, 1), transparent);
-  }
-}
 .nuxt-link-exact-active {
-  @apply text-gray-200 border-gray-400 bg-gray-800 bg-opacity-25 cursor-default;
-}
-
-.light-mode {
-  & .scrim-bg {
-    &::after {
-      animation-name: fadeIn2;
-      background: linear-gradient(to bottom, #f3f4f6, cubic-bezier(0.15, 0, 0.45, 1), transparent);
-    }
-  }
-  & .nuxt-link-exact-active {
-    @apply text-primary-900 border-gray-600 bg-gray-200;
-  }
-}
-
-/* Need two because of smoother switching between color modes */
-@keyframes fadeIn1 {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn2 {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  @apply cursor-default;
 }
 </style>

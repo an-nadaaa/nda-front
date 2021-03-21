@@ -1,7 +1,7 @@
 <template>
   <ul v-if="campaigns.length > 0" class="cards">
     <li v-for="(campaign, index) in campaigns" :key="index">
-      <nuxt-link :to="`campaigns/${campaign.slug}`">
+      <nuxt-link :to="localePath(`campaigns/${campaign.slug}`)">
         <campaign-card :campaign="campaign"></campaign-card>
       </nuxt-link>
     </li>

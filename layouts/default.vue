@@ -1,8 +1,7 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper prose max-w-none">
     <Header />
     <nuxt />
-    <ColorModePicker />
     <GlobalFooter />
   </div>
 </template>

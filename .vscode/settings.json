@@ -23,5 +23,9 @@
         "activityBar.background": "#422437",
         "titleBar.activeBackground": "#5D324C",
         "titleBar.activeForeground": "#FCF9FB"
-    }
+    },
+    "i18n-ally.localesPaths": [
+        "translations"
+    ],
+    "windicss.enableCodeFolding": false
 }

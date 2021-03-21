@@ -1,8 +1,3 @@
-import path from 'path'
-import postcssImport from 'postcss-import'
-import postcssNesting from 'postcss-nesting'
-import postcssPresetEnv from 'postcss-preset-env'
-import postcssEasingGradients from 'postcss-easing-gradients'
 import * as SITE_INFO from './content/site/info.json'
 import { COLOR_MODE_FALLBACK } from './utils/globals.js'
 
@@ -67,43 +62,44 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/main.pcss'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    {
-      src: '~/plugins/vue-stripe.js',
-      ssr: false
-    }
-  ],
+  plugins: [],
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/tailwindcss', '@nuxtjs/svg', '@nuxtjs/pwa'],
+  buildModules: [
+    // 'nuxt-vite',
+    '@nuxtjs/color-mode',
+    'nuxt-windicss',
+    '@nuxtjs/svg',
+    '@nuxtjs/pwa'
+  ],
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxt/content', 'nuxt-purgecss', '@nuxtjs/axios'],
+  modules: ['@nuxt/content', '@nuxtjs/axios', 'nuxt-i18n'],
   /*
    ** Build configuration
    */
   build: {
     extractCSS: true,
-    postcss: {
-      plugins: {
-        'postcss-import': postcssImport,
-        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
-        'postcss-nesting': postcssNesting,
-        'postcss-preset-env': postcssPresetEnv({
-          stage: 1,
-          features: {
-            'nesting-rules': false
-          }
-        }),
-        'postcss-easing-gradients': postcssEasingGradients
-      }
-    },
+    // postcss: {
+    //   plugins: {
+    //     'postcss-import': postcssImport,
+    //     // tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
+    //     'postcss-nesting': postcssNesting,
+    //     'postcss-preset-env': postcssPresetEnv({
+    //       stage: 1,
+    //       features: {
+    //         'nesting-rules': false
+    //       }
+    //     }),
+    //     'postcss-easing-gradients': postcssEasingGradients
+    //   }
+    // },
     /*
      ** You can extend webpack config here
      */
@@ -115,17 +111,6 @@ export default {
   // ? The content property: https://content.nuxtjs.org/configuration
   content: {
     dir: 'content'
-  },
-  tailwindcss: {
-    cssPath: '~/assets/css/main.pcss',
-    exposeConfig: false // enables `import { theme } from '~tailwind.config'`
-  },
-  purgeCSS: {
-    mode: 'postcss',
-    // ? Whitelisting docs: https://v1.purgecss.com/whitelisting
-    whitelist: ['dark-mode', 'light-mode', 'btn', 'icon', 'main', 'code'],
-    whitelistPatterns: [/^card/, /^nuxt-content/, /image$/, /title$/],
-    whitelistPatternsChildren: [/^nuxt-content/]
   },
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
@@ -149,5 +134,20 @@ export default {
       ogHost: process.env.URL,
       ogImage: '/logo-mini.jpg'
     }
+  },
+  i18n: {
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.js', dir: 'ltr', name: 'English' },
+      { code: 'ar', iso: 'ar-SA', file: 'ar.js', dir: 'rtl', name: 'العربية' },
+      { code: 'ms', iso: 'ms-MY', file: 'ms.js', dir: 'ltr', name: 'Bahasa Malayu' },
+      { code: 'sw', iso: 'sw', file: 'sw.js', dir: 'ltr', name: 'Swahili' }
+    ],
+    defaultLocale: 'en',
+    fallbackLocale: 'en',
+    defaultDirection: 'ltr',
+    lazy: true,
+    strategy: 'prefix_except_default',
+    langDir: 'translations',
+    baseUrl: process.env.URL
   }
 }
