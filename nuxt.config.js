@@ -140,7 +140,8 @@ export default {
       { code: 'en', iso: 'en-US', file: 'en.js', dir: 'ltr', name: 'English' },
       { code: 'ar', iso: 'ar-SA', file: 'ar.js', dir: 'rtl', name: 'العربية' },
       { code: 'ms', iso: 'ms-MY', file: 'ms.js', dir: 'ltr', name: 'Bahasa Malayu' },
-      { code: 'sw', iso: 'sw', file: 'sw.js', dir: 'ltr', name: 'Swahili' }
+      // we use the NG postfix because sw is ignored in git ignore for being a convention for service workers
+      { code: 'sw', iso: 'sw', file: 'sw-NG.js', dir: 'ltr', name: 'Swahili' }
     ],
     defaultLocale: 'en',
     fallbackLocale: 'en',
