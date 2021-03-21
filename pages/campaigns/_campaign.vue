@@ -20,9 +20,16 @@
 <script>
 export default {
   async asyncData({ $content, params, error }) {
+    // usally the params is like this:
+    // campaigns-[the slug]___[the locale]
+
+    // get the last two crachters
+    const locale = params.campaign.slice(-2)
+    const slug = params.campaign.slice(10, -5)
+    const path = `campaigns/${locale}/${slug}`
     let campaign
     try {
-      campaign = await $content('campaigns', params.campaign).fetch()
+      campaign = await $content(path).fetch()
     } catch (e) {
       error({ message: 'campaign not found' })
     }

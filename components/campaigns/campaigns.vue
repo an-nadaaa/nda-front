@@ -1,7 +1,7 @@
 <template>
   <ul v-if="campaigns.length > 0" class="cards">
     <li v-for="(campaign, index) in campaigns" :key="index">
-      <nuxt-link :to="localePath(`campaigns/${campaign.slug}`)">
+      <nuxt-link :to="`campaigns/campaigns-${campaign.slug}___${$i18n.locale}`">
         <campaign-card :campaign="campaign"></campaign-card>
       </nuxt-link>
     </li>
@@ -47,7 +47,7 @@ export default {
       return date.toLocaleDateString(process.env.lang) || ''
     },
     async fetchCampaigns(amount = this.amount, sortBy = this.sortBy) {
-      return this.$content('campaigns')
+      return this.$content('campaigns', this.$i18n.locale)
         .sortBy(sortBy.key, sortBy.direction)
         .limit(amount)
         .fetch()
