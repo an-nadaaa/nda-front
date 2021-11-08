@@ -1,6 +1,6 @@
 <template>
-  <footer class="w-full bg-gray-800 body-font">
-    <!-- This example requires Tailwind CSS v2.0+ -->
+  <footer class="relative w-full pt-48 bg-gray-800 body-font">
+    <Subscribe class="absolute inset-x-0 -top-48" />
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="py-12 mx-12 sm:px-6 lg:py-16 lg:px-8">
       <div class="xl:grid xl:grid-cols-3 xl:gap-8">
