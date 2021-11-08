@@ -73,7 +73,7 @@ export default {
   buildModules: [
     // 'nuxt-vite',
     '@nuxtjs/color-mode',
-    'nuxt-windicss',
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
     '@nuxtjs/pwa'
   ],
