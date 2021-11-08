@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper prose max-w-none">
+  <div>
     <Header />
     <nuxt />
     <GlobalFooter />

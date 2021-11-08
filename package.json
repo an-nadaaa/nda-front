@@ -17,19 +17,27 @@
   "dependencies": {
     "@nuxt/content": "^1.13.1",
     "@nuxtjs/axios": "^5.13.1",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/line-clamp": "^0.2.2",
+    "@tailwindcss/typography": "^0.4.1",
     "nuxt": "^2.15.0",
-    "nuxt-i18n": "^6.21.1"
+    "nuxt-i18n": "^6.21.1",
+    "vue-tabler-icons": "^1.0"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "^2.0.3",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/svg": "^0.1.12",
-    "eslint": "^7.21.0",
+    "@nuxtjs/svg": "0.3.0",
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "autoprefixer": "^10.4.0",
+    "eslint": "8.2.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "netlify-cli": "^3.8.3",
-    "nuxt-windicss": "^0.4.6",
+    "eslint-plugin-prettier": "4.0.0",
+    "netlify-cli": "6.14.16",
     "path": "^0.12.7",
-    "prettier": "^1.16.4"
+    "postcss": "^8.3.11",
+    "prettier": "2.4.1",
+    "tailwindcss": "^2.2.19"
   }
 }
