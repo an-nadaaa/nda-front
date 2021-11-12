@@ -5,7 +5,7 @@
     <div class="py-12 mx-12 sm:px-6 lg:py-16 lg:px-8">
       <div class="xl:grid xl:grid-cols-3 xl:gap-8">
         <div class="space-y-8 xl:col-span-1">
-          <img class="h-10" src="https://tailwindui.com/img/logos/workflow-mark-gray-300.svg" alt="Company name" />
+          <img class="h-14" src="~/static/logo-dark.svg" alt="Company name" />
           <p class="text-base text-gray-200">Educate. Empower. Improve</p>
         </div>
         <div class="grid grid-cols-2 gap-8 mt-12 xl:mt-0 xl:col-span-2">
@@ -14,19 +14,19 @@
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Solutions</h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Marketing </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Marketing </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Analytics </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Analytics </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Commerce </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Commerce </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Insights </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Insights </a>
                 </li>
               </ul>
             </div>
@@ -34,19 +34,19 @@
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Support</h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Pricing </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Pricing </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Documentation </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Documentation </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Guides </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Guides </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> API Status </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> API Status </a>
                 </li>
               </ul>
             </div>
@@ -56,23 +56,23 @@
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Company</h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> About </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> About </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Blog </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Blog </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Jobs </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Jobs </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Press </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Press </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Partners </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Partners </a>
                 </li>
               </ul>
             </div>
@@ -80,15 +80,15 @@
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Legal</h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Claim </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Claim </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Privacy </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Privacy </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-gray-900"> Terms </a>
+                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Terms </a>
                 </li>
               </ul>
             </div>
@@ -102,7 +102,7 @@
         <p class="text-sm sm:ml-6 sm:mt-0">© 2021 An-Nadaa. All right reserved.</p>
         <span class="inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">
           <a v-for="social in socialIcons" :href="social.link" :key="social.link">
-            <Component class="w-6 h-6 mx-3" :is="social.icon" />
+            <Component class="w-6 h-6 mx-3 hover:text-primary-500" :is="social.icon" />
           </a>
         </span>
       </div>
@@ -111,7 +111,15 @@
 </template>
 
 <script>
-import { BrandTwitterIcon, BrandLinkedinIcon, BrandFacebookIcon, BrandYoutubeIcon } from 'vue-tabler-icons'
+import {
+  BrandTwitterIcon,
+  BrandLinkedinIcon,
+  BrandFacebookIcon,
+  BrandYoutubeIcon,
+  BrandInstagramIcon,
+  BrandTelegramIcon,
+  BrandSpotifyIcon,
+} from 'vue-tabler-icons'
 
 export default {
   components: {
@@ -124,20 +132,32 @@ export default {
     return {
       socialIcons: [
         {
+          icon: BrandTelegramIcon,
+          link: 'https://t.me/annadaaedu',
+        },
+        {
           icon: BrandTwitterIcon,
-          link: 'https://twitter.com',
+          link: 'https://twitter.com/annadaaedu',
         },
         {
           icon: BrandFacebookIcon,
-          link: 'https://facebook.com',
+          link: 'https://www.facebook.com/annadaaedu',
         },
         {
-          icon: BrandLinkedinIcon,
-          link: 'https://linkedin.com',
+          icon: BrandSpotifyIcon,
+          link: 'https://open.spotify.com/show/50hyHsvHpxSBETB8pQolkN',
         },
+        // {
+        //   icon: BrandLinkedinIcon,
+        //   link: 'https://linkedin.com',
+        // },
         {
           icon: BrandYoutubeIcon,
-          link: 'https://youtube.com',
+          link: 'htps://youtube.com/AnNadaaEducationalFoundation',
+        },
+        {
+          icon: BrandInstagramIcon,
+          link: 'htps://instagram.com/annadaaedu',
         },
       ],
     }

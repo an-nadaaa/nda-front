@@ -1,13 +1,13 @@
 <template>
   <div class="relative overflow-hidden">
-    <div class="absolute inset-0 z-10 bg-gradient-to-l from-white via-transparent to-transparent" />
+    <!-- <div class="absolute inset-0 z-10 bg-gradient-to-l from-white via-transparent to-transparent" /> -->
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div class="relative px-4 mx-24 max-w-7xl sm:px-6 lg:px-8 sm:static">
         <div class="sm:max-w-lg">
           <h1 class="mb-4 text-4xl text-gray-900 sm:text-6xl">
             An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.
           </h1>
-          <p class="mt-4 text-gray-500">
+          <p class="mt-4 text-lg text-gray-500">
             This year, our new summer collection will shelter you from the harsh elements of a world that doesn't care
             if you live or die.
           </p>

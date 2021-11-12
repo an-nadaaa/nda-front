@@ -5,11 +5,7 @@
       <div class="cursor-pointer">
         <NuxtLink :to="localePath('/')" class="flex">
           <span class="sr-only">An-Nadaa</span>
-          <img
-            class="w-auto h-8 sm:h-10"
-            src="https://tailwindui.com/img/logos/workflow-mark-primary-600.svg"
-            alt="logo"
-          />
+          <img class="w-auto h-8 sm:h-10" src="~/static/logo.svg" alt="logo" />
         </NuxtLink>
       </div>
       <div class="-my-2 -mr-2 md:hidden">
@@ -29,7 +25,7 @@
             About
           </NuxtLink>
 
-          <div class="relative">
+          <div class="relative" v-click-outside="clickOutsideCauses">
             <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
             <button
               type="button"
@@ -91,7 +87,7 @@
                         </svg>
                       </div>
                       <div class="ml-4">
-                        <p class="text-base font-medium text-gray-900">Analytics</p>
+                        <p class="text-base font-medium text-gray-900">Campaigns</p>
                         <p class="mt-1 text-sm text-gray-500">
                           Get a better understanding of where your traffic is coming from.
                         </p>
@@ -120,18 +116,18 @@
                         </svg>
                       </div>
                       <div class="ml-4">
-                        <p class="text-base font-medium text-gray-900">Engagement</p>
+                        <p class="text-base font-medium text-gray-900">Projects</p>
                         <p class="mt-1 text-sm text-gray-500">
                           Speak directly to your customers in a more meaningful way.
                         </p>
                       </div>
                     </a>
 
-                    <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
+                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
                       >
-                        <!-- Heroicon name: outline/shield-check -->
+                        
                         <svg
                           class="w-6 h-6"
                           xmlns="http://www.w3.org/2000/svg"
@@ -152,13 +148,13 @@
                         <p class="text-base font-medium text-gray-900">Security</p>
                         <p class="mt-1 text-sm text-gray-500">Your customers&#039; data will be safe and secure.</p>
                       </div>
-                    </a>
+                    </a> -->
 
-                    <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
+                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
                       >
-                        <!-- Heroicon name: outline/view-grid -->
+                        
                         <svg
                           class="w-6 h-6"
                           xmlns="http://www.w3.org/2000/svg"
@@ -181,13 +177,13 @@
                           Connect with third-party tools that you&#039;re already using.
                         </p>
                       </div>
-                    </a>
+                    </a> -->
 
-                    <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
+                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
                       >
-                        <!-- Heroicon name: outline/refresh -->
+                        
                         <svg
                           class="w-6 h-6"
                           xmlns="http://www.w3.org/2000/svg"
@@ -210,13 +206,13 @@
                           Build strategic funnels that will drive your customers to convert
                         </p>
                       </div>
-                    </a>
+                    </a> -->
 
-                    <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
+                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
                       >
-                        <!-- Heroicon name: outline/document-report -->
+                        
                         <svg
                           class="w-6 h-6"
                           xmlns="http://www.w3.org/2000/svg"
@@ -239,12 +235,12 @@
                           Get detailed reports that will help you make more informed decisions
                         </p>
                       </div>
-                    </a>
+                    </a> -->
                   </div>
                   <div class="p-5 bg-gray-50 sm:p-8">
                     <a href="#" class="flow-root p-3 -m-3 rounded-md hover:bg-gray-100">
                       <div class="flex items-center">
-                        <div class="text-base font-medium text-gray-900">Enterprise</div>
+                        <div class="text-base font-medium text-gray-900">Case studies</div>
                         <span
                           class="
                             ml-3
@@ -271,7 +267,7 @@
             </transition>
           </div>
 
-          <div class="relative">
+          <div class="relative" v-click-outside="clickOutsideLearn">
             <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
             <button
               type="button"
@@ -586,8 +582,12 @@
 
 <script>
 import { ChevronDownIcon, Menu2Icon } from 'vue-tabler-icons'
+import vClickOutside from 'v-click-outside'
 
 export default {
+  directives: {
+    clickOutside: vClickOutside.directive,
+  },
   components: {
     ChevronDownIcon,
     Menu2Icon,
@@ -606,6 +606,15 @@ export default {
         { path: '/contact', name: 'contact' },
       ],
     }
+  },
+  methods: {
+    clickOutsideLearn(e) {
+      console.log(e)
+      this.showLearn = false
+    },
+    clickOutsideCauses() {
+      this.showCauses = false
+    },
   },
   computed: {
     availableLocales() {

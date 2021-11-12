@@ -23,6 +23,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "nuxt": "^2.15.0",
     "nuxt-i18n": "^6.21.1",
+    "v-click-outside": "^3.1.2",
     "vue-tabler-icons": "^1.0"
   },
   "devDependencies": {

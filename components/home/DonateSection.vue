@@ -47,6 +47,6 @@
         </form>
       </div>
     </div>
-    <hr class="h-px mx-24 border-1 border-gary-200" />
+    <!-- <hr class="h-px mx-24 border-1 border-gary-200" /> -->
   </div>
 </template>
