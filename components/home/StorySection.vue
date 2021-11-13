@@ -4,7 +4,7 @@
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div class="relative px-4 mx-24 max-w-7xl sm:px-6 lg:px-8 sm:static">
         <div class="sm:max-w-lg">
-          <h1 class="mb-4 text-4xl text-gray-900 sm:text-6xl">
+          <h1 class="mb-4 text-4xl text-gray-900 sm:text-5xl">
             An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.
           </h1>
           <p class="mt-4 text-lg text-gray-500">

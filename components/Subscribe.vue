@@ -2,7 +2,7 @@
   <div class="w-full px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
     <div class="px-6 py-10 bg-primary-800 rounded-3xl sm:py-16 sm:px-12 lg:p-20 lg:flex lg:items-center">
       <div class="lg:w-0 lg:flex-1">
-        <h2 class="text-3xl font-extrabold tracking-tight text-white">Join our newsletter</h2>
+        <h2 class="text-3xl tracking-tight text-white font-headers">Join our newsletter</h2>
         <p class="max-w-3xl mt-4 text-lg text-primary-200">
           Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt amet
           fugiat.

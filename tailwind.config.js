@@ -1,4 +1,5 @@
-const colors = require('tailwindcss/colors');
+const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
@@ -12,9 +13,13 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        headers: ["'Brygada 1918'", ...defaultTheme.fontFamily.serif],
+        texts: ['Nunito Sans', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
-        primary: colors.cyan
-      }
+        primary: colors.cyan,
+      },
     },
   },
   variants: {

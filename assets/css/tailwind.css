@@ -1,3 +1,127 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 400;
+    src: url('~assets/fonts/Brygada1918-Regular.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 400;
+    font-style: italic;
+    src: url('~assets/fonts/Brygada1918-Italic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 500;
+    src: url('~assets/fonts/Brygada1918-Medium.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 500;
+    font-style: italic;
+    src: url('~assets/fonts/Brygada1918-MediumItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 600;
+    src: url('~assets/fonts/Brygada1918-SemiBold.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 600;
+    font-style: italic;
+    src: url('~assets/fonts/Brygada1918-SemiBoldItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 700;
+    src: url('~assets/fonts/Brygada1918-Bold.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Brygada 1918', serif;
+    font-weight: 700;
+    font-style: italic;
+    src: url('~assets/fonts/Brygada1918-BoldItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 200;
+    src: url('~assets/fonts/NunitoSans-ExtraLight.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    src: url('~assets/fonts/NunitoSans-ExtraLightItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    src: url('~assets/fonts/NunitoSans-Light.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    src: url('~assets/fonts/NunitoSans-LightItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    src: url('~assets/fonts/NunitoSans-Regular.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    src: url('~assets/fonts/NunitoSans-Italic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    src: url('~assets/fonts/NunitoSans-SemiBold.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    src: url('~assets/fonts/NunitoSans-SemiBoldItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    src: url('~assets/fonts/NunitoSans-Bold.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    src: url('~assets/fonts/NunitoSans-BoldItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    src: url('~assets/fonts/NunitoSans-ExtraBold.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    src: url('~assets/fonts/NunitoSans-ExtraBoldItalic.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 900;
+    src: url('~assets/fonts/NunitoSans-Black.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    src: url('~assets/fonts/NunitoSans-BlackItalic.ttf') format('ttf');
+  }
+}

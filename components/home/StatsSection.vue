@@ -5,8 +5,8 @@
     </div>
     <div class="flex items-center justify-center max-w-4xl px-4 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
       <div class="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
-        <h2 class="text-sm font-semibold tracking-wide text-indigo-300 uppercase">Valuable Metrics</h2>
-        <p class="mt-3 text-3xl font-extrabold text-white xl:w-2/3">
+        <h2 class="text-sm font-semibold tracking-wide text-indigo-300 uppercase font-texts">Valuable Metrics</h2>
+        <p class="mt-3 text-4xl text-white font-headers xl:w-2/3">
           Get actionable data that will help grow your business
         </p>
         <!-- <p class="mt-5 text-lg text-gray-300">
