@@ -25,7 +25,7 @@
               href="#"
               class="flex items-center justify-center w-full px-8 py-3 text-base text-white border border-transparent rounded-md  bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10"
             >
-              Get started
+              View Campaigns
             </a>
           </div>
         </div>

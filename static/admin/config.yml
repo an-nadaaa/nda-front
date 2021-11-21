@@ -52,11 +52,12 @@ collections:
               name: sitelang,
               widget: string,
               pattern: ['^[a-z]{2}([-])?([A-Za-z]{2})?$', 'Must match "xx" or "xx-XX" syntax (ex. "en" or "sv-SE")'],
-              hint: 'The default website language'
+              hint: 'The default website language',
             }
           # - { label: Site Email, name: siteemail, widget: string, required: false }
-  - name: 'blog'
-    label: 'Blog'
+  - label: 'Blogs'
+    name: 'blog'
+    label_singular: 'blog'
     folder: 'content/blog'
     create: true
     i18n: true
@@ -96,8 +97,8 @@ collections:
   #         summary: '{{fields.image}}',
   #         field: { label: 'Image', name: 'image', widget: 'image' },
   #       }
-  - name: 'campaigns'
-    label: 'campaigns'
+  - label: 'Campaigns'
+    name: 'campaigns'
     label_singular: 'Campaign'
     folder: 'content/campaigns'
     create: true
@@ -106,18 +107,22 @@ collections:
     slug: '{{slug}}'
     preview_path: 'campaigns/{{slug}}'
     fields:
-      - {
-          label: 'Campaign tag',
-          name: 'tags',
-          widget: 'list',
-          default: ['zakat'],
-          min: 1,
-          max: 3
-        }
+      - { label: 'Campaign tag', name: 'tags', widget: 'list', default: ['zakat'], min: 1, max: 4 }
+      - { label: 'Campaign Nature', name: 'category', widget: 'list', default: ['education'], min: 1, max: 4 }
       - { label: 'Title', name: 'title', widget: 'string', i18n: true, required: true }
       - { label: 'Description', name: 'description', widget: 'string', i18n: true, required: false }
-      - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, i18n: duplicate,  allow_multiple: false }
+      - {
+          label: 'Cover Image',
+          name: 'cover',
+          widget: 'image',
+          required: false,
+          i18n: duplicate,
+          allow_multiple: false,
+        }
       - { label: 'Content', name: 'body', widget: 'markdown', i18n: true, required: true }
+      - { label: 'Raising Goal', name: 'goal', widget: 'number', required: true, value_type: 'float', min: 0 }
+      - { label: 'Raised Amount', name: 'raised', widget: 'number', value_type: 'float', min: 0, default: 0 }
+      - { label: 'Featured', name: 'featured', widget: 'boolean', default: false }
       - {
           label: 'Gallery',
           name: 'gallery',
@@ -125,4 +130,37 @@ collections:
           required: false,
           summary: '{{fields.image}}',
           field: { label: 'Image', name: 'image', widget: 'image' },
+        }
+      - { label: 'Impact', name: 'impact', widget: 'string' }
+      - { label: 'Closed', name: 'closed', widget: 'boolean', default: false }
+  # FAQ collection
+  - label: 'FAQ'
+    name: 'faq'
+    folder: 'content/faq'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - { label: 'Question', name: 'question', widget: string, i18n: true, required: true }
+      - { label: 'Answer', name: 'answer', widget: text, i18n: true, required: true }
+  # Metrics Collection
+  - label: 'Metrics'
+    name: 'metrics'
+    folder: 'content/metrics'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - { label: 'Value', name: 'value', widget: 'number', value_type: 'int', required: true }
+      - { label: 'Name', name: 'name', widget: 'string', i18n: true, required: true }
+      - {
+          label: 'Action',
+          name: 'action',
+          widget: 'string',
+          i18n: true,
+          default: 'Supported',
+          required: true,
+          hint: 'Can be Built, Supported or other action verbs',
         }

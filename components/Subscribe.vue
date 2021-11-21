@@ -17,12 +17,12 @@
             type="email"
             autocomplete="email"
             required
-            class="w-full px-5 py-3 placeholder-gray-500 border-white rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white"
+            class="w-full px-5 py-3 placeholder-gray-500 border-white rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white"
             placeholder="Enter your email"
           />
           <button
             type="submit"
-            class="flex items-center justify-center w-full px-5 py-3 mt-3 text-base font-medium text-white border border-transparent rounded-md  bg-primary-600 hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
+            class="flex items-center justify-center w-full px-5 py-3 mt-3 text-base font-medium text-white border border-transparent rounded-md  bg-primary-600 hover:bg-primary-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
           >
             Subscribe
           </button>
