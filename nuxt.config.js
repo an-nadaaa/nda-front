@@ -5,7 +5,7 @@ export default {
   target: 'static',
   components: true,
   server: {
-    port: 8000 // default is 3000
+    port: 8000, // default is 3000
   },
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
   env: {
@@ -13,7 +13,7 @@ export default {
       process.env.NODE_ENV === 'production'
         ? process.env.URL || 'http://createADotEnvFileAndSetURL'
         : 'http://localhost:8000',
-    lang: SITE_INFO.sitelang || 'en-US'
+    lang: SITE_INFO.sitelang || 'en-US',
   },
   /*
    ** Headers of the page
@@ -26,34 +26,34 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: SITE_INFO.sitedescription || process.env.npm_package_description || ''
-      }
+        content: SITE_INFO.sitedescription || process.env.npm_package_description || '',
+      },
     ],
     link: [
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: true
-      },
-      {
-        rel: 'preload',
-        as: 'style',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
-        media: 'print',
-        onload: `this.media='all'`
-      }
+      // {
+      //   rel: 'preconnect',
+      //   href: 'https://fonts.gstatic.com',
+      //   crossorigin: true
+      // },
+      // {
+      //   rel: 'preload',
+      //   as: 'style',
+      //   href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'
+      // },
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
+      //   media: 'print',
+      //   onload: `this.media='all'`
+      // }
     ], // ? Imports the font 'Inter', can be optimized by the netlify plugin 'Subfont' by uncommenting it in `netlify.toml`
     noscript: [
-      {
-        innerHTML:
-          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">'
-      }
+      // {
+      //   innerHTML:
+      //     '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">'
+      // }
     ],
-    __dangerouslyDisableSanitizers: ['noscript']
+    __dangerouslyDisableSanitizers: ['noscript'],
   },
   /*
    ** Customize the progress-bar color
@@ -73,9 +73,9 @@ export default {
   buildModules: [
     // 'nuxt-vite',
     '@nuxtjs/color-mode',
-    'nuxt-windicss',
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
   ],
   /*
    ** Nuxt.js modules
@@ -103,14 +103,14 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {},
   },
   /*
    ** Custom additions configuration
    */
   // ? The content property: https://content.nuxtjs.org/configuration
   content: {
-    dir: 'content'
+    dir: 'content',
   },
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
@@ -118,22 +118,22 @@ export default {
     componentName: 'ColorScheme',
     cookie: {
       options: {
-        sameSite: 'lax'
-      }
-    }
+        sameSite: 'lax',
+      },
+    },
   },
   pwa: {
     icon: {
       source: 'static/logo-mini.png',
-      filename: 'logo-mini.png'
+      filename: 'logo-mini.png',
     },
     manifest: { name: SITE_INFO.sitename || process.env.npm_package_name || '', lang: process.env.lang },
     meta: {
       name: SITE_INFO.sitename || process.env.npm_package_name || '',
       lang: process.env.lang,
       ogHost: process.env.URL,
-      ogImage: '/logo-mini.jpg'
-    }
+      ogImage: '/logo-mini.jpg',
+    },
   },
   i18n: {
     locales: [
@@ -141,7 +141,7 @@ export default {
       { code: 'ar', iso: 'ar-SA', file: 'ar.js', dir: 'rtl', name: 'العربية' },
       { code: 'ms', iso: 'ms-MY', file: 'ms.js', dir: 'ltr', name: 'Bahasa Malayu' },
       // we use the NG postfix because sw is ignored in git ignore for being a convention for service workers
-      { code: 'sw', iso: 'sw', file: 'sw-NG.js', dir: 'ltr', name: 'Swahili' }
+      { code: 'sw', iso: 'sw', file: 'sw-NG.js', dir: 'ltr', name: 'Swahili' },
     ],
     defaultLocale: 'en',
     fallbackLocale: 'en',
@@ -149,6 +149,6 @@ export default {
     lazy: true,
     strategy: 'prefix_except_default',
     langDir: 'translations',
-    baseUrl: process.env.URL
-  }
+    baseUrl: process.env.URL,
+  },
 }

@@ -1,29 +1,30 @@
 <template>
   <main>
-    <section class="self-center flex flex-col flex-1 items-center justify-center">
-      <h1 class="title text-cente bg-blue-500">An-Nadaa website</h1>
-      <img src="~/static/logo.png" />
-      <h2 class="subtitle text-center">Work in progress</h2>
-    </section>
-
-    <section class="mt-8">
-      <h3 class="text-primary-600 dark:text-primary-400 max-w-5xl mx-auto">Active Projects</h3>
-      <posts post-type="blog" :amount="1" />
-    </section>
-    <section class="mt-8">
-      <h3 class="text-primary-600 dark:text-primary-400 max-w-5xl mx-auto">Recent Achievements</h3>
-      <posts post-type="blog" :amount="1" />
-    </section>
+    <HeroSection />
+    <LogoCloud />
+    <StorySection />
+    <StatsSection />
+    <DonateSection />
+    <TestimonialsSection />
+    <FAQSection />
   </main>
 </template>
 
 <script>
+import FAQSection from '~/components/home/FAQSection.vue'
+import LogoCloud from '~/components/home/LogoCloud.vue'
+import HeroSection from '~/components/home/HeroSection.vue'
+import StatsSection from '~/components/home/StatsSection.vue'
+import StorySection from '~/components/home/StorySection.vue'
+import DonateSection from '~/components/home/DonateSection.vue'
+import TestimonialsSection from '~/components/home/TestimonialsSection.vue'
 // https://www.netlifycms.org/docs/nuxt/#authenticating-with-netlify-identity
 export default {
   head() {
     return {
-      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
+      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
     }
-  }
+  },
+  components: { FAQSection, LogoCloud, HeroSection, StatsSection, StorySection, DonateSection, TestimonialsSection },
 }
 </script>
