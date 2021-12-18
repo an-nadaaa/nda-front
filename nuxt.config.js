@@ -62,7 +62,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/css/tailwind.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -73,7 +73,7 @@ export default {
   buildModules: [
     // 'nuxt-vite',
     '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss',
+    '@nuxt/postcss8',
     '@nuxtjs/svg',
     '@nuxtjs/pwa',
   ],
@@ -86,20 +86,13 @@ export default {
    */
   build: {
     extractCSS: true,
-    // postcss: {
-    //   plugins: {
-    //     'postcss-import': postcssImport,
-    //     // tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
-    //     'postcss-nesting': postcssNesting,
-    //     'postcss-preset-env': postcssPresetEnv({
-    //       stage: 1,
-    //       features: {
-    //         'nesting-rules': false
-    //       }
-    //     }),
-    //     'postcss-easing-gradients': postcssEasingGradients
-    //   }
-    // },
+    postcss: {
+      plugins: {
+        'tailwindcss/nesting': {},
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
     /*
      ** You can extend webpack config here
      */
