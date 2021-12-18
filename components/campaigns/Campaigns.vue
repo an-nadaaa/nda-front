@@ -12,30 +12,31 @@
 </template>
 
 <script>
-import campaignCard from './campaignCard.vue'
+import CampaignCard from './CampaignCard.vue'
+
 export default {
-  components: { campaignCard },
+  components: { CampaignCard },
   name: 'Campaigns',
   props: {
     amount: {
       // ? https://content.nuxtjs.org/fetching#limitn
       type: Number,
       default: 10,
-      validator: val => val >= 0 && val < 100
+      validator: (val) => val >= 0 && val < 100,
     },
     sortBy: {
       // ? https://content.nuxtjs.org/fetching#sortbykey-direction
       type: Object,
       default: () => ({
         key: 'slug',
-        direction: 'asc' // you probably want 'asc' here
+        direction: 'asc', // you probably want 'asc' here
       }),
-      validator: obj => typeof obj.key === 'string' && typeof obj.direction === 'string'
-    }
+      validator: (obj) => typeof obj.key === 'string' && typeof obj.direction === 'string',
+    },
   },
   data() {
     return {
-      campaigns: []
+      campaigns: [],
     }
   },
   async mounted() {
@@ -51,10 +52,10 @@ export default {
         .sortBy(sortBy.key, sortBy.direction)
         .limit(amount)
         .fetch()
-        .catch(err => {
+        .catch((err) => {
           error({ statusCode: 404, message: amount > 1 ? 'No Campaigns to display' : 'Campaign not found' })
         })
-    }
-  }
+    },
+  },
 }
 </script>

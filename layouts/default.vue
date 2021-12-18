@@ -6,6 +6,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    document.getElementsByTagName('html')[0].setAttribute('dir', this.$i18n.localeProperties.dir)
+  },
+}
+</script>
+
 <style>
 html,
 body {
