@@ -29,16 +29,11 @@
 
 <script>
 export default {
+  props: ['metrics'],
   data() {
     return {
       metricsUrl:
         'https://images.unsplash.com/photo-1489573280374-2e193c63726c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2340&q=80',
-      metrics: [
-        { id: 1, stat: '33', emphasis: 'Masjids', rest: 'built.' },
-        { id: 2, stat: '112', emphasis: 'Widows', rest: 'supported.' },
-        { id: 3, stat: '52', emphasis: 'Wells', rest: 'built.' },
-        { id: 4, stat: '63', emphasis: 'Orphans', rest: 'supported.' },
-      ],
     }
   },
 }

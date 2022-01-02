@@ -609,10 +609,9 @@ export default {
   },
   methods: {
     clickOutsideLearn(e) {
-      console.log(e)
       this.showLearn = false
     },
-    clickOutsideCauses() {
+    clickOutsideCauses(e) {
       this.showCauses = false
     },
   },

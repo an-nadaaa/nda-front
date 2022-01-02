@@ -3,12 +3,12 @@
     <HeroSection />
     <LogoCloud />
     <StorySection />
-    <StatsSection />
-    <FeaturedCampaigns />
-    <CampaignsSection />
+    <StatsSection :metrics="metrics" />
+    <FeaturedCampaigns :featured-campaigns="featuredCampaigns" />
+    <CampaignsSection :campaigns="campaigns" />
     <DonateSection />
-    <TestimonialsSection />
-    <FAQSection />
+    <TestimonialsSection :testimonials="testimonials" />
+    <FAQSection :faqs="faqs" />
   </main>
 </template>
 
@@ -24,6 +24,48 @@ import DonateSection from '~/components/home/DonateSection.vue'
 import TestimonialsSection from '~/components/home/TestimonialsSection.vue'
 // https://www.netlifycms.org/docs/nuxt/#authenticating-with-netlify-identity
 export default {
+  async asyncData({ $content, error, app }) {
+    const sortBy = {
+      key: 'date',
+      direction: 'dec',
+    }
+    const FEATURED_COUNT = 3
+    const CAMPAIGN_COUNT = 6
+    let campaigns,
+      featuredCampaigns,
+      faqs,
+      metrics,
+      testimonials = []
+    campaigns = await $content('campaigns', app.i18n.locale)
+      .where({ featured: false })
+      .sortBy(sortBy.key, sortBy.direction)
+      .limit(CAMPAIGN_COUNT)
+      .fetch()
+      .catch((err) => {
+        error({
+          statusCode: 404,
+          message: FEATURED_COUNT > 1 ? 'No Featured Campaigns to display' : 'Campaign not found',
+        })
+      })
+    featuredCampaigns = await $content('campaigns', app.i18n.locale)
+      .where({ featured: true })
+      .sortBy(sortBy.key, sortBy.direction)
+      .limit(FEATURED_COUNT)
+      .fetch()
+      .catch((err) => {
+        error({
+          statusCode: 404,
+          message: FEATURED_COUNT > 1 ? 'No Campaigns to display' : 'Campaign not found',
+        })
+      })
+    // faqs = await $content('faq', app.i18n.locale)
+    //   .sortBy(sortBy.key, sortBy.direction)
+    //   .fetch()
+    //   .catch((err) => {
+    //     error({ statusCode: 404, message: 'No FAQs to display' })
+    //   })
+    return { campaigns, featuredCampaigns, faqs, metrics, testimonials }
+  },
   head() {
     return {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
