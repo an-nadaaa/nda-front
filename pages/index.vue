@@ -58,12 +58,18 @@ export default {
           message: FEATURED_COUNT > 1 ? 'No Campaigns to display' : 'Campaign not found',
         })
       })
-    // faqs = await $content('faq', app.i18n.locale)
-    //   .sortBy(sortBy.key, sortBy.direction)
-    //   .fetch()
-    //   .catch((err) => {
-    //     error({ statusCode: 404, message: 'No FAQs to display' })
-    //   })
+    faqs = await $content('faq', app.i18n.locale)
+      .sortBy(sortBy.key, sortBy.direction)
+      .fetch()
+      .catch((err) => {
+        error({ statusCode: 404, message: 'No FAQs to display' })
+      })
+    metrics = await $content('metrics', app.i18n.locale)
+      .sortBy(sortBy.key, sortBy.direction)
+      .fetch()
+      .catch((err) => {
+        error({ statusCode: 404, message: 'No Metrics to display' })
+      })
     return { campaigns, featuredCampaigns, faqs, metrics, testimonials }
   },
   head() {

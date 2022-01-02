@@ -15,10 +15,10 @@
           nibh integer quis. Eu vulputate diam sit tellus quis at.
         </p> -->
         <div class="grid grid-cols-1 mt-12 gap-y-12 gap-x-6 sm:grid-cols-2">
-          <p v-for="item in metrics" :key="item.id">
-            <span class="block font-bold text-white text-7xl">{{ item.stat }}</span>
+          <p v-for="item in metrics" :key="item.slug">
+            <span class="block font-bold text-white text-7xl">{{ item.value }}</span>
             <span class="block mt-1 text-base text-gray-300"
-              ><span class="font-medium text-white">{{ item.emphasis }}</span> {{ item.rest }}</span
+              ><span class="font-medium text-white">{{ item.name }}</span> {{ item.action }}</span
             >
           </p>
         </div>

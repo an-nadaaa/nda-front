@@ -5,7 +5,7 @@
       <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
         <h2 class="text-3xl text-center text-gray-900 sm:text-4xl">Frequently asked questions</h2>
         <dl class="mt-6 space-y-6 divide-y divide-gray-200">
-          <div class="pt-6" v-for="(question, i) in questions" :key="i">
+          <div class="pt-6" v-for="(question, i) in faqs" :key="i">
             <dt class="text-lg">
               <!-- Expand/collapse question button -->
               <button
@@ -44,31 +44,10 @@ export default {
     CirclePlusIcon,
     CircleMinusIcon,
   },
+  props: ['faqs'],
   data() {
     return {
       current: 0,
-      questions: [
-        {
-          question: 'What is Waqaf?',
-          answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit Quas cupiditate laboriosam fugiat.',
-        },
-        {
-          question: 'What is Waqaf?',
-          answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit Quas cupiditate laboriosam fugiat.',
-        },
-        {
-          question: 'What is Waqaf?',
-          answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit Quas cupiditate laboriosam fugiat.',
-        },
-        {
-          question: 'What is Waqaf?',
-          answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit Quas cupiditate laboriosam fugiat.',
-        },
-        {
-          question: 'What is Waqaf?',
-          answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit Quas cupiditate laboriosam fugiat.',
-        },
-      ],
     }
   },
   methods: {
