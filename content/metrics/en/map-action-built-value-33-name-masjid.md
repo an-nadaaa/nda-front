@@ -1,5 +1,5 @@
 ---
 value: 33
-name: Masjid
+name: Masjids
 action: Built
 ---
