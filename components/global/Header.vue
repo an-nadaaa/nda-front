@@ -88,9 +88,7 @@
                       </div>
                       <div class="ml-4">
                         <p class="text-base font-medium text-gray-900">Campaigns</p>
-                        <p class="mt-1 text-sm text-gray-500">
-                          Get a better understanding of where your traffic is coming from.
-                        </p>
+                        <p class="mt-1 text-sm text-gray-500">Opportunities to help those in need.</p>
                       </div>
                     </a>
 
@@ -117,125 +115,9 @@
                       </div>
                       <div class="ml-4">
                         <p class="text-base font-medium text-gray-900">Projects</p>
-                        <p class="mt-1 text-sm text-gray-500">
-                          Speak directly to your customers in a more meaningful way.
-                        </p>
+                        <p class="mt-1 text-sm text-gray-500">A perpetual way to give to those who need.</p>
                       </div>
                     </a>
-
-                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
-                      <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
-                      >
-                        
-                        <svg
-                          class="w-6 h-6"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                          />
-                        </svg>
-                      </div>
-                      <div class="ml-4">
-                        <p class="text-base font-medium text-gray-900">Security</p>
-                        <p class="mt-1 text-sm text-gray-500">Your customers&#039; data will be safe and secure.</p>
-                      </div>
-                    </a> -->
-
-                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
-                      <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
-                      >
-                        
-                        <svg
-                          class="w-6 h-6"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                          />
-                        </svg>
-                      </div>
-                      <div class="ml-4">
-                        <p class="text-base font-medium text-gray-900">Integrations</p>
-                        <p class="mt-1 text-sm text-gray-500">
-                          Connect with third-party tools that you&#039;re already using.
-                        </p>
-                      </div>
-                    </a> -->
-
-                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
-                      <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
-                      >
-                        
-                        <svg
-                          class="w-6 h-6"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                          />
-                        </svg>
-                      </div>
-                      <div class="ml-4">
-                        <p class="text-base font-medium text-gray-900">Automations</p>
-                        <p class="mt-1 text-sm text-gray-500">
-                          Build strategic funnels that will drive your customers to convert
-                        </p>
-                      </div>
-                    </a> -->
-
-                    <!-- <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
-                      <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12"
-                      >
-                        
-                        <svg
-                          class="w-6 h-6"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                      </div>
-                      <div class="ml-4">
-                        <p class="text-base font-medium text-gray-900">Reports</p>
-                        <p class="mt-1 text-sm text-gray-500">
-                          Get detailed reports that will help you make more informed decisions
-                        </p>
-                      </div>
-                    </a> -->
                   </div>
                   <div class="p-5 bg-gray-50 sm:p-8">
                     <a href="#" class="flow-root p-3 -m-3 rounded-md hover:bg-gray-100">
@@ -311,29 +193,13 @@
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                     <a href="#" class="block p-3 -m-3 rounded-md hover:bg-gray-50">
-                      <p class="text-base font-medium text-gray-900">Help Center</p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        Get all of your questions answered in our forums or contact support.
-                      </p>
+                      <p class="text-base font-medium text-gray-900">Blog</p>
+                      <p class="mt-1 text-sm text-gray-500">See the most recent educative posts.</p>
                     </a>
 
                     <a href="#" class="block p-3 -m-3 rounded-md hover:bg-gray-50">
-                      <p class="text-base font-medium text-gray-900">Guides</p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        Learn how to maximize our platform to get the most out of it.
-                      </p>
-                    </a>
-
-                    <a href="#" class="block p-3 -m-3 rounded-md hover:bg-gray-50">
-                      <p class="text-base font-medium text-gray-900">Events</p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        See what meet-ups and other events we might be planning near you.
-                      </p>
-                    </a>
-
-                    <a href="#" class="block p-3 -m-3 rounded-md hover:bg-gray-50">
-                      <p class="text-base font-medium text-gray-900">Security</p>
-                      <p class="mt-1 text-sm text-gray-500">Understand how we take your privacy seriously.</p>
+                      <p class="text-base font-medium text-gray-900">Lectures</p>
+                      <p class="mt-1 text-sm text-gray-500">Brows through the lectures and videos of Shaykh Ibrahim.</p>
                     </a>
                   </div>
                 </div>
