@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="h-full overflow-hidden" :to="localePath(`campaigns/${campaign.slug}`)">
+  <NuxtLink class="h-full overflow-hidden" :to="localePath(`/campaigns/${campaign.slug}`)">
     <img class="object-cover w-full mb-6 aspect-video h-96" v-if="campaign.cover" :src="campaign.cover" alt="cover" />
 
     <div class="flex flex-col">

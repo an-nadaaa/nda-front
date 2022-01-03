@@ -80,7 +80,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxt/content', '@nuxtjs/axios', 'nuxt-i18n'],
+  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/i18n'],
   /*
    ** Build configuration
    */
