@@ -101,7 +101,7 @@
       <div class="container flex flex-col items-center px-5 py-12 mx-12 sm:flex-row">
         <p class="text-sm sm:ml-6 sm:mt-0">© 2021 An-Nadaa. All right reserved.</p>
         <span class="inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">
-          <a v-for="social in socialIcons" :href="social.link" :key="social.link">
+          <a v-for="social in socialIcons" :href="social.link" target="_blank" :key="social.link">
             <Component class="w-6 h-6 mx-3 hover:text-primary-500" :is="social.icon" />
           </a>
         </span>
