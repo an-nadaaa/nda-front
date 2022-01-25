@@ -2,9 +2,20 @@
 require('dotenv').config()
 const STRIPE_API_KEY = process.env.STRIPE_API_KEY
 const BASE_URL = process.env.BASE_URL
-const stripe = require('stripe')(STRIPE_API_KEY)
+const stripe = require('stripe')(STRIPE_API_KEY),
+  headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
 
 exports.handler = async function (event, context) {
+  // CORS
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers,
+    }
+  }
   // your server-side functionality
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -28,8 +39,7 @@ exports.handler = async function (event, context) {
   return {
     statusCode: 302,
     headers: {
-      // 'Access-Control-Allow-Origin': '*',
-      // 'Access-Control-Allow-Headers': 'Content-Type',
+      ...headers,
       Location: session.url,
     },
   }
