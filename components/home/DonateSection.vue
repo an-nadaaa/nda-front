@@ -9,7 +9,7 @@
         <p class="max-w-3xl mt-3 text-lg text-gray-500">Your donation will go to a random cause that we support</p>
       </div>
       <div class="mt-8 lg:mt-0 lg:ml-8">
-        <form class="items-center sm:flex" @click.prevent>
+        <form class="items-center sm:flex" @submit.prevent="donate">
           <!-- <label for="amount" class="sr-only">Amount</label>
           <input
             id="general-amount"
@@ -39,7 +39,6 @@
           </div>
           <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
             <button
-              @click="donate"
               type="submit"
               class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
             >

@@ -4,6 +4,7 @@
   "description": "Nuxt-Tailwind-NetlifyCMS boilerplate",
   "author": "Sven Parker <sven@svenparker.com> (https://svenparker.com)",
   "scripts": {
+    "dev:n": "netlify dev",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
