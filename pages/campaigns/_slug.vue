@@ -6,12 +6,20 @@
       </nav>
 
       <article>
-        <img v-if="campaign.cover" class="cover-image" :src="campaign.cover" />
+        <img v-if="campaign.cover" class="aspect-video" :src="campaign.cover" />
         <!-- <h6 class="inline px-2 py-1 mr-1 text-sm font-medium text-white rounded-sm bg-gray">{{ post.category }}</h6> -->
         <h1 class="">{{ campaign.title }}</h1>
-        <div class="w-full">
-          <button class="px-5 py-2 mx-auto text-orange-600 bg-yellow-300 border border-orange-600">Donate</button>
-        </div>
+        <section>
+          <div class="product">
+            <div class="description">
+              <h3>Stubborn Attachments</h3>
+              <h5>$20.00</h5>
+            </div>
+          </div>
+          <form action="/create-checkout-session" method="POST">
+            <button type="submit" id="checkout-button">Donate</button>
+          </form>
+        </section>
       </article>
     </section>
   </main>

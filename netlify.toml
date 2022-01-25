@@ -1,6 +1,13 @@
+[dev]
+   command = "yarn dev"
+
 [build]
-command = "npm run generate"
-publish = "dist"
+  command = "yarn generate"
+  publish = "dist"
+  functions = "functions"
+
+[functions]
+  node_bundler = "esbuild"
 
 # [[plugins]]
 # package = "netlify-plugin-subfont"

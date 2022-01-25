@@ -5,14 +5,11 @@ export default {
   target: 'static',
   components: true,
   server: {
-    port: 8000, // default is 3000
+    port: 3000, // default is 3000
   },
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
   env: {
-    url:
-      process.env.NODE_ENV === 'production'
-        ? process.env.URL || 'http://createADotEnvFileAndSetURL'
-        : 'http://localhost:8000',
+    functionBaseUrl: process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888',
     lang: SITE_INFO.sitelang || 'en-US',
   },
   /*

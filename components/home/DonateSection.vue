@@ -25,12 +25,13 @@
               <span class="text-gray-500 sm:text-sm"> $ </span>
             </div>
             <input
-              type="text"
+              type="number"
               name="amount"
               id="amount"
               class="w-full px-5 py-3 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm  focus:ring-primary-500 focus:border-primary-500 sm:max-w-xs"
               placeholder="0.00"
               aria-describedby="amount-currency"
+              v-model="amount"
             />
             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
               <span class="text-gray-500 sm:text-sm" id="amount-currency"> USD </span>
@@ -38,6 +39,7 @@
           </div>
           <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
             <button
+              @click="donate"
               type="submit"
               class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
             >
@@ -50,3 +52,35 @@
     <!-- <hr class="h-px mx-24 border-1 border-gary-200" /> -->
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      amount: 0,
+    }
+  },
+  methods: {
+    async donate() {
+      if (this.amount >= 1) {
+        await this.$axios.$post(
+          `${process.env.functionBaseUrl}/.netlify/functions/create-checkout-session?locale=${this.$i18n.locale}&amount=${this.amount}`
+        )
+      }
+    },
+  },
+}
+</script>
+
+<style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
+</style>
