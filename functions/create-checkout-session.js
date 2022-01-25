@@ -37,7 +37,7 @@ exports.handler = async function (event, context) {
 
   // redirect to the checkout session url
   return {
-    statusCode: 302,
+    statusCode: 301,
     headers: {
       ...headers,
       Location: session.url,
