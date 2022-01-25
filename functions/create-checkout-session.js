@@ -4,7 +4,7 @@ const STRIPE_API_KEY = process.env.STRIPE_API_KEY
 const BASE_URL = process.env.BASE_URL
 const stripe = require('stripe')(STRIPE_API_KEY),
   headers = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': BASE_URL,
     'Access-Control-Allow-Headers': 'Content-Type',
   }
 
