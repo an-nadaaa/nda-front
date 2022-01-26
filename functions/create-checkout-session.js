@@ -1,8 +1,8 @@
 // This is your test secret API key.
 require('dotenv').config()
-const STRIPE_API_KEY = process.env.STRIPE_API_KEY
-const BASE_URL = process.env.BASE_URL
-const stripe = require('stripe')(STRIPE_API_KEY),
+const STRIPE_SK = process.env.STRIPE_SK
+const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888'
+const stripe = require('stripe')(STRIPE_SK),
   headers = {
     'Access-Control-Allow-Origin': BASE_URL,
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -29,19 +29,21 @@ exports.handler = async function (event, context) {
       },
     ],
     mode: 'payment',
-    success_url: `${BASE_URL}/${event.queryStringParameters.locale}/success.html`,
-    cancel_url: `${BASE_URL}/${event.queryStringParameters.locale}/cancel.html`,
+    success_url: `${BASE_URL}${
+      event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
+    }/success`,
+    cancel_url: `${BASE_URL}/${
+      event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
+    }/cancel`,
     locale: event.queryStringParameters.locale,
     // payment_method_types: ['card', 'fpx', 'grabpay', 'alipay'],
   })
 
   // redirect to the checkout session url
   return {
-    statusCode: 301,
-    headers: {
-      ...headers,
-      Location: session.url,
-    },
+    statusCode: 200,
+    headers,
+    body: JSON.stringify(session),
   }
   // res.redirect(303, session.url)
 }

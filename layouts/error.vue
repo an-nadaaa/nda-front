@@ -7,10 +7,10 @@
     </template>
     <template v-else>
       <h1 class="title">An error occurred</h1>
-      <p class="mb-4">Looks like you've followed a broken link or entered a URL that doesn't exist on this site.</p>
+      <p class="mb-4">{{ error }}</p>
     </template>
     <nav class="mt-12" aria-label="go to home">
-      <router-back to="/" class="block"/>
+      <router-back to="/" class="block" />
     </nav>
   </section>
 </template>
@@ -18,6 +18,6 @@
 <script>
 export default {
   name: 'error',
-  props: ['error']
+  props: ['error'],
 }
 </script>

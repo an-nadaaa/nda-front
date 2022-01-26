@@ -11,6 +11,7 @@ export default {
   env: {
     functionBaseUrl: process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888',
     lang: SITE_INFO.sitelang || 'en-US',
+    STRIPE_PK: process.env.STRIPE_PK,
   },
   /*
    ** Headers of the page
@@ -63,7 +64,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~/plugins/vue-stripe.js', ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
