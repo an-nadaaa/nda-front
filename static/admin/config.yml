@@ -104,7 +104,7 @@ collections:
     create: true
     i18n: true
     format: 'frontmatter'
-    slug: '{{slug}}'
+    slug: '{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}-{{slug}}'
     preview_path: 'campaigns/{{slug}}'
     fields:
       - { label: 'Campaign tag', name: 'tags', widget: 'list', default: ['zakat'], min: 1, max: 4 }
@@ -133,6 +133,7 @@ collections:
         }
       - { label: 'Impact', name: 'impact', widget: 'string' }
       - { label: 'Closed', name: 'closed', widget: 'boolean', default: false }
+      - { label: 'Product', name: 'product', widget: 'hidden', default: 'prod_L10916LiODpbnv' }
   # FAQ collection
   - label: 'FAQ'
     name: 'faq'
@@ -143,7 +144,7 @@ collections:
     i18n: true
     fields:
       - { label: 'Question', name: 'question', widget: string, i18n: true, required: true }
-      - { label: 'Answer', name: 'answer', widget: text, i18n: true, required: true }
+      - { label: 'Answer', name: 'answer', widget: markdown, i18n: true, required: true }
   # Metrics Collection
   - label: 'Metrics'
     name: 'metrics'
@@ -163,4 +164,24 @@ collections:
           default: 'Supported',
           required: true,
           hint: 'Can be Built, Supported or other action verbs',
+        }
+  # Testimonials Collection
+  - label: 'Testimonials'
+    name: 'testimonials'
+    folder: 'content/testimonials'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - { label: 'Testimony', name: 'testimony', widget: 'markdown', i18n: true, required: true }
+      - { label: "Person's Name", name: 'name', widget: 'string', i18n: true, required: true }
+      - {
+          label: 'Locale',
+          name: 'locale',
+          widget: 'list',
+          default: ['en'],
+          required: true,
+          fields: [en, ar, ms, sw],
+          hint: 'Which locals this testimonial should be displayed on the home page',
         }
