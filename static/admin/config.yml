@@ -179,9 +179,9 @@ collections:
       - {
           label: 'Locale',
           name: 'locale',
-          widget: 'list',
+          widget: 'select',
           default: ['en'],
           required: true,
-          fields: [en, ar, ms, sw],
+          options: [en, ar, ms, sw],
           hint: 'Which locals this testimonial should be displayed on the home page',
         }
