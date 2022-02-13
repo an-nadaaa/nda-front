@@ -92,6 +92,10 @@
 </template>
 
 <script>
+// import Swiper from 'swiper'
+// // import Swiper styles
+// import 'swiper/css'
+
 export default {
   data() {
     return {
@@ -126,6 +130,9 @@ export default {
         },
       ],
     }
+  },
+  mounted() {
+    // const swiper = new Swiper()
   },
 }
 </script>
