@@ -60,9 +60,9 @@ export default {
       if (this.amount >= 1) {
         await this.$axios
           .$post(
-            `${process.env.functionBaseUrl}/.netlify/functions/create-checkout-session?locale=${
-              this.$i18n.locale
-            }&amount=${this.amount * 100}`
+            `${process.env.functionBaseUrl}/create-checkout-session?locale=${this.$i18n.locale}&amount=${
+              this.amount * 100
+            }`
           )
           .then((session) => {
             this.sessionId = session.id
