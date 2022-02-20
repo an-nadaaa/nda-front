@@ -1,25 +1,31 @@
 <template>
   <div class="fixed bottom-0 left-0 m-3">
-    <component :is="`icon-${color}`" @click="changeColorMode" @keypress.enter="changeColorMode" title="Toggle background color" tabindex="0" />
+    <component
+      :is="`icon-${color}`"
+      @click="changeColorMode"
+      @keypress.enter="changeColorMode"
+      title="Toggle background color"
+      tabindex="0"
+    />
   </div>
 </template>
 
 <script>
 import { COLOR_MODE_FALLBACK } from '~/utils/globals.js'
-import IconSystem from '~/components/icons/system.svg?inline'
-import IconLight from '~/components/icons/light.svg?inline'
-import IconDark from '~/components/icons/dark.svg?inline'
+import IconSystem from '~/assets/icons/system.svg?inline'
+import IconLight from '~/assets/icons/light.svg?inline'
+import IconDark from '~/assets/icons/dark.svg?inline'
 
 export default {
   name: 'ColorModePicker',
   components: {
     IconSystem,
     IconLight,
-    IconDark
+    IconDark,
   },
   data() {
     return {
-      color: COLOR_MODE_FALLBACK
+      color: COLOR_MODE_FALLBACK,
     }
   },
   watch: {
@@ -34,8 +40,8 @@ export default {
         } else {
           this.color = COLOR_MODE_FALLBACK
         }
-      }
-    }
+      },
+    },
   },
   methods: {
     changeColorMode() {
@@ -52,8 +58,8 @@ export default {
         default:
           return (this.$colorMode.preference = COLOR_MODE_FALLBACK)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -85,5 +91,4 @@ export default {
     }
   }
 }
-
 </style>

@@ -182,6 +182,7 @@ collections:
     fields:
       - { label: 'Testimony', name: 'testimony', widget: 'markdown', i18n: true, required: true }
       - { label: "Person's Name", name: 'name', widget: 'string', i18n: true, required: true }
+      - { label: "Person's Title", name: 'title', widget: 'string', i18n: true, required: true }
       - {
           label: 'Locale',
           name: 'locale',
