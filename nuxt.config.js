@@ -9,7 +9,10 @@ export default {
   },
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
   env: {
-    functionBaseUrl: process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888',
+    functionBaseUrl:
+      process.env.NODE_ENV === 'production'
+        ? `${process.env.BASE_URL}/.netlify/functions`
+        : 'http://localhost:8888/.netlify/functions',
     lang: SITE_INFO.sitelang || 'en-US',
     STRIPE_PK: process.env.STRIPE_PK,
   },
