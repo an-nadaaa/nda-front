@@ -12,6 +12,30 @@
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <script>
       CMS.registerPreviewStyle('/admin/admin.css')
+      CMS.registerEventListener({
+        name: 'preSave',
+        handler: async ({ entry }) => {
+          // entry type can be found here https://github.com/netlify/netlify-cms/blob/6a42f98b518d2b42c6e181e4dffdae8115b22f1e/packages/netlify-cms-core/src/types/redux.ts#L523
+          var collectionType = entry.get('collection')
+          if (collectionType === 'campaigns' || collectionType === 'projects') {
+            // create a new product on stripe
+            let product
+            await fetch(`${window.origin}/.netlify/functions/products-handler`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(entry.get('data')),
+            })
+              .then((response) => response.json())
+              .then((json) => {
+                product = json
+              })
+            return entry.get('data').set('product', product.id)
+          }
+          return
+        },
+      })
     </script>
   </body>
 </html>

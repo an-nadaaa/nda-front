@@ -131,9 +131,15 @@ collections:
           summary: '{{fields.image}}',
           field: { label: 'Image', name: 'image', widget: 'image' },
         }
-      - { label: 'Impact', name: 'impact', widget: 'string' }
+      - { label: 'Impact', name: 'impact', widget: 'string', required: false, hint: 'example: "10 Families"' }
       - { label: 'Closed', name: 'closed', widget: 'boolean', default: false }
-      - { label: 'Product', name: 'product', widget: 'hidden', default: 'prod_L10916LiODpbnv' }
+      - {
+          label: 'Product',
+          name: 'product',
+          widget: 'hidden',
+          default: 'prod_L10916LiODpbnv',
+          # hint: "don't change this value unless you know what you are doing",
+        }
   # FAQ collection
   - label: 'FAQ'
     name: 'faq'
@@ -176,11 +182,12 @@ collections:
     fields:
       - { label: 'Testimony', name: 'testimony', widget: 'markdown', i18n: true, required: true }
       - { label: "Person's Name", name: 'name', widget: 'string', i18n: true, required: true }
+      - { label: "Person's Title", name: 'title', widget: 'string', i18n: true, required: true }
       - {
           label: 'Locale',
           name: 'locale',
           widget: 'select',
-          default: ['en'],
+          default: 'en',
           required: true,
           options: [en, ar, ms, sw],
           hint: 'Which locals this testimonial should be displayed on the home page',
