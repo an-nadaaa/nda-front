@@ -70,6 +70,12 @@ export default {
       .catch((err) => {
         error({ statusCode: 404, message: 'No Metrics to display' })
       })
+    testimonials = await $content('testimonials', app.i18n.locale)
+      .sortBy(sortBy.key, sortBy.direction)
+      .fetch()
+      .catch((err) => {
+        error({ statusCode: 404, message: 'No Testimonials to display' })
+      })
     return { campaigns, featuredCampaigns, faqs, metrics, testimonials }
   },
   head() {
