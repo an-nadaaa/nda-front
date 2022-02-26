@@ -6,30 +6,35 @@
           <div class="relative pt-16 pb-16 sm:pb-24">
             <div class="w-1/2">
               <blockquote>
-                <div>
-                  <svg
-                    class="w-12 h-12 text-white opacity-25"
-                    fill="currentColor"
-                    viewBox="0 0 32 32"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
-                    />
-                  </svg>
-                  <p class="mt-6 text-2xl font-medium text-white">
-                    <!-- Create a v-for and loop on all the testimonials -->
-                    {{ testimonials }}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nulla vitae laoreet augue. Amet
-                    feugiat est integer dolor auctor adipiscing nunc urna, sit.
-                  </p>
-                </div>
-                <footer class="mt-6">
-                  <p class="text-base font-medium text-primary-500">Judith Black</p>
-                  <p class="text-base font-medium text-indigo-100">CEO at PureInsights</p>
-                </footer>
+                <Hooper :infiniteScroll="true" :autoPlay="true" :playSpeed="2000">
+                  <Slide class="slide" v-for="testimonial in testimonials" :key="testimonial.name">
+                    <div>
+                      <svg
+                        class="w-12 h-12 text-white opacity-25"
+                        fill="currentColor"
+                        viewBox="0 0 32 32"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+                        />
+                      </svg>
+                      <p class="mt-6 text-2xl font-medium text-white w-96">
+                        <!-- Create a v-for and loop on all the testimonials -->
+                        {{ testimonial.testimony }}
+                      </p>
+                      <footer class="mt-6 text-right">
+                        <p class="text-base font-medium text-primary-500">{{ testimonial.name }}</p>
+                        <p class="text-base font-medium text-indigo-100">{{ testimonial.title }}</p>
+                      </footer>
+                    </div>
+                  </Slide>
+                  <HooperPagination slot="hooper-addons"></HooperPagination>
+                </Hooper>
+                  <!-- Hooper end  -->
               </blockquote>
             </div>
+          
 
             <div class="absolute transform -translate-x-1/2 sm:-top-40 left-1/2 top-6 sm:translate-x-0">
               <div class="flex ml-24 space-x-6 min-w-max sm:ml-3 lg:space-x-8">
@@ -94,11 +99,15 @@
 </template>
 
 <script>
-// import Swiper from 'swiper'
-// // import Swiper styles
-// import 'swiper/css'
+import { Hooper, Slide, Navigation as HooperNavigation, Pagination as HooperPagination } from 'hooper'
 
 export default {
+  components: {
+    Slide,
+    Hooper,
+    HooperNavigation,
+    HooperPagination,
+  },
   props: ['testimonials'],
   data() {
     return {
@@ -136,6 +145,39 @@ export default {
   },
   mounted() {
     // const swiper = new Swiper()
+
+    console.log('testimonials object', this.testimonials)
   },
 }
 </script>
+
+<style>
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hooper {
+  height: 50vh;
+}
+
+.slide {
+  font-size: 100px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hooper-indicator {
+  background-color: white;
+}
+
+.hooper-next > svg > path {
+  stroke: white;
+}
+</style>

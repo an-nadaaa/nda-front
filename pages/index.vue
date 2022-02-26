@@ -35,7 +35,11 @@ export default {
       featuredCampaigns,
       faqs,
       metrics,
-      testimonials = []
+      testimonials = await $content('testimonials', app.i18n.locale)
+        .fetch()
+        .catch((err) => {
+          error({ statusCode: 404, message: 'No testimonials to display' })
+        })
     campaigns = await $content('campaigns', app.i18n.locale)
       .where({ featured: false })
       .sortBy(sortBy.key, sortBy.direction)
