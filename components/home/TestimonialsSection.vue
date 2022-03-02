@@ -19,7 +19,6 @@
                   </svg>
                   <p class="mt-6 text-2xl font-medium text-white">
                     <!-- Create a v-for and loop on all the testimonials -->
-                    {{ testimonials }}
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nulla vitae laoreet augue. Amet
                     feugiat est integer dolor auctor adipiscing nunc urna, sit.
                   </p>
