@@ -65,7 +65,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/tailwind.css'],
+  css: ['@/assets/css/tailwind.css', 'hooper/dist/hooper.css'],
   /*
    ** Plugins to load before mounting the App
    */
