@@ -22,9 +22,10 @@ import CampaignsSection from '~/components/home/CampaignsSection.vue'
 import StorySection from '~/components/home/StorySection.vue'
 import DonateSection from '~/components/home/DonateSection.vue'
 import TestimonialsSection from '~/components/home/TestimonialsSection.vue'
+import qs from 'qs'
 // https://www.netlifycms.org/docs/nuxt/#authenticating-with-netlify-identity
 export default {
-  async asyncData({ $content, error, app }) {
+  async asyncData({ $axios, $content, error, app }) {
     const sortBy = {
       key: 'date',
       direction: 'dec',
@@ -36,22 +37,64 @@ export default {
       faqs,
       metrics,
       testimonials = []
-    campaigns = await $content('campaigns', app.i18n.locale)
-      .where({ featured: false })
-      .sortBy(sortBy.key, sortBy.direction)
-      .limit(CAMPAIGN_COUNT)
-      .fetch()
+    const campaignQuery = qs.stringify(
+      {
+        populate: ['cover'],
+        filters: {
+          featured: {
+            $eq: false,
+          },
+        },
+        sort: ['createdAt:desc'],
+        pagination: {
+          start: 0,
+          limit: CAMPAIGN_COUNT,
+        },
+      },
+      {
+        encodeValuesOnly: true,
+      }
+    )
+    const featuredQuery = qs.stringify(
+      {
+        populate: ['cover'],
+        filters: {
+          featured: {
+            $eq: true,
+          },
+        },
+        sort: ['createdAt:desc'],
+        pagination: {
+          start: 0,
+          limit: FEATURED_COUNT,
+        },
+      },
+      {
+        encodeValuesOnly: true,
+      }
+    )
+    campaigns = await $axios
+      .$get(`${process.env.STRAPI_API}/campaigns?locale=${app.i18n.locale}&${campaignQuery}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
+        },
+      })
+      .then(({ data }) => data)
       .catch((err) => {
         error({
           statusCode: 404,
           message: FEATURED_COUNT > 1 ? 'No Featured Campaigns to display' : 'Campaign not found',
         })
       })
-    featuredCampaigns = await $content('campaigns', app.i18n.locale)
-      .where({ featured: true })
-      .sortBy(sortBy.key, sortBy.direction)
-      .limit(FEATURED_COUNT)
-      .fetch()
+    featuredCampaigns = await $axios
+      .$get(`${process.env.STRAPI_API}/campaigns?locale=${app.i18n.locale}&${featuredQuery}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
+        },
+      })
+      .then(({ data }) => data)
       .catch((err) => {
         error({
           statusCode: 404,
