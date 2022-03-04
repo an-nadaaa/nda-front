@@ -15,6 +15,8 @@ export default {
         : 'http://localhost:8888/.netlify/functions',
     lang: SITE_INFO.sitelang || 'en-US',
     STRIPE_PK: process.env.STRIPE_PK,
+    STRAPI_API: process.env.STRAPI_API,
+    STRAPI_API_KEY: process.env.STRAPI_API_KEY,
   },
   /*
    ** Headers of the page
@@ -63,7 +65,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/tailwind.css'],
+  css: ['@/assets/css/tailwind.css', 'hooper/dist/hooper.css'],
   /*
    ** Plugins to load before mounting the App
    */

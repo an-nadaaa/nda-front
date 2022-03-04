@@ -1,22 +1,27 @@
 <template>
-  <NuxtLink class="h-full overflow-hidden" :to="localePath(`/campaigns/${campaign.slug}`)">
-    <img class="object-cover w-full mb-6 aspect-video h-96" v-if="campaign.cover" :src="campaign.cover" alt="cover" />
+  <NuxtLink class="h-full overflow-hidden" :to="localePath(`/campaigns/${campaign.id}`)">
+    <img
+      class="object-cover w-full mb-6 aspect-video h-96"
+      v-if="campaign.attributes.cover.data.attributes.url"
+      :src="campaign.attributes.cover.data.attributes.url"
+      alt="cover"
+    />
 
     <div class="flex flex-col">
       <div class="h-2 my-3 bg-gray-300">
         <div class="h-2 bg-yellow-400" :style="`width: ${percentage}%`"></div>
       </div>
       <div class="self-end text-gray-400 slashed-zero">
-        Goal: {{ currencySymbol }} {{ Intl.NumberFormat().format(campaign.goal) }}
+        Goal: {{ currencySymbol }} {{ Intl.NumberFormat().format(campaign.attributes.goal) }}
       </div>
     </div>
     <div>
-      <h1 class="mb-3 text-2xl font-medium text-gray-900 font-texts">{{ campaign.title }}</h1>
+      <h1 class="mb-3 text-2xl font-medium text-gray-900 font-texts">{{ campaign.attributes.title }}</h1>
       <p class="mb-6 leading-relaxed text-gray-500 line-clamp-3">
-        {{ campaign.description }}
+        {{ campaign.attributes.description }}
       </p>
       <span
-        v-for="(tag, i) in campaign.tags"
+        v-for="(tag, i) in campaign.attributes.tags.tags"
         :key="i"
         :class="`inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-primary-100 text-primary-800 mx-2 ${
           i === 0 ? '' : 'ltr:mr-4 rtl:ml-4'
@@ -40,7 +45,7 @@ export default {
   },
   computed: {
     percentage() {
-      return (this.campaign.raised * 100) / this.campaign.goal
+      return (this.campaign.attributes.raised * 100) / this.campaign.attributes.goal
     },
     currencySymbol() {
       return CURRENCY_SYMBOL
