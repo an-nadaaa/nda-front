@@ -20,10 +20,9 @@
                         />
                       </svg>
                       <p class="mt-6 text-2xl font-medium text-white w-96">
-                        <!-- Create a v-for and loop on all the testimonials -->
                         {{ testimonial.testimony }}
                       </p>
-                      <footer class="mt-6 text-right">
+                      <footer class="mt-6">
                         <p class="text-base font-medium text-primary-500">{{ testimonial.name }}</p>
                         <p class="text-base font-medium text-indigo-100">{{ testimonial.title }}</p>
                       </footer>
@@ -31,10 +30,9 @@
                   </Slide>
                   <HooperPagination slot="hooper-addons"></HooperPagination>
                 </Hooper>
-                  <!-- Hooper end  -->
+                <!-- Hooper end  -->
               </blockquote>
             </div>
-          
 
             <div class="absolute transform -translate-x-1/2 sm:-top-40 left-1/2 top-6 sm:translate-x-0">
               <div class="flex ml-24 space-x-6 min-w-max sm:ml-3 lg:space-x-8">
@@ -143,26 +141,20 @@ export default {
       ],
     }
   },
-  mounted() {
-    // const swiper = new Swiper()
-
-    console.log('testimonials object', this.testimonials)
-  },
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.slide.hooper-slide {
+  visibility: hidden;
 }
 
-.hooper {
-  height: 50vh;
+.slide.hooper-slide.is-active {
+  visibility: visible;
+}
+
+.hooper-list {
+  overflow: visible;
 }
 
 .slide {
@@ -175,6 +167,9 @@ export default {
 
 .hooper-indicator {
   background-color: white;
+}
+.hooper-indicator.is-active {
+  background-color: #06b6d4;
 }
 
 .hooper-next > svg > path {
