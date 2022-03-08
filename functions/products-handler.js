@@ -1,7 +1,7 @@
 // this function creates a new product and returns the product
 require('dotenv').config()
 const STRIPE_SK = process.env.STRIPE_SK
-const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888'
+const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:1337'
 const stripe = require('stripe')(STRIPE_SK),
   headers = {
     'Access-Control-Allow-Origin': BASE_URL,
@@ -10,7 +10,6 @@ const stripe = require('stripe')(STRIPE_SK),
 const STRIPE_GENERAL_PRODUCT = process.env.STRIPE_GENERAL_PRODUCT
 
 exports.handler = async function (event, context) {
-  console.log('Invoked')
   // CORS
   if (event.httpMethod === 'OPTIONS') {
     return {

@@ -24,7 +24,7 @@ exports.handler = async function (event, context) {
         price_data: {
           unit_amount_decimal: event.queryStringParameters.amount,
           currency: 'usd',
-          product: event.queryStringParameters.slug ? event.queryStringParameters.slug : STRIPE_GENERAL_PRODUCT,
+          product: event.queryStringParameters.product ? event.queryStringParameters.product : STRIPE_GENERAL_PRODUCT,
         },
         quantity: 1,
       },
