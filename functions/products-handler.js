@@ -28,12 +28,11 @@ exports.handler = async function (event, context) {
   if (event.httpMethod === 'POST') {
     const entity = JSON.parse(event.body)
     const ENV = entity.environment
-    const STRIPE_GENERAL_PRODUCT =
-      ENV === 'production' ? process.env.STRIPE_GENERAL_PRODUCT_ID_PROD : process.env.STRIPE_GENERAL_PRODUCT_ID_DEV
+    const DEFAULT_PRODUCT_VALUE = 'PRODUCT_WILL_BE_CREATED'
     const STRIPE_SK = ENV === 'production' ? STRIPE_SK_PROD : STRIPE_SK_DEV
     const stripe = require('stripe')(STRIPE_SK)
 
-    if (entity.product !== STRIPE_GENERAL_PRODUCT) {
+    if (entity.product !== DEFAULT_PRODUCT_VALUE) {
       return {
         statusCode: 400,
         headers,
