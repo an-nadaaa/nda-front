@@ -25,8 +25,6 @@ import TestimonialsSection from '~/components/home/TestimonialsSection.vue'
 import qs from 'qs'
 // https://www.netlifycms.org/docs/nuxt/#authenticating-with-netlify-identity
 export default {
-  // TODO: add filter of campaigns by environment
-
   async asyncData({ $axios, $content, error, app }) {
     const sortBy = {
       key: 'date',

@@ -49,12 +49,15 @@
 <script>
 export default {
   data() {
-    this.pk = process.env.STRIPE_PK
     return {
-      sessionId: '',
+      pk: process.env.NODE_ENV === 'production' ? process.env.STRIPE_PK_PROD : process.env.STRIPE_PK_DEV,
+      sessionId: 'session_id',
       amount: 0,
     }
   },
+  // beforeMount() {
+  //   this.pk = process.env.NODE_ENV === 'production' ? process.env.STRIPE_PK_PROD : process.env.STRIPE_PK_DEV
+  // },
   methods: {
     async donate() {
       if (this.amount >= 1) {

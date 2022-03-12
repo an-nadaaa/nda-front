@@ -29,7 +29,7 @@ exports.handler = async function (event, context) {
     const entity = JSON.parse(event.body)
     const ENV = entity.environment
     const STRIPE_GENERAL_PRODUCT =
-      ENV === 'production' ? process.env.STRIPE_GENERAL_PRODUCT_PROD : process.env.STRIPE_GENERAL_PRODUCT_DEV
+      ENV === 'production' ? process.env.STRIPE_GENERAL_PRODUCT_ID_PROD : process.env.STRIPE_GENERAL_PRODUCT_ID_DEV
     const STRIPE_SK = ENV === 'production' ? STRIPE_SK_PROD : STRIPE_SK_DEV
     const stripe = require('stripe')(STRIPE_SK)
 
@@ -60,7 +60,7 @@ exports.handler = async function (event, context) {
     const entity = JSON.parse(event.body)
     const ENV = entity.environment
     const STRIPE_GENERAL_PRODUCT =
-      ENV === 'production' ? process.env.STRIPE_GENERAL_PRODUCT_PROD : process.env.STRIPE_GENERAL_PRODUCT_DEV
+      ENV === 'production' ? process.env.STRIPE_GENERAL_PRODUCT_ID_PROD : process.env.STRIPE_GENERAL_PRODUCT_ID_DEV
     const STRIPE_SK = ENV === 'production' ? STRIPE_SK_PROD : STRIPE_SK_DEV
     const stripe = require('stripe')(STRIPE_SK)
 
