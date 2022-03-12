@@ -72,14 +72,6 @@ export default {
             // You will be redirected to Stripe's secure checkout page
             return this.$refs.checkoutRef.redirectToCheckout()
           })
-          .then((result) => {
-            // If `redirectToCheckout` fails due to a browser or network
-            // error, you should display the localized error message to your
-            // customer using `error.message`.
-            if (result.error) {
-              alert(result.error.message)
-            }
-          })
       }
     },
   },

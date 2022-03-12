@@ -7,7 +7,7 @@
     </template>
     <template v-else>
       <h1 class="title">An error occurred</h1>
-      <p class="mb-4">{{ error }}</p>
+      <p class="mb-4">{{ error.message }}</p>
     </template>
     <nav class="mt-12" aria-label="go to home">
       <router-back to="/" class="block" />
