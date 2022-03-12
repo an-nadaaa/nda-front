@@ -14,7 +14,8 @@ export default {
         ? `${process.env.BASE_URL}/.netlify/functions`
         : 'http://localhost:8888/.netlify/functions',
     lang: SITE_INFO.sitelang || 'en-US',
-    STRIPE_PK: process.env.STRIPE_PK,
+    STRIPE_PK_DEV: process.env.STRIPE_PK_DEV,
+    STRIPE_PK_PROD: process.env.STRIPE_PK_PROD,
     STRAPI_API: process.env.STRAPI_API,
     STRAPI_API_KEY: process.env.STRAPI_API_KEY,
   },
