@@ -1,8 +1,11 @@
 // this function is called before the user is redirected back from the Stripe checkout page to generate a session
 require('dotenv').config()
-const STRIPE_SK = process.env.STRIPE_SK
+const STRIPE_SK = process.env.NODE_ENV === 'production' ? process.env.STRIPE_SK_PROD : process.env.STRIPE_SK_DEV
 const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888'
-const STRIPE_GENERAL_PRODUCT = process.env.STRIPE_GENERAL_PRODUCT
+const STRIPE_GENERAL_PRODUCT =
+  process.env.NODE_ENV === 'production'
+    ? process.env.STRIPE_GENERAL_PRODUCT_PROD
+    : process.env.STRIPE_GENERAL_PRODUCT_DEV
 const stripe = require('stripe')(STRIPE_SK),
   headers = {
     'Access-Control-Allow-Origin': BASE_URL,
@@ -24,7 +27,7 @@ exports.handler = async function (event, context) {
         price_data: {
           unit_amount_decimal: event.queryStringParameters.amount,
           currency: 'usd',
-          product: event.queryStringParameters.slug ? event.queryStringParameters.slug : STRIPE_GENERAL_PRODUCT,
+          product: event.queryStringParameters.product ? event.queryStringParameters.product : STRIPE_GENERAL_PRODUCT,
         },
         quantity: 1,
       },
