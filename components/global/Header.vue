@@ -63,10 +63,13 @@
               leave-active-class="translate-y-0 opacity-100"
               leave-to-class="translate-y-1 opacity-0"
             >
-              <div v-show="showCauses" class="absolute z-10 w-screen max-w-md mt-3 -ml-4 transform lg:max-w-3xl">
+              <div v-show="showCauses" class="absolute z-50 w-screen max-w-md mt-3 -ml-4 transform lg:max-w-3xl">
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8 lg:grid-cols-2">
-                    <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
+                    <NuxtLink
+                      :to="localePath('/causes?s=c')"
+                      class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50"
+                    >
                       <div
                         class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
                       >
@@ -91,9 +94,12 @@
                         <p class="text-base font-medium text-gray-900">Campaigns</p>
                         <p class="mt-1 text-sm text-gray-500">Opportunities to help those in need.</p>
                       </div>
-                    </a>
+                    </NuxtLink>
 
-                    <a href="#" class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
+                    <NuxtLink
+                      :to="localePath('/causes?s=p')"
+                      class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50"
+                    >
                       <div
                         class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
                       >
@@ -118,7 +124,7 @@
                         <p class="text-base font-medium text-gray-900">Projects</p>
                         <p class="mt-1 text-sm text-gray-500">A perpetual way to give to those who need.</p>
                       </div>
-                    </a>
+                    </NuxtLink>
                   </div>
                   <div class="p-5 bg-gray-50 sm:p-8">
                     <a href="#" class="flow-root p-3 -m-3 rounded-md hover:bg-gray-100">
@@ -189,7 +195,7 @@
             >
               <div
                 v-show="showLearn"
-                class="absolute z-10 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0"
+                class="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0"
               >
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
@@ -278,7 +284,7 @@
           </div>
           <div class="mt-6">
             <nav class="grid gap-6">
-              <a href="#" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
+              <NuxtLink :to="localePath('/causes?s=c')" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
                 <div
                   class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
                 >
@@ -300,9 +306,9 @@
                   </svg>
                 </div>
                 <div class="ml-4 text-base font-medium text-gray-900">Campaigns</div>
-              </a>
+              </NuxtLink>
 
-              <a href="#" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
+              <NuxtLink :to="localePath('/causes?s=p')" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
                 <div
                   class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
                 >
@@ -324,7 +330,7 @@
                   </svg>
                 </div>
                 <div class="ml-4 text-base font-medium text-gray-900">Projects</div>
-              </a>
+              </NuxtLink>
             </nav>
           </div>
         </div>
