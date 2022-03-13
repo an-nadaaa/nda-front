@@ -10,6 +10,7 @@
       </div>
       <div class="-my-2 -mr-2 md:hidden">
         <button
+          @click="mobileToggle = true"
           type="button"
           class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md  hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
           aria-expanded="false"
@@ -138,7 +139,7 @@
                             text-primary-800
                           "
                         >
-                          New
+                          Coming Soon
                         </span>
                       </div>
                       <p class="mt-1 text-sm text-gray-500">Empower your entire team with even more advanced tools.</p>
@@ -210,14 +211,25 @@
           <NuxtLink :to="localePath('/faq')" class="text-base font-medium text-gray-500 hover:text-gray-900">
             FAQ
           </NuxtLink>
+
+          <NuxtLink :to="localePath('/contact')" class="text-base font-medium text-gray-500 hover:text-gray-900">
+            Contact
+          </NuxtLink>
         </nav>
         <div class="flex items-center md:ml-12">
-          <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900"> Log in </a>
+          <!-- Use these buttons when we have authentication -->
+          <!-- <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900"> Log in </a>
           <a
             href="#"
-            class="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white border border-transparent rounded-md shadow-sm  bg-primary-600 hover:bg-primary-700"
+            class="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700"
           >
             Sign up
+          </a> -->
+          <a
+            href="/#donate"
+            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+          >
+            Donate Now
           </a>
         </div>
       </div>
@@ -233,19 +245,19 @@
       From: "opacity-100 scale-100"
       To: "opacity-0 scale-95"
   -->
-    <div class="absolute inset-x-0 top-0 p-2 transition origin-top-right transform md:hidden">
+    <div v-if="mobileToggle" class="absolute inset-x-0 top-0 p-2 transition origin-top-right transform md:hidden">
       <div class="bg-white divide-y-2 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 divide-gray-50">
         <div class="px-5 pt-5 pb-6">
           <div class="flex items-center justify-between">
-            <div>
-              <img
-                class="w-auto h-8"
-                src="https://tailwindui.com/img/logos/workflow-mark-primary-600.svg"
-                alt="Workflow"
-              />
+            <div class="cursor-pointer">
+              <NuxtLink :to="localePath('/')" class="flex">
+                <span class="sr-only">An-Nadaa</span>
+                <img class="w-auto h-8 sm:h-10" src="~/static/logo.svg" alt="logo" />
+              </NuxtLink>
             </div>
             <div class="-mr-2">
               <button
+                @click="mobileToggle = false"
                 type="button"
                 class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md  hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
               >
@@ -287,7 +299,7 @@
                     />
                   </svg>
                 </div>
-                <div class="ml-4 text-base font-medium text-gray-900">Analytics</div>
+                <div class="ml-4 text-base font-medium text-gray-900">Campaigns</div>
               </a>
 
               <a href="#" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
@@ -311,134 +323,55 @@
                     />
                   </svg>
                 </div>
-                <div class="ml-4 text-base font-medium text-gray-900">Engagement</div>
-              </a>
-
-              <a href="#" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
-                <div
-                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
-                >
-                  <!-- Heroicon name: outline/shield-check -->
-                  <svg
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <div class="ml-4 text-base font-medium text-gray-900">Security</div>
-              </a>
-
-              <a href="#" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
-                <div
-                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
-                >
-                  <!-- Heroicon name: outline/view-grid -->
-                  <svg
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                    />
-                  </svg>
-                </div>
-                <div class="ml-4 text-base font-medium text-gray-900">Integrations</div>
-              </a>
-
-              <a href="#" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
-                <div
-                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
-                >
-                  <!-- Heroicon name: outline/refresh -->
-                  <svg
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
-                  </svg>
-                </div>
-                <div class="ml-4 text-base font-medium text-gray-900">Automations</div>
-              </a>
-
-              <a href="#" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
-                <div
-                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
-                >
-                  <!-- Heroicon name: outline/document-report -->
-                  <svg
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <div class="ml-4 text-base font-medium text-gray-900">Reports</div>
+                <div class="ml-4 text-base font-medium text-gray-900">Projects</div>
               </a>
             </nav>
           </div>
         </div>
         <div class="px-5 py-6">
           <div class="grid grid-cols-2 gap-4">
-            <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Pricing </a>
+            <NuxtLink :to="localePath('/about')" class="text-base font-medium text-gray-900 hover:text-gray-700">
+              About
+            </NuxtLink>
 
-            <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Docs </a>
+            <NuxtLink :to="localePath('/blog')" class="text-base font-medium text-gray-900 hover:text-gray-700">
+              Blogs
+            </NuxtLink>
 
-            <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Enterprise </a>
+            <NuxtLink :to="localePath('/lectures')" class="text-base font-medium text-gray-900 hover:text-gray-700">
+              Lectures
+            </NuxtLink>
 
-            <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Help Center </a>
+            <NuxtLink :to="localePath('/faq')" class="text-base font-medium text-gray-900 hover:text-gray-700">
+              FAQ
+            </NuxtLink>
 
-            <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Guides </a>
+            <NuxtLink :to="localePath('/lectures')" class="text-base font-medium text-gray-900 hover:text-gray-700">
+              Contact
+            </NuxtLink>
 
-            <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Events </a>
+            <!-- <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Events </a> -->
 
-            <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Security </a>
+            <!-- <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700"> Security </a> -->
           </div>
           <div class="mt-6">
-            <a
+            <!-- We will use this when we have authentication -->
+            <!-- <a
               href="#"
-              class="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm  bg-primary-600 hover:bg-primary-700"
+              class="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700"
             >
               Sign up
             </a>
             <p class="mt-6 text-base font-medium text-center text-gray-500">
               Have an account?
               <a href="#" class="text-primary-600 hover:text-primary-500"> Sign in </a>
-            </p>
+            </p> -->
+            <a
+              href="/#donate"
+              class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+            >
+              Donate
+            </a>
           </div>
         </div>
       </div>
@@ -464,6 +397,7 @@ export default {
       showCauses: false,
       showLearn: false,
       showLanguages: false,
+      mobileToggle: false,
       links: [
         { path: '/', name: 'home' },
         { path: '/about', name: 'about' },

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section id="donate">
     <div class="py-12 mx-24 sm:px-6 lg:py-12 lg:px-8 lg:flex lg:justify-around lg:items-center">
       <div class="w-1/2">
         <h2 class="text-3xl text-gray-900 sm:text-4xl">
@@ -43,7 +43,7 @@
       </div>
     </div>
     <!-- <hr class="h-px mx-24 border-1 border-gary-200" /> -->
-  </div>
+  </section>
 </template>
 
 <script>
