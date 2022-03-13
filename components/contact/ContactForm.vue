@@ -173,7 +173,7 @@
 
 <script>
 import * as SITE_INFO from '~/content/site/info.json'
-const email = process.env.NODE_ENV === 'production' ? SITE_INFO.contact : 'amine@an-nadaa.com'
+const email = process.env.NODE_ENV === 'production' ? SITE_INFO.contact : 'tech@an-nadaa.com'
 
 export default {
   data() {
