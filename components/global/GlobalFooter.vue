@@ -11,42 +11,22 @@
         <div class="grid grid-cols-2 gap-8 mt-12 xl:mt-0 xl:col-span-2">
           <div class="md:grid md:grid-cols-2 md:gap-8">
             <div>
-              <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Solutions</h3>
-              <ul role="list" class="mt-4 space-y-4">
+              <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Causes</h3>
+              <ul v-for="(cause, i) in causes" :key="i" role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Marketing </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Analytics </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Commerce </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Insights </a>
+                  <NuxtLink :to="localePath(cause.link)" class="text-base text-gray-200 hover:text-primary-500">
+                    {{ cause.title }}
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
             <div class="mt-12 md:mt-0">
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Support</h3>
-              <ul role="list" class="mt-4 space-y-4">
+              <ul v-for="(sp, i) in support" :key="i" role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Pricing </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Documentation </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Guides </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> API Status </a>
+                  <NuxtLink :to="localePath(sp.link)" class="text-base text-gray-200 hover:text-primary-500">
+                    {{ sp.title }}
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -54,41 +34,21 @@
           <div class="md:grid md:grid-cols-2 md:gap-8">
             <div>
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Company</h3>
-              <ul role="list" class="mt-4 space-y-4">
+              <ul v-for="(cp, i) in company" :key="i" role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> About </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Blog </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Jobs </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Press </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Partners </a>
+                  <NuxtLink :to="localePath(cp.link)" class="text-base text-gray-200 hover:text-primary-500">
+                    {{ cp.title }}
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
             <div class="mt-12 md:mt-0">
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Legal</h3>
-              <ul role="list" class="mt-4 space-y-4">
+              <ul v-for="(lg, i) in legal" :key="i" role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Claim </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Privacy </a>
-                </li>
-
-                <li>
-                  <a href="#" class="text-base text-gray-200 hover:text-primary-500"> Terms </a>
+                  <NuxtLink :to="localePath(lg.link)" class="text-base text-gray-200 hover:text-primary-500">
+                    {{ lg.title }}
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -130,6 +90,78 @@ export default {
   },
   data() {
     return {
+      legal: [
+        {
+          title: 'Privacy',
+          link: '#',
+        },
+        {
+          title: 'Terms',
+          link: '#',
+        },
+        // {
+        //   title: 'Licenses',
+        //   link: '#',
+        // },
+      ],
+      company: [
+        {
+          title: 'About',
+          link: '/about',
+        },
+        {
+          title: 'Blog',
+          link: '#',
+        },
+        {
+          title: 'Jobs',
+          link: '#',
+        },
+        {
+          title: 'Press',
+          link: '#',
+        },
+        {
+          title: 'Partners',
+          link: '#',
+        },
+      ],
+      support: [
+        {
+          title: 'Contact',
+          link: '/contact',
+        },
+        {
+          title: 'FAQs',
+          link: '/faq',
+        },
+        {
+          title: 'API Status',
+          link: '#',
+        },
+      ],
+      causes: [
+        {
+          title: 'Donate',
+          link: '/#donate',
+        },
+        {
+          title: 'Campaigns',
+          link: '/causes?s=c',
+        },
+        {
+          title: 'Projects',
+          link: '/causes?s=p',
+        },
+        {
+          title: 'Volunteer',
+          link: '/contact',
+        },
+        {
+          title: 'Fundraise',
+          link: '/contact',
+        },
+      ],
       socialIcons: [
         {
           icon: BrandTelegramIcon,
