@@ -227,7 +227,7 @@
           </a> -->
           <a
             href="/#donate"
-            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
           >
             Donate Now
           </a>
