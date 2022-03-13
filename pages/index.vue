@@ -26,6 +26,7 @@ import qs from 'qs'
 // https://www.netlifycms.org/docs/nuxt/#authenticating-with-netlify-identity
 export default {
   async asyncData({ $axios, $content, error, app }) {
+    const STRAPI_API = process.env.NODE_ENV === 'production' ? process.env.STRAPI_API : 'http://localhost:5000/api'
     const sortBy = {
       key: 'date',
       direction: 'dec',
@@ -39,7 +40,17 @@ export default {
       testimonials = []
     const campaignQuery = qs.stringify(
       {
-        populate: ['cover'],
+        populate: {
+          cover: {
+            fields: ['url'],
+          },
+          tags: {
+            fields: ['value'],
+          },
+          natures: {
+            fields: ['value'],
+          },
+        },
         filters: {
           featured: {
             $eq: false,
@@ -60,7 +71,17 @@ export default {
     )
     const featuredQuery = qs.stringify(
       {
-        populate: ['cover'],
+        populate: {
+          cover: {
+            fields: ['url'],
+          },
+          tags: {
+            fields: ['value'],
+          },
+          natures: {
+            fields: ['value'],
+          },
+        },
         filters: {
           featured: {
             $eq: true,
@@ -80,7 +101,7 @@ export default {
       }
     )
     campaigns = await $axios
-      .$get(`${process.env.STRAPI_API}/campaigns?locale=${app.i18n.locale}&${campaignQuery}`, {
+      .$get(`${STRAPI_API}/campaigns?locale=${app.i18n.locale}&${campaignQuery}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
@@ -94,7 +115,7 @@ export default {
         })
       })
     featuredCampaigns = await $axios
-      .$get(`${process.env.STRAPI_API}/campaigns?locale=${app.i18n.locale}&${featuredQuery}`, {
+      .$get(`${STRAPI_API}/campaigns?locale=${app.i18n.locale}&${featuredQuery}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
