@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Nuxt-Tailwind-NetlifyCMS boilerplate",
   "scripts": {
-    "dev:n": "netlify dev",
+    "dev:n": "export NODE_ENV=development&& netlify dev",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",

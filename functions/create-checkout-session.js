@@ -4,8 +4,8 @@ const STRIPE_SK = process.env.NODE_ENV === 'production' ? process.env.STRIPE_SK_
 const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888'
 const STRIPE_GENERAL_PRODUCT =
   process.env.NODE_ENV === 'production'
-    ? process.env.STRIPE_GENERAL_PRODUCT_PROD
-    : process.env.STRIPE_GENERAL_PRODUCT_DEV
+    ? process.env.STRIPE_GENERAL_PRODUCT_ID_PROD
+    : process.env.STRIPE_GENERAL_PRODUCT_ID_DEV
 const stripe = require('stripe')(STRIPE_SK),
   headers = {
     'Access-Control-Allow-Origin': BASE_URL,
@@ -36,7 +36,7 @@ exports.handler = async function (event, context) {
     success_url: `${BASE_URL}${
       event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
     }/success`,
-    cancel_url: `${BASE_URL}/${
+    cancel_url: `${BASE_URL}${
       event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
     }/cancel`,
     locale: event.queryStringParameters.locale,

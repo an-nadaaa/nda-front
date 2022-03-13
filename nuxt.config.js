@@ -128,7 +128,7 @@ export default {
     meta: {
       name: SITE_INFO.sitename || process.env.npm_package_name || '',
       lang: process.env.lang,
-      ogHost: process.env.URL,
+      ogHost: process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888',
       ogImage: '/logo-mini.jpg',
     },
   },
@@ -146,6 +146,6 @@ export default {
     lazy: true,
     strategy: 'prefix_except_default',
     langDir: 'translations',
-    baseUrl: process.env.URL,
+    baseUrl: process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888',
   },
 }

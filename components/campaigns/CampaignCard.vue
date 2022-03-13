@@ -21,13 +21,13 @@
         {{ campaign.attributes.description }}
       </p>
       <span
-        v-for="(tag, i) in campaign.attributes.tags.tags"
+        v-for="(tag, i) in campaign.attributes.tags.data"
         :key="i"
         :class="`inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-primary-100 text-primary-800 mx-2 ${
           i === 0 ? '' : 'ltr:mr-4 rtl:ml-4'
         }`"
       >
-        {{ tag }}
+        {{ tag.attributes.value }}
       </span>
     </div>
   </NuxtLink>

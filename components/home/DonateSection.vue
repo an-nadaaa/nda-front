@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section id="donate">
     <div class="py-12 mx-24 sm:px-6 lg:py-12 lg:px-8 lg:flex lg:justify-around lg:items-center">
       <div class="w-1/2">
         <h2 class="text-3xl text-gray-900 sm:text-4xl">
@@ -43,18 +43,21 @@
       </div>
     </div>
     <!-- <hr class="h-px mx-24 border-1 border-gary-200" /> -->
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   data() {
-    this.pk = process.env.STRIPE_PK
     return {
-      sessionId: '',
+      pk: process.env.NODE_ENV === 'production' ? process.env.STRIPE_PK_PROD : process.env.STRIPE_PK_DEV,
+      sessionId: 'session_id',
       amount: 0,
     }
   },
+  // beforeMount() {
+  //   this.pk = process.env.NODE_ENV === 'production' ? process.env.STRIPE_PK_PROD : process.env.STRIPE_PK_DEV
+  // },
   methods: {
     async donate() {
       if (this.amount >= 1) {
@@ -68,14 +71,6 @@ export default {
             this.sessionId = session.id
             // You will be redirected to Stripe's secure checkout page
             return this.$refs.checkoutRef.redirectToCheckout()
-          })
-          .then((result) => {
-            // If `redirectToCheckout` fails due to a browser or network
-            // error, you should display the localized error message to your
-            // customer using `error.message`.
-            if (result.error) {
-              alert(result.error.message)
-            }
           })
       }
     },
