@@ -153,11 +153,11 @@ export default {
         // },
         {
           icon: BrandYoutubeIcon,
-          link: 'htps://youtube.com/AnNadaaEducationalFoundation',
+          link: 'https://youtube.com/AnNadaaEducationalFoundation',
         },
         {
           icon: BrandInstagramIcon,
-          link: 'htps://instagram.com/annadaaedu',
+          link: 'https://instagram.com/annadaaedu',
         },
       ],
     }
