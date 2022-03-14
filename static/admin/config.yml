@@ -5,6 +5,7 @@ publish_mode: editorial_workflow
 backend:
   name: git-gateway
   branch: master
+  repo: an-nadaaa/nda-front
 
 media_folder: static/media
 public_folder: /media
