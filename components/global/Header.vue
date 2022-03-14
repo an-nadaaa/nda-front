@@ -352,7 +352,7 @@
               FAQ
             </NuxtLink>
 
-            <NuxtLink :to="localePath('/lectures')" class="text-base font-medium text-gray-900 hover:text-gray-700">
+            <NuxtLink :to="localePath('/contact')" class="text-base font-medium text-gray-900 hover:text-gray-700">
               Contact
             </NuxtLink>
 
