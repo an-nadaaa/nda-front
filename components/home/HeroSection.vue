@@ -21,12 +21,12 @@
             </button>
           </div>
           <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-            <a
-              href="#"
+            <NuxtLink
+              :to="localePath('/causes')"
               class="flex items-center justify-center w-full px-8 py-3 text-base text-white border border-transparent rounded-md  bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10"
             >
               View Campaigns
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </div>
