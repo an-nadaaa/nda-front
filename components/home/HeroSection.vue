@@ -39,8 +39,8 @@
         />
         <Player playsinline ref="player" @vmPlaybackEnded="closePlayer" controls autoplay>
           <!-- Provider component is placed here. -->
-          <Video>
-            <source :data-src="videoLocation" type="video/mp4" />
+          <Component :is="provider" :videoId="videoID">
+            <source v-if="provider === 'Video'" :data-src="videoLocation" type="video/mp4" />
             <!-- <track
             default
             kind="subtitles"
@@ -54,10 +54,9 @@
             srclang="es"
             label="Spanish"
           /> -->
-          </Video>
+          </Component>
           <Ui>
             <!-- UI components are placed here. -->
-            <ClickToPlay />
           </Ui>
         </Player>
       </ClientOnly>
@@ -66,9 +65,9 @@
 </template>
 
 <script>
-import * as HOME_CONTENT from '~/content/site/home.json'
+import * as HERO_CONTENT from '~/content/site/home/hero_section.json'
 import { PlayerPlayIcon, XIcon } from 'vue-tabler-icons'
-import { Player, Ui, Video } from '@vime/vue'
+import { Player, Ui, Video, Youtube, Vimeo } from '@vime/vue'
 // Default theme. ~960B
 import '@vime/core/themes/default.css'
 // Optional light theme (extends default). ~400B
@@ -79,6 +78,8 @@ export default {
     Player,
     Ui,
     Video,
+    Youtube,
+    Vimeo,
     PlayerPlayIcon,
     XIcon,
   },
@@ -86,13 +87,14 @@ export default {
     return {
       bgUrl:
         'https://images.unsplash.com/photo-1500206329404-5057e0aefa48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2352&q=80',
-      videoLocation: HOME_CONTENT.location,
+      // videoLocation: HERO_CONTENT.location,
+      videoID: '',
       provider: 'Video',
       showPlayer: false,
-      // videoLocation: 'https://www.youtube.com/watch?v=MT01KVgr5us&t=3371s',
+      videoLocation: 'https://www.youtube.com/watch?v=MT01KVgr5us',
     }
   },
-  beforeMount() {
+  beforeCreate() {
     // detect what provider to use
     const videoRegex = /\/media\/video\/.+\.mp4/
     // regex to detect youtube urls
@@ -105,8 +107,12 @@ export default {
       this.provider = 'Video'
     } else if (youtubeRegex.test(this.videoLocation)) {
       this.provider = 'YouTube'
+      // capture the video id from the regex
+      this.videoID = this.videoLocation.match(youtubeRegex)[1]
     } else if (vimeoRegex.test(this.videoLocation)) {
       this.provider = 'Vimeo'
+      // capture the video id from the regex
+      this.videoID = this.videoLocation.match(vimeoRegex)[3]
     }
   },
   methods: {

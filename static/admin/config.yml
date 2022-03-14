@@ -58,9 +58,9 @@ collections:
   - label: 'Home Page Content'
     name: 'home'
     files:
-      - label: video
-        name: video
-        file: 'content/site/home.json'
+      - label: Hero Section
+        name: hero
+        file: 'content/site/home/hero_section.json'
         format: 'json'
         editor:
           preview: false

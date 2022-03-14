@@ -154,7 +154,7 @@
       </div>
 
       <main class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
+        <div class="relative flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
           <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Our Causes</h1>
 
           <div class="flex items-center">
