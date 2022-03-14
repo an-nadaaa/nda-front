@@ -70,7 +70,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/vue-stripe.js', ssr: false }],
+  plugins: [
+    { src: '~/plugins/event-bus.js' },
+    { src: '~/plugins/vue-stripe.js', ssr: false },
+    { src: '~/plugins/vue-plyr', mode: 'client' },
+  ],
   /*
    ** Nuxt.js dev-modules
    */

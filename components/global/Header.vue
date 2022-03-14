@@ -336,6 +336,10 @@
         </div>
         <div class="px-5 py-6">
           <div class="grid grid-cols-2 gap-4">
+            <NuxtLink :to="localePath('/')" class="text-base font-medium text-gray-900 hover:text-gray-700">
+              Home
+            </NuxtLink>
+
             <NuxtLink :to="localePath('/about')" class="text-base font-medium text-gray-900 hover:text-gray-700">
               About
             </NuxtLink>

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { CURRENCY_SYMBOL } from '@/config/config.ts'
+import { CURRENCY_SYMBOL } from '@/config/config'
 
 export default {
   props: {
