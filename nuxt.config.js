@@ -70,7 +70,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/vue-stripe.js', ssr: false }],
+  plugins: [
+    { src: '~/plugins/event-bus.js' },
+    { src: '~/plugins/vue-stripe.js', ssr: false },
+    { src: '~/plugins/vue-plyr', mode: 'client' },
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -85,6 +89,21 @@ export default {
    ** Nuxt.js modules
    */
   modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/i18n'],
+  /*
+   ** https://nuxtjs.org/docs/features/component-discovery/
+   */
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/about',
+      '~/components/campaigns',
+      '~/components/global',
+      '~/components/contact',
+      '~/components/causes',
+      '~/components/posts',
+      '~/components/home',
+    ],
+  },
   /*
    ** Build configuration
    */
