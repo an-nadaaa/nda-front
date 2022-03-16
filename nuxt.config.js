@@ -90,6 +90,21 @@ export default {
    */
   modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/i18n'],
   /*
+   ** https://nuxtjs.org/docs/features/component-discovery/
+   */
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/about',
+      '~/components/campaigns',
+      '~/components/global',
+      '~/components/contact',
+      '~/components/causes',
+      '~/components/posts',
+      '~/components/home',
+    ],
+  },
+  /*
    ** Build configuration
    */
   build: {

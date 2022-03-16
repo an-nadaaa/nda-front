@@ -13,8 +13,7 @@
           @click="mobileToggle = true"
           type="button"
           class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md  hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
-          aria-expanded="false"
-        >
+          aria-expanded="false">
           <span class="sr-only">Open menu</span>
           <!-- Heroicon name: outline/menu -->
           <Menu2Icon class="w-6 h-6" />
@@ -32,8 +31,7 @@
               type="button"
               class="inline-flex items-center text-base font-medium text-gray-500 bg-white rounded-md  group hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               aria-expanded="false"
-              @click="showCauses = !showCauses"
-            >
+              @click="showCauses = !showCauses">
               <span>Causes</span>
               <!--
               Heroicon name: solid/chevron-down
@@ -41,8 +39,7 @@
               Item active: "text-gray-600", Item inactive: "text-gray-400"
             -->
               <ChevronDownIcon
-                :class="`w-5 h-5 ml-2 group-hover:text-gray-500 ${showCauses ? 'text-gray-600' : 'text-gray-400'}`"
-              />
+                :class="`w-5 h-5 ml-2 group-hover:text-gray-500 ${showCauses ? 'text-gray-600' : 'text-gray-400'}`" />
             </button>
 
             <!--
@@ -61,18 +58,15 @@
               enter-to-class="translate-y-0 opacity-100"
               leave-class="transition duration-150 ease-in"
               leave-active-class="translate-y-0 opacity-100"
-              leave-to-class="translate-y-1 opacity-0"
-            >
+              leave-to-class="translate-y-1 opacity-0">
               <div v-show="showCauses" class="absolute z-10 w-screen max-w-md mt-3 -ml-4 transform lg:max-w-3xl">
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8 lg:grid-cols-2">
                     <NuxtLink
                       :to="localePath('/causes?s=c')"
-                      class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50"
-                    >
+                      class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
-                      >
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/chart-bar -->
                         <svg
                           class="w-6 h-6"
@@ -80,14 +74,12 @@
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          aria-hidden="true"
-                        >
+                          aria-hidden="true">
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                          />
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
                       </div>
                       <div class="ml-4">
@@ -98,11 +90,9 @@
 
                     <NuxtLink
                       :to="localePath('/causes?s=p')"
-                      class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50"
-                    >
+                      class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12"
-                      >
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/cursor-click -->
                         <svg
                           class="w-6 h-6"
@@ -110,14 +100,12 @@
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          aria-hidden="true"
-                        >
+                          aria-hidden="true">
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                          />
+                            d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                         </svg>
                       </div>
                       <div class="ml-4">
@@ -143,8 +131,7 @@
                             leading-5
                             bg-primary-100
                             text-primary-800
-                          "
-                        >
+                          ">
                           Coming Soon
                         </span>
                       </div>
@@ -162,8 +149,7 @@
               type="button"
               class="inline-flex items-center text-base font-medium text-gray-500 bg-white rounded-md  group hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               aria-expanded="false"
-              @click="showLearn = !showLearn"
-            >
+              @click="showLearn = !showLearn">
               <span>Learn</span>
               <!--
               Heroicon name: solid/chevron-down
@@ -171,8 +157,7 @@
               Item active: "text-gray-600", Item inactive: "text-gray-400"
             -->
               <ChevronDownIcon
-                :class="`w-5 h-5 ml-2 group-hover:text-gray-500 ${showLearn ? 'text-gray-600' : 'text-gray-400'}`"
-              />
+                :class="`w-5 h-5 ml-2 group-hover:text-gray-500 ${showLearn ? 'text-gray-600' : 'text-gray-400'}`" />
             </button>
 
             <!--
@@ -191,12 +176,10 @@
               enter-to-class="translate-y-0 opacity-100"
               leave-class="transition duration-150 ease-in"
               leave-active-class="translate-y-0 opacity-100"
-              leave-to-class="translate-y-1 opacity-0"
-            >
+              leave-to-class="translate-y-1 opacity-0">
               <div
                 v-show="showLearn"
-                class="absolute z-10 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0"
-              >
+                class="absolute z-10 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0">
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                     <a href="#" class="block p-3 -m-3 rounded-md hover:bg-gray-50">
@@ -233,8 +216,7 @@
           </a> -->
           <a
             href="/#donate"
-            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-          >
+            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
             Donate Now
           </a>
         </div>
@@ -265,8 +247,7 @@
               <button
                 @click="mobileToggle = false"
                 type="button"
-                class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md  hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
-              >
+                class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md  hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
                 <span class="sr-only">Close menu</span>
                 <!-- Heroicon name: outline/x -->
                 <svg
@@ -275,8 +256,7 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  aria-hidden="true"
-                >
+                  aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -286,8 +266,7 @@
             <nav class="grid gap-6">
               <NuxtLink :to="localePath('/causes?s=c')" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
                 <div
-                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
-                >
+                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500">
                   <!-- Heroicon name: outline/chart-bar -->
                   <svg
                     class="w-6 h-6"
@@ -295,14 +274,12 @@
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    aria-hidden="true"
-                  >
+                    aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
                 <div class="ml-4 text-base font-medium text-gray-900">Campaigns</div>
@@ -310,8 +287,7 @@
 
               <NuxtLink :to="localePath('/causes?s=p')" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50">
                 <div
-                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500"
-                >
+                  class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500">
                   <!-- Heroicon name: outline/cursor-click -->
                   <svg
                     class="w-6 h-6"
@@ -319,14 +295,12 @@
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    aria-hidden="true"
-                  >
+                    aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                    />
+                      d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                   </svg>
                 </div>
                 <div class="ml-4 text-base font-medium text-gray-900">Projects</div>
@@ -378,8 +352,7 @@
             </p> -->
             <a
               href="/#donate"
-              class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-            >
+              class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
               Donate
             </a>
           </div>
