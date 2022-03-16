@@ -110,9 +110,3 @@ export default {
   },
 }
 </script>
-
-<style>
-#video-Player {
-  @apply aspect-video;
-}
-</style>
