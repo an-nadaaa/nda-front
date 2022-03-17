@@ -13,10 +13,10 @@
                   <dt class="sr-only">Email</dt>
                   <dd>salam@an-nadaa.com</dd>
                 </div>
-                <div class="mt-1">
+                <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
                   <dd>+1 (555) 123-4567</dd>
-                </div>
+                </div> -->
               </dl>
             </div>
 
@@ -27,10 +27,10 @@
                   <dt class="sr-only">Email</dt>
                   <dd>media@an-nadaa.com</dd>
                 </div>
-                <div class="mt-1">
+                <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
                   <dd>+1 (555) 123-4567</dd>
-                </div>
+                </div> -->
               </dl>
             </div>
 
@@ -41,10 +41,10 @@
                   <dt class="sr-only">Email</dt>
                   <dd>tech@an-nadaa.com</dd>
                 </div>
-                <div class="mt-1">
+                <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
                   <dd>+1 (555) 123-4567</dd>
-                </div>
+                </div> -->
               </dl>
             </div>
 
@@ -55,10 +55,10 @@
                   <dt class="sr-only">Email</dt>
                   <dd>career@an-nadaa.com</dd>
                 </div>
-                <div class="mt-1">
+                <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
                   <dd>+1 (555) 123-4567</dd>
-                </div>
+                </div> -->
               </dl>
             </div>
           </div>
@@ -72,12 +72,23 @@
                 <p>Unit B-1-7 Streetmall Jalan Gerbang, Seksyen 15</p>
                 <p class="mt-1">43650 Bandar Baru Bangi Selangor, Malaysia</p>
               </div>
+              <div class="mt-3 text-base text-gray-500">
+                <dt class="sr-only">Phone number</dt>
+                <p>+60 19-605 3686</p>
+                <p class="mt-1">Mon-Fri 9am to 5pm (GMT+8)</p>
+              </div>
             </div>
             <div>
               <h3 class="text-lg font-medium leading-6 text-gray-900">Nigeria</h3>
               <div class="mt-2 text-base text-gray-500">
                 <p>Plot No 3 Road J</p>
                 <p class="mt-1">Zaria Bye pass Layout Zaria, Kaduna State Nigeria</p>
+              </div>
+              <div class="mt-3 text-base text-gray-500">
+                <dt class="sr-only">Phone number</dt>
+                <p>+234 706-244 4989</p>
+                <p>+234 701-074 8086</p>
+                <p class="mt-1">Mon-Fri 8am to 5pm (GMT+1)</p>
               </div>
             </div>
           </div>
