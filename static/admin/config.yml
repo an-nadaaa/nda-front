@@ -70,7 +70,21 @@ collections:
               label: Video Location,
               name: location,
               widget: string,
-              default: 'What-Is-An-Nadaa.mp4',
+              default: '/media/video/What-Is-An-nadaa.mp4',
+              hint: 'enter the name of the video or a url: YouTube, Vimeo',
+            }
+      - label: Story Section
+        name: story
+        file: 'content/site/home/story.json'
+        format: 'json'
+        editor:
+          preview: false
+        fields:
+          - {
+              label: Title,
+              name: title,
+              widget: string,
+              default: 'An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.',
               hint: 'enter the name of the video or a url: YouTube, Vimeo',
             }
 
