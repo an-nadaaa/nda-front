@@ -11,3 +11,8 @@
 
 # [[plugins]]
 # package = "netlify-plugin-subfont"
+
+# a redirect to fix the issue with netlify-cms
+[[redirects]]
+  from = "/admin#"
+  to = "/admin/"
