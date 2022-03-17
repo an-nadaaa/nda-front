@@ -4,7 +4,7 @@ logo_url: https://new.an-nadaa.com/long-logo.png
 publish_mode: editorial_workflow
 backend:
   name: git-gateway
-  branch: master
+  branch: develop
   repo: an-nadaaa/nda-front
 
 media_folder: static/media
@@ -58,11 +58,17 @@ collections:
 
   - label: 'Home Page Content'
     name: 'home'
+    # Configure i18n for this collection.
+    i18n:
+      structure: single_file
+      locales: [en, ar]
     files:
       - label: Hero Section
         name: hero
         file: 'content/site/home/hero_section.json'
         format: 'json'
+        # Enable i18n for this file.
+        i18n: true
         editor:
           preview: false
         fields:
@@ -70,11 +76,14 @@ collections:
               label: Video Location,
               name: location,
               widget: string,
+              i18n: duplicate,
               default: '/media/video/What-Is-An-nadaa.mp4',
               hint: 'enter the name of the video or a url: YouTube, Vimeo',
             }
+          - { label: 'Header', name: 'header', widget: 'string', i18n: true }
       - label: Story Section
         name: story
+        i18n: true
         file: 'content/site/home/story.json'
         format: 'json'
         editor:
@@ -85,7 +94,7 @@ collections:
               name: title,
               widget: string,
               default: 'An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.',
-              hint: 'enter the name of the video or a url: YouTube, Vimeo',
+              i18n: true,
             }
 
   - label: 'Blogs'
