@@ -39,15 +39,15 @@
               <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                 <img
                   class="object-cover object-center rounded-lg shadow-lg"
-                  src="https://live.staticflickr.com/65535/48942231591_673fb2d171_o.jpg"
+                  src="https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg"
                   alt="Shaykh giving a talk"
                   width="1184"
                   height="1376" />
               </div>
-              <figcaption class="flex mt-3 text-sm text-gray-500">
+              <!-- <figcaption class="flex mt-3 text-sm text-gray-500">
                 <CameraIcon class="flex-none w-5 h-5 text-gray-400" aria-hidden="true" />
                 <span class="ml-2">Photograph by ?</span>
-              </figcaption>
+              </figcaption> -->
             </figure>
           </div>
         </div>
