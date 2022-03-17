@@ -185,7 +185,7 @@ export default {
         // },
         {
           icon: BrandYoutubeIcon,
-          link: 'https://youtube.com/AnNadaaEducationalFoundation',
+          link: 'https://www.youtube.com/c/annadaaeducationalfoundation',
         },
         {
           icon: BrandInstagramIcon,
