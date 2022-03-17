@@ -1,14 +1,12 @@
-# 🏗️ Boilerplate for Nuxt, Tailwind & NetlifyCMS
+# An-Nadaa Frontend
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cb2d4cc5-8a65-4940-81ce-4456ff96e6db/deploy-status)](https://app.netlify.com/sites/ntn-boilerplate/deploys) ← replace with [your own](https://app.netlify.com/sites/YOUR_NETLIFY_SITE_SLUG/settings/general#deploy-status-badge)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/323e23c5-01dd-44b1-ad3a-60a954cc714f/deploy-status)](https://app.netlify.com/sites/an-nadaa/deploys)
 
-**[Live Demo](https://ntn-boilerplate.netlify.app/)**
+**[Live Demo](https://new.an-nadaa.com/)**
 
-An opinionated starter template for a quick start with the following technologies up on a site after only 5 minutes!
+This repo contains the code of our website frontend.
 
-![ntn-boilerplate-preview-dark](https://user-images.githubusercontent.com/770560/109560601-5dcc5c80-7adc-11eb-9eb8-98663294b6aa.png)
-
-## 🔋 Batteries included
+## Technologies Used
 
 - Nuxt.js (in "universal mode", where both SEO and speed is great)
 - Vue 2
@@ -21,29 +19,16 @@ An opinionated starter template for a quick start with the following technologie
 - Netlify CMS (no need for a separate server)
 - Prettier
 - Nuxt-content (w/ exensible support for markdown and code-blocks)
+- Nuxt-i18n (w/ support for multiple languages)
 
 ##### Optional extra setup
+
 - Git LFS (store uploaded images outside the main repo)
 - Netlify LM (Netlify’s Git LFS support)
 
-## 🎉 Getting Started
-
-Use the deploy button to get your own copy of the repository.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/knogobert/ntn-boilerplate&stack=cms)
-
-This will setup everything needed for running the CMS:
- - A new repository in your GitHub account with the code
- - Full Continuous Deployment to Netlify's global CDN network
- - Control users and access with Netlify Identity
- - Manage content with Netlify CMS and Nuxt-content
-
-Once the initial build finishes, you can invite yourself as a user. Go to the Identity tab in your new site, click "Invite" and send yourself an invite. Start with by registering a regular email-account (not OAuth yet!) with a [generated password](https://passwordwolf.com/).
-
-You should be up and running, ready for personalization!
-
 ### These extra steps are only necessary if you want to upload large media in Netlify CMS:
-This way it doesn't clutter up your repo with large unmanageable files. But *do know* that it is easier to add later than undoing it later.
+
+This way it doesn't clutter up your repo with large unmanageable files. But _do know_ that it is easier to add later than undoing it later.
 
 1. **[Install git-lfs](https://git-lfs.github.com/)** on your computer and remove the `#` in the project's `.gitattributes`
 
@@ -56,19 +41,19 @@ This way it doesn't clutter up your repo with large unmanageable files. But *do 
 1. 📦 Install dependencies.
 
 ```bash
-npm install
+yarn install
 ```
 
-2. 🏗 Run the project for local dev. This will start a hot-reloading server at `localhost:3000`.
+2. 🏗 Run the project for local dev. This will start a hot-reloading server at `localhost:8888`.
 
 ```bash
-npm run dev
+yarn dev:n
 ```
 
 3. 🌌 Build the app for server-side rendered deployment. See more about **Universal SSR** in the [Nuxt.js docs](https://nuxtjs.org/guide#server-rendered-universal-ssr-).
 
 ```bash
-npm run build
+yarn build
 
 # And to serve that deployment...
 npm run start
@@ -77,10 +62,10 @@ npm run start
 4. ⚡️ Generate a fully pre-rendered static site. See more [in the docs](https://nuxtjs.org/guide#static-generated-pre-rendering-).
 
 ```bash
-npm run generate
+yarn generate
 ```
 
-### Personalize setup
+### How we are setup for deployment
 
 1. Copy and change the .env-file
 
@@ -110,29 +95,3 @@ npm run generate
 ## More info
 
 > This project was bootstrapped with `create-nuxt-app`. There are more detailed explanations of how everything works in the [Nuxt.js docs](https://nuxtjs.org).
-
-### Netlify Identity
-
-Make sure to set to "registration invite only" [here](https://app.netlify.com/sites/YOUR_NETLIFY_SITE_SLUG/settings/identity#registration-preferences) if you don't want spam.
-
-When you create your first account, _don’t_ sign up using OAuth, generate a new password and sign in that way locally, otherwise a successful login will send you to the URL you typed in instead of keeping you on localhost.
-
----
-
-Originally based on [Henry Desroches' nuxt-netlify-cms-starter](https://github.com/xdesro/nuxt-netlify-cms-starter).
-
----
-
-## Troubleshooting
-
-- > I added a CSS class, but it doesn't show
-- It is most likely purged by PurgeCSS, make sure it is whitelisted in `purgeCSS` in `nuxt.config.js`
-
-- > I tried logging into/saving in Netlify CMS, but I can't
-- It may be that you haven't [enabled Netlify Identity](https://app.netlify.com/sites/YOUR_NETLIFY_SITE_SLUG/settings/identity) or [setup the Git Gateway](https://app.netlify.com/sites/YOUR_NETLIFY_SITE_SLUG/settings/identity#services) correctly, [check the docs](https://www.netlifycms.org/docs/git-gateway-backend/)
-
-- > "This repository is configured for Git LFS but 'git-lfs' was not found on your path."
-- Install git-lfs then run `git lfs install` in project root. Then to download the images, run `git lfs pull`. Or if you don't want to download the files/can't login to the lfs server, run `git lfs install --skip-smudge` instead.
-
-- > I can’t get Git LFS to run correctly on Netlify
-- Make sure that you have in your [Netlify build settings](https://app.netlify.com/sites/YOUR_NETLIFY_SITE_SLUG/settings/deploys#environment-variables), set the environment variable `GIT_LFS_ENABLED` : `true`. Then also make sure that Netlify LM is setup as [their docs](https://docs.netlify.com/large-media/setup/) specify.
