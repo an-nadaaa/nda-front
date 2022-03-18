@@ -211,6 +211,17 @@ collections:
             }
           - { label: 'button text', name: 'btnText', widget: 'string', i18n: duplicate, default: 'Explore more' }
           - { label: 'Button url', name: 'btnUrl', widget: 'string', i18n: duplicate, default: '/causes' }
+      - label: Team section
+        name: team
+        file: 'content/site/about/team_section.json'
+        format: 'json'
+        # Enable i18n for this file.
+        i18n: true
+        editor:
+          preview: false
+        fields:
+          - { label: Title, name: title, widget: string, i18n: duplicate, default: 'Our team' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'string', i18n: duplicate }
   - label: 'Blogs'
     name: 'blog'
     label_singular: 'blog'
@@ -277,3 +288,36 @@ collections:
           options: [en, ar, ms, sw],
           hint: 'Which locals this testimonial should be displayed on the home page',
         }
+    # Team members collection
+  - label: 'Team members'
+    name: 'members'
+    folder: 'content/team'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - { label: 'Member image URL', name: 'imageUrl', widget: string, i18n: duplicate, required: true }
+      - { label: 'Name', name: 'name', p widget: string, i18n: duplicate, required: true }
+      - { label: 'Role', name: 'role', widget: string, i18n: duplicate, required: true }
+      - { label: 'Linkedin profile', name: 'linkedin', widget: string, i18n: duplicate, required: true }
+      - { label: 'Twitter profile', name: 'twitter', widget: string, i18n: duplicate, required: true }
+    # Values collection
+  - label: 'Values'
+    name: 'values'
+    folder: 'content/team'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - {
+          label: 'Icon',
+          name: 'icon',
+          widget: string,
+          i18n: duplicate,
+          required: true,
+          hint: 'You need to add the valid icon code from tabler-icons.io, example: LockAccessIcon for lock icon',
+        }
+      - { label: 'Title', name: 'title', widget: string, i18n: duplicate, required: true }
+      - { label: 'Description', name: 'description', widget: string, i18n: duplicate, required: true }
