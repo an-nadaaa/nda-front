@@ -3,15 +3,42 @@
   <div>
     <div class="max-w-2xl px-4 py-16 mx-auto text-center sm:py-20 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold sm:text-4xl">
-        <span class="block">Starting changing lives Today.</span>
-        <span class="block">Make a lasting impact.</span>
+        <span class="block">{{ ctaSection.title }} </span>
       </h2>
-      <p class="mt-4 text-lg leading-6 text-gray-700">We have many causes that are always open to contributions.</p>
+      <p class="mt-4 text-lg leading-6 text-gray-700">{{ ctaSection.subtitle }}</p>
       <NuxtLink
-        :to="localePath('/causes')"
-        class="inline-flex items-center justify-center w-full px-5 py-3 mt-8 text-base font-medium text-white border border-transparent rounded-md  bg-primary-600 hover:bg-primary-700 sm:w-auto">
-        Explore more
+        :to="localePath(ctaSection.btnUrl)"
+        class="
+          inline-flex
+          items-center
+          justify-center
+          w-full
+          px-5
+          py-3
+          mt-8
+          text-base
+          font-medium
+          text-white
+          border border-transparent
+          rounded-md
+          bg-primary-600
+          hover:bg-primary-700
+          sm:w-auto
+        ">
+        {{ ctaSection.btnText }}
       </NuxtLink>
     </div>
   </div>
 </template>
+
+<script>
+import * as CTA_SECTION from '~/content/site/about/cta_section.json'
+
+export default {
+  data() {
+    return {
+      ctaSection: CTA_SECTION.en,
+    }
+  },
+}
+</script>

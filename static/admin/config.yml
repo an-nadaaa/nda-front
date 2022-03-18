@@ -96,7 +96,132 @@ collections:
               default: 'An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.',
               i18n: true,
             }
-
+  - label: 'About Page Content'
+    name: 'about'
+    # Configure i18n for this collection.
+    i18n:
+      structure: single_file
+      locales: [en, ar]
+    files:
+      - label: Statement section
+        name: statement
+        file: 'content/site/about/statement_section.json'
+        format: 'json'
+        # Enable i18n for this file.
+        i18n: true
+        editor:
+          preview: false
+        fields:
+          - {
+              label: Title,
+              name: title,
+              widget: string,
+              i18n: duplicate,
+              default: 'How it started',
+              hint: 'Enter the title of statement',
+            }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'string', i18n: duplicate, default:'A simple way to' }
+          - { label: 'Goal', name: 'goal', widget: 'string', i18n: duplicate, default:'Lift others' }
+          - { label: 'Description', name: 'description', widget: 'string', i18n: duplicate }
+      - label: Story section
+        name: story
+        file: 'content/site/about/story_section.json'
+        format: 'json'
+        # Enable i18n for this file.
+        i18n: true
+        editor:
+          preview: false
+        fields:
+          - { label: Title, name: title, widget: string, i18n: duplicate, default: 'Our story' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'string', i18n: duplicate }
+          - {
+              label: 'First column Description',
+              name: 'description1',
+              widget: 'string',
+              i18n: duplicate,
+              hint:'Description added to the first column',
+            }
+          - {
+              label: 'Second column Description',
+              name: 'description2',
+              widget: 'string',
+              i18n: duplicate,
+              hint:'Description added to the first column',
+            }
+      - label: Our values section
+        name: value
+        file: 'content/site/about/value_section.json'
+        format: 'json'
+        # Enable i18n for this file.
+        i18n: true
+        editor:
+          preview: false
+        fields:
+          - { label: Title, name: title, widget: string, i18n: duplicate, default: 'Our values' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'string', i18n: duplicate }
+          - { label: 'Description', name: 'description', widget: 'string', i18n: duplicate }
+      - label: Shaykh section
+        name: shaykh
+        file: 'content/site/about/shaykh_section.json'
+        format: 'json'
+        # Enable i18n for this file.
+        i18n: true
+        editor:
+          preview: false
+        fields:
+          - {
+              label: Image url,
+              name: imageUrl,
+              widget: string,
+              i18n: duplicate,
+              default: 'https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg',
+              hint: 'Enter the url of the image that will be added to Shayh section',
+            }
+          - {
+              label: Title,
+              name: title,
+              widget: string,
+              i18n: duplicate,
+              default: 'Founder (Nigeria) & Deputy Chairman (Malaysia)',
+            }
+          - {
+              label: 'Subtitle',
+              name: 'subtitle',
+              widget: 'string',
+              i18n: duplicate,
+              default: 'Meet Sheikh Ibrahim Nuhu',
+            }
+          - { label: 'Description', name: 'description', widget: 'string', i18n: duplicate }
+      - label: Call to action section
+        name: cta
+        file: 'content/site/about/cta_section.json'
+        format: 'json'
+        # Enable i18n for this file.
+        i18n: true
+        editor:
+          preview: false
+        fields:
+          - { label: Title, name: title, widget: string, i18n: duplicate, default: 'Starting changing lives Today.' }
+          - {
+              label: 'Subtitle',
+              name: 'subtitle',
+              widget: 'string',
+              i18n: duplicate,
+              default: 'We have many causes that are always open to contributions.',
+            }
+          - { label: 'button text', name: 'btnText', widget: 'string', i18n: duplicate, default: 'Explore more' }
+          - { label: 'Button url', name: 'btnUrl', widget: 'string', i18n: duplicate, default: '/causes' }
+      - label: Team section
+        name: team
+        file: 'content/site/about/team_section.json'
+        format: 'json'
+        # Enable i18n for this file.
+        i18n: true
+        editor:
+          preview: false
+        fields:
+          - { label: Title, name: title, widget: string, i18n: duplicate, default: 'Our team' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'string', i18n: duplicate }
   - label: 'Blogs'
     name: 'blog'
     label_singular: 'blog'
@@ -163,3 +288,36 @@ collections:
           options: [en, ar, ms, sw],
           hint: 'Which locals this testimonial should be displayed on the home page',
         }
+    # Team members collection
+  - label: 'Team members'
+    name: 'members'
+    folder: 'content/team'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - { label: 'Member image URL', name: 'imageUrl', widget: string, i18n: duplicate, required: true }
+      - { label: 'Name', name: 'name', p widget: string, i18n: duplicate, required: true }
+      - { label: 'Role', name: 'role', widget: string, i18n: duplicate, required: true }
+      - { label: 'Linkedin profile', name: 'linkedin', widget: string, i18n: duplicate, required: true }
+      - { label: 'Twitter profile', name: 'twitter', widget: string, i18n: duplicate, required: true }
+    # Values collection
+  - label: 'Values'
+    name: 'values'
+    folder: 'content/team'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - {
+          label: 'Icon',
+          name: 'icon',
+          widget: string,
+          i18n: duplicate,
+          required: true,
+          hint: 'You need to add the valid icon code from tabler-icons.io, example: LockAccessIcon for lock icon',
+        }
+      - { label: 'Title', name: 'title', widget: string, i18n: duplicate, required: true }
+      - { label: 'Description', name: 'description', widget: string, i18n: duplicate, required: true }

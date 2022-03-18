@@ -3,10 +3,9 @@
     <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
       <div class="space-y-12">
         <div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Our team</h2>
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{{ teamSection.title }}</h2>
           <p class="text-xl text-gray-500">
-            Odio nisi, lectus dis nulla. Ultrices maecenas vitae rutrum dolor ultricies donec risus sodales. Tempus quis
-            et.
+            {{ teamSection.subtitle }}
           </p>
         </div>
         <ul
@@ -101,10 +100,12 @@ const people = [
   },
   // More people...
 ]
+import * as TEAM_SECTION from '~/content/site/about/team_section.json'
 
 export default {
   data() {
     return {
+      teamSection: TEAM_SECTION.en,
       people,
     }
   },
