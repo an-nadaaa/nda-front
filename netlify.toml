@@ -16,3 +16,7 @@
 [[redirects]]
   from = "/admin#"
   to = "/admin/"
+
+[[redirects]]
+  from = "/admin#/"
+  to = "/admin/"
