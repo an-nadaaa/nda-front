@@ -1,6 +1,6 @@
 <template>
   <div class="relative py-16 bg-white sm:py-24">
-    <div class="mx-auto lg:mx-24 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+    <div class="mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
       <div class="relative h-full sm:py-16 lg:py-0">
         <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
           <div class="absolute inset-y-0 w-full right-1/2 bg-gray-50 rounded-r-3xl lg:right-72" />
@@ -62,7 +62,7 @@
       <div class="relative max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:px-0">
         <!-- Content area -->
         <div class="pt-12 sm:pt-16 lg:pt-20">
-          <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 class="tracking-tight text-gray-900 text-7xl sm:text-4xl">
             An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.
           </h2>
           <div class="mt-6 space-y-6 text-gray-500">
@@ -76,11 +76,6 @@
               arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna. Sollicitudin tristique eros erat
               odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra donec
               ut volutpat donec laoreet quam urna.
-            </p>
-            <p class="text-base leading-7">
-              Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel ultricies. Vulputate aliquet velit
-              faucibus semper. Pellentesque in venenatis vestibulum consectetur nibh id. In id ut tempus egestas. Enim
-              sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.
             </p>
           </div>
         </div>
