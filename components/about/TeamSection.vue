@@ -10,7 +10,8 @@
         </div>
         <ul
           role="list"
-          class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+          class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8"
+          v-if="people.length > 0">
           <li v-for="person in people" :key="person.name">
             <div class="space-y-4">
               <div class="aspect-w-3 aspect-h-2">
@@ -54,60 +55,17 @@
 </template>
 
 <script>
-// pull this from our CMS
-const people = [
-  {
-    name: 'Mu’awiyah Abu Baker',
-    role: 'Chairman & Director (Nigeria)',
-    imageUrl: 'https://live.staticflickr.com/65535/48942559682_de2fdcb58d_o.png',
-    twitterUrl: '#',
-    linkedinUrl: '#',
-  },
-  {
-    name: 'Abdul Salam Nuhu Tahir',
-    role: 'Secretary & Finance Executive Director (Nigeria)',
-    imageUrl: 'https://live.staticflickr.com/65535/48942559622_3264c75cdd_o.png',
-    twitterUrl: '#',
-    linkedinUrl: '#',
-  },
-  {
-    name: 'Jismi Azahari',
-    role: 'Chairman (Malaysia)',
-    imageUrl: 'https://live.staticflickr.com/65535/49023856636_c026b93aac_o.jpg',
-    twitterUrl: '#',
-    linkedinUrl: '#',
-  },
-  {
-    name: 'Qairul Reeza Othman',
-    role: 'Secretary (Malaysia)',
-    imageUrl: 'https://live.staticflickr.com/65535/48942559442_cb0b63ec50_o.png',
-    twitterUrl: '#',
-    linkedinUrl: '#',
-  },
-  {
-    name: 'Muhammad Bashir Aliyu',
-    role: 'Committee Member (Nigeria)',
-    imageUrl: 'https://live.staticflickr.com/65535/49439047728_68f88ac7bd_z.jpg',
-    twitterUrl: '#',
-    linkedinUrl: '#',
-  },
-  {
-    name: 'Bader Albader',
-    role: 'Committee Member (Bahrain)',
-    imageUrl: 'https://live.staticflickr.com/65535/48942368341_bf2b8b9bf3_o.png',
-    twitterUrl: '#',
-    linkedinUrl: '#',
-  },
-  // More people...
-]
 import * as TEAM_SECTION from '~/content/site/about/team_section.json'
 
 export default {
   data() {
     return {
       teamSection: TEAM_SECTION.en,
-      people,
+      people: [],
     }
+  },
+  async mounted() {
+    this.people = await this.$content('members', this.$i18n.locale).fetch()
   },
 }
 </script>
