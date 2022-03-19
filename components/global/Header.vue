@@ -12,7 +12,7 @@
         <button
           @click="mobileToggle = true"
           type="button"
-          class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md  hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+          class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
           aria-expanded="false">
           <span class="sr-only">Open menu</span>
           <!-- Heroicon name: outline/menu -->
@@ -21,7 +21,9 @@
       </div>
       <div class="hidden md:flex-1 md:flex md:items-center md:justify-between">
         <nav class="flex space-x-10">
-          <NuxtLink :to="localePath('/about')" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          <NuxtLink
+            :to="localePath('/about')"
+            class="text-base font-medium text-gray-500 cursor-pointer hover:text-gray-900">
             About
           </NuxtLink>
 
@@ -29,7 +31,7 @@
             <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
             <button
               type="button"
-              class="inline-flex items-center text-base font-medium text-gray-500 bg-white rounded-md  group hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              class="inline-flex items-center text-base font-medium text-gray-500 bg-white rounded-md group hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               aria-expanded="false"
               @click="showCauses = !showCauses">
               <span>Causes</span>
@@ -66,7 +68,7 @@
                       :to="localePath('/causes?s=c')"
                       class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12">
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/chart-bar -->
                         <svg
                           class="w-6 h-6"
@@ -92,7 +94,7 @@
                       :to="localePath('/causes?s=p')"
                       class="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50">
                       <div
-                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md  bg-primary-500 sm:h-12 sm:w-12">
+                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-md bg-primary-500 sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/cursor-click -->
                         <svg
                           class="w-6 h-6"
@@ -119,19 +121,7 @@
                       <div class="flex items-center">
                         <div class="text-base font-medium text-gray-900">Case studies</div>
                         <span
-                          class="
-                            ml-3
-                            inline-flex
-                            items-center
-                            px-3
-                            py-0.5
-                            rounded-full
-                            text-xs
-                            font-medium
-                            leading-5
-                            bg-primary-100
-                            text-primary-800
-                          ">
+                          class="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-primary-100 text-primary-800">
                           Coming Soon
                         </span>
                       </div>
@@ -147,7 +137,7 @@
             <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
             <button
               type="button"
-              class="inline-flex items-center text-base font-medium text-gray-500 bg-white rounded-md  group hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              class="inline-flex items-center text-base font-medium text-gray-500 bg-white rounded-md group hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               aria-expanded="false"
               @click="showLearn = !showLearn">
               <span>Learn</span>
@@ -216,7 +206,7 @@
           </a> -->
           <a
             href="/#donate"
-            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
             Donate Now
           </a>
         </div>
@@ -247,7 +237,7 @@
               <button
                 @click="mobileToggle = false"
                 type="button"
-                class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md  hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                class="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
                 <span class="sr-only">Close menu</span>
                 <!-- Heroicon name: outline/x -->
                 <svg
@@ -352,7 +342,7 @@
             </p> -->
             <a
               href="/#donate"
-              class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md cursor-pointer  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-white border border-transparent rounded-md cursor-pointer bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
               Donate
             </a>
           </div>

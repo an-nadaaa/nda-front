@@ -62,7 +62,7 @@
       <div class="relative max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:px-0">
         <!-- Content area -->
         <div class="pt-12 sm:pt-16 lg:pt-20">
-          <h2 class="tracking-tight text-gray-900 text-7xl sm:text-4xl">
+          <h2 class="text-4xl tracking-tight text-gray-900 sm:text-5xl">
             An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.
           </h2>
           <div class="mt-6 space-y-6 text-gray-500">
