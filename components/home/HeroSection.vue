@@ -1,6 +1,6 @@
 <template>
-  <section class="h-screen bg-contain" :style="`background-image: url(${bgUrl})`">
-    <div v-show="!showPlayer" class="w-full pt-16 pb-20 mx-24 text-center max-w-7xl lg:py-48 lg:text-left">
+  <section class="bg-contain lg:h-screen" :style="`background-image: url(${bgUrl})`">
+    <div v-show="!showPlayer" class="w-full pt-16 pb-20 mx-auto text-center lg:mx-24 max-w-7xl lg:py-48 lg:text-left">
       <div class="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
         <h1 class="text-4xl tracking-tight text-white font-headers sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
           <span class="block xl:inline">Build your</span>
@@ -32,7 +32,6 @@
     <VideoPlayer v-show="showPlayer" :showPlayer="showPlayer" />
   </section>
 </template>
-
 <script>
 import { PlayerPlayIcon } from 'vue-tabler-icons'
 
