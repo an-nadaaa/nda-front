@@ -1,5 +1,5 @@
 <template>
-  <div class="relative bg-gray-900">
+  <div class="relative bg-gray-800">
     <div class="absolute bottom-0 w-full h-80 xl:inset-0 xl:h-full">
       <div class="w-full h-full xl:grid xl:grid-cols-2">
         <div class="h-full xl:relative xl:col-start-2">
@@ -9,7 +9,7 @@
             alt="People working on laptops" />
           <div
             aria-hidden="true"
-            class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-gray-900 xl:inset-y-0 xl:left-0 xl:h-full xl:w-32 xl:bg-gradient-to-r" />
+            class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-gray-800 xl:inset-y-0 xl:left-0 xl:h-full xl:w-32 xl:bg-gradient-to-r" />
         </div>
       </div>
     </div>
