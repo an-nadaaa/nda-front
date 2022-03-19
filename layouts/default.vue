@@ -3,6 +3,7 @@
     <Header />
     <nuxt />
     <GlobalFooter />
+    <MobileBar class="sm:hidden" />
   </div>
 </template>
 

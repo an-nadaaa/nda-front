@@ -4,7 +4,7 @@
     <div class="px-4 py-12 mx-auto max-w-7xl sm:py-16 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
         <h2 class="text-3xl text-center text-gray-900 sm:text-4xl">Frequently asked questions</h2>
-        <dl class="mt-6 space-y-6 divide-y divide-gray-200">
+        <dl class="mt-16 space-y-6 divide-y divide-gray-200">
           <div class="pt-6" v-for="(question, i) in faqs" :key="i">
             <dt class="text-lg">
               <!-- Expand/collapse question button -->
@@ -13,14 +13,12 @@
                 class="flex items-start justify-between w-full text-left text-gray-400"
                 :aria-controls="`faq-${i}`"
                 aria-expanded="false"
-                @click="current = i"
-              >
+                @click="current = i">
                 <span class="font-medium text-gray-900"> {{ question.question }} </span>
                 <span class="flex items-center ml-6 h-7">
                   <Component
                     :is="currentIndex(i) ? 'CircleMinusIcon' : 'CirclePlusIcon'"
-                    class="w-6 h-6 text-primary-600"
-                  />
+                    class="w-6 h-6 text-primary-600" />
                 </span>
               </button>
             </dt>

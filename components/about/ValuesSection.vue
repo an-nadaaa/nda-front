@@ -1,13 +1,12 @@
 <template>
   <div class="relative py-16 bg-white sm:py-24 lg:py-32">
     <div class="max-w-md px-4 mx-auto text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-      <h2 class="text-base font-semibold tracking-wider uppercase text-primary-600">Our Values</h2>
+      <h2 class="text-base font-semibold tracking-wider uppercase text-primary-600">{{ valueSection.title }}</h2>
       <h3 class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-        What we stand for and believe in
+        {{ valueSection.subtitle }}
       </h3>
       <p class="mx-auto mt-5 text-xl text-gray-500 max-w-prose">
-        Phasellus lorem quam molestie id quisque diam aenean nulla in. Accumsan in quis quis nunc, ullamcorper
-        malesuada. Eleifend condimentum id viverra nulla.
+        {{ valueSection.description }}
       </p>
       <div class="mt-12">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -16,7 +15,16 @@
               <div class="-mt-6">
                 <div>
                   <span
-                    class="inline-flex items-center justify-center p-3 rounded-md shadow-lg  text-primary-500 bg-primary-100">
+                    class="
+                      inline-flex
+                      items-center
+                      justify-center
+                      p-3
+                      rounded-md
+                      shadow-lg
+                      text-primary-500
+                      bg-primary-100
+                    ">
                     <component :is="feature.icon" class="w-6 h-6" aria-hidden="true" />
                   </span>
                 </div>
@@ -33,6 +41,7 @@
 
 <script>
 import { ListSearchIcon, LockAccessIcon, MedalIcon } from 'vue-tabler-icons'
+import * as VALUE_SECTION from '~/content/site/about/value_section.json'
 
 // needs to be pulled from our CMS
 const features = [
@@ -76,6 +85,7 @@ export default {
   },
   data() {
     return {
+      valueSection: VALUE_SECTION.en,
       features,
     }
   },

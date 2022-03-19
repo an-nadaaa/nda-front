@@ -5,10 +5,10 @@
       <div class="mx-auto text-base max-w-prose lg:grid lg:grid-cols-2 lg:gap-8 lg:max-w-none">
         <div>
           <h2 class="text-base font-semibold tracking-wide uppercase text-primary-600">
-            Founder (Nigeria) & Deputy Chairman (Malaysia)
+            {{ shaykhSection.title }}
           </h2>
           <h3 class="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
-            Meet Sheikh Ibrahim Nuhu
+            {{ shaykhSection.subtitle }}
           </h3>
         </div>
       </div>
@@ -39,7 +39,7 @@
               <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                 <img
                   class="object-cover object-center rounded-lg shadow-lg"
-                  src="https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg"
+                  :src="shaykhSection.imageUrl"
                   alt="Shaykh giving a talk"
                   width="1184"
                   height="1376" />
@@ -51,45 +51,7 @@
             </figure>
           </div>
         </div>
-        <div class="mt-8 lg:mt-0">
-          <div class="mx-auto text-base max-w-prose lg:max-w-none">
-            <p class="text-lg text-gray-500">
-              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
-              pellentesque. Blandit amet, sed aenean erat arcu morbi.
-            </p>
-          </div>
-          <div class="mx-auto mt-5 prose text-gray-500 prose-primary lg:max-w-none lg:row-start-1 lg:col-start-1">
-            <p>
-              Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium
-              arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna.
-            </p>
-            <p>
-              Bibendum eu nulla feugiat justo, elit adipiscing. Ut tristique sit nisi lorem pulvinar. Urna, laoreet
-              fusce nibh leo. Dictum et et et sit. Faucibus sed non gravida lectus dignissim imperdiet a.
-            </p>
-            <p>
-              Dictum magnis risus phasellus vitae quam morbi. Quis lorem lorem arcu, metus, egestas netus cursus. In.
-            </p>
-            <ul role="list">
-              <li>Quis elit egestas venenatis mattis dignissim.</li>
-              <li>Cras cras lobortis vitae vivamus ultricies facilisis tempus.</li>
-              <li>Orci in sit morbi dignissim metus diam arcu pretium.</li>
-            </ul>
-            <p>
-              Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel ultricies. Vulputate aliquet velit
-              faucibus semper. Pellentesque in venenatis vestibulum consectetur nibh id. In id ut tempus egestas. Enim
-              sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.
-            </p>
-            <!-- <h3>How we helped</h3>
-            <p>
-              Tincidunt integer commodo, cursus etiam aliquam neque, et. Consectetur pretium in volutpat, diam. Montes,
-              magna cursus nulla feugiat dignissim id lobortis amet. Laoreet sem est phasellus eu proin massa, lectus.
-              Diam rutrum posuere donec ultricies non morbi. Mi a platea auctor mi.
-            </p>
-            <p>
-              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
-              pellentesque. Blandit amet, sed aenean erat arcu morbi.
-            </p> -->
+        <div class="mt-8 lg:mt-0" v-html="shaykhSection.description">
           </div>
         </div>
       </div>
@@ -99,10 +61,16 @@
 
 <script>
 import { CameraIcon } from 'vue-tabler-icons'
+import * as SHAYKH_SECTION from '~/content/site/about/shaykh_section.json'
 
 export default {
   components: {
     CameraIcon,
+  },
+  data() {
+    return {
+      shaykhSection: SHAYKH_SECTION.en,
+    }
   },
 }
 </script>

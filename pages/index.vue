@@ -2,7 +2,7 @@
   <main>
     <HeroSection />
     <LogoCloud />
-    <StorySection />
+    <HomeStorySection />
     <StatsSection :metrics="metrics" />
     <FeaturedCampaigns :featured-campaigns="featuredCampaigns" />
     <CampaignsSection :campaigns="campaigns" />
