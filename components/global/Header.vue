@@ -5,7 +5,7 @@
       <div class="cursor-pointer">
         <NuxtLink :to="localePath('/')" class="flex">
           <span class="sr-only">An-Nadaa</span>
-          <img class="w-auto h-8 sm:h-10" src="~/static/logo.svg" alt="logo" />
+          <img class="w-auto sm:w-full" src="~/static/logo.svg" alt="logo" />
         </NuxtLink>
       </div>
       <div class="-my-2 -mr-2 md:hidden">
@@ -206,7 +206,7 @@
           </a> -->
           <a
             href="/#donate"
-            class="flex items-center justify-center w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            class="items-center justify-center hidden w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer lg:flex bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
             Donate Now
           </a>
         </div>
