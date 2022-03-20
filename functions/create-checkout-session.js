@@ -6,6 +6,8 @@ const STRIPE_GENERAL_PRODUCT =
   process.env.NODE_ENV === 'production'
     ? process.env.STRIPE_GENERAL_PRODUCT_ID_PROD
     : process.env.STRIPE_GENERAL_PRODUCT_ID_DEV
+console.log(process.env.NODE_ENV)
+console.log(STRIPE_SK.slice(0, 8))
 const stripe = require('stripe')(STRIPE_SK),
   headers = {
     'Access-Control-Allow-Origin': BASE_URL,
@@ -38,7 +40,7 @@ exports.handler = async function (event, context) {
     }/success`,
     cancel_url: `${BASE_URL}${
       event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
-    }/cancel`,
+    }/causes`,
     locale: event.queryStringParameters.locale,
     // payment_method_types: ['card', 'fpx', 'grabpay', 'alipay'],
   })
