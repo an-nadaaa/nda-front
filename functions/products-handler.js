@@ -2,7 +2,7 @@
 require('dotenv').config()
 const STRIPE_SK_DEV = process.env.STRIPE_SK_DEV
 const STRIPE_SK_PROD = process.env.STRIPE_SK_PROD
-const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:1337'
+const BASE_URL = process.env.CONTEXT === 'production' ? process.env.BASE_URL : 'http://localhost:1337'
 const headers = {
   'Access-Control-Allow-Origin': BASE_URL,
   'Access-Control-Allow-Headers': 'Content-Type',

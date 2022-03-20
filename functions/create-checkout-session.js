@@ -1,12 +1,12 @@
 // this function is called before the user is redirected back from the Stripe checkout page to generate a session
 require('dotenv').config()
-const STRIPE_SK = process.env.NODE_ENV === 'production' ? process.env.STRIPE_SK_PROD : process.env.STRIPE_SK_DEV
-const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888'
+const STRIPE_SK = process.env.CONTEXT === 'production' ? process.env.STRIPE_SK_PROD : process.env.STRIPE_SK_DEV
+const BASE_URL = process.env.CONTEXT === 'production' ? process.env.BASE_URL : 'http://localhost:8888'
 const STRIPE_GENERAL_PRODUCT =
-  process.env.NODE_ENV === 'production'
+  process.env.CONTEXT === 'production'
     ? process.env.STRIPE_GENERAL_PRODUCT_ID_PROD
     : process.env.STRIPE_GENERAL_PRODUCT_ID_DEV
-console.log(process.env.NODE_ENV)
+console.log(process.env.CONTEXT)
 console.log(STRIPE_SK.slice(0, 8))
 const stripe = require('stripe')(STRIPE_SK),
   headers = {
