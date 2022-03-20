@@ -9,7 +9,8 @@
         :src="campaign.attributes.cover.data.attributes.url"
         alt="" />
     </div>
-    <div class="flex flex-col justify-between flex-1 p-6 bg-white">
+
+    <div class="bottom-0 flex-col justify-between flex-1 w-full p-6 bg-white bg-center bg-cover">
       <div class="flex-1">
         <span
           v-for="(tag, i) in campaign.attributes.tags.data"
@@ -30,8 +31,8 @@
         </div>
       </div>
 
-      <div class="h-2 my-3 bg-gray-300 group">
-        <div class="h-2 bg-yellow-400" :style="`width: ${percentage}%`"></div>
+      <div class="h-2 my-3 overflow-hidden bg-gray-200 rounded-full">
+        <div class="h-2 bg-yellow-400 rounded-full" :style="`width: ${percentage}%`"></div>
       </div>
 
       <div class="flex items-center mt-6">
@@ -52,10 +53,10 @@
                     {{ post.date }}
                   </time> -->
             <span class="font-semibold">
-              {{ currencySymbol }} {{ Intl.NumberFormat().format(campaign.attributes.raised) }}
+              {{ currencySymbol }}{{ Intl.NumberFormat().format(campaign.attributes.raised) }}
             </span>
             <span> of </span>
-            <span> {{ currencySymbol }} {{ Intl.NumberFormat().format(campaign.attributes.goal) }} Raised </span>
+            <span> {{ currencySymbol }}{{ Intl.NumberFormat().format(campaign.attributes.goal) }} Raised </span>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <template>
-  <div v-if="campaigns[0]" class="mx-24 mb-24">
-    <div class="grid grid-cols-3 gap-6">
+  <div v-if="campaigns[0]" class="mx-6 mb-3 lg:mx-24">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <CampaignCard v-for="(campaign, i) in campaigns" :campaign="campaign" :key="i"></CampaignCard>
     </div>
   </div>

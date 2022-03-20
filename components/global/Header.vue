@@ -1,6 +1,6 @@
 <template>
   <!-- This example requires Tailwind CSS v2.0+ -->
-  <div class="relative mx-12">
+  <div class="relative mx-24">
     <div class="flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
       <div class="cursor-pointer">
         <NuxtLink :to="localePath('/')" class="flex">
