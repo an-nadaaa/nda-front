@@ -6,7 +6,9 @@ const STRIPE_GENERAL_PRODUCT =
   process.env.CONTEXT === 'production'
     ? process.env.STRIPE_GENERAL_PRODUCT_ID_PROD
     : process.env.STRIPE_GENERAL_PRODUCT_ID_DEV
-console.log(process.env.CONTEXT)
+console.log('NODE_ENV', process.env.CONTEXT)
+console.log('CONTEXT', process.env.CONTEXT)
+console.log('process.env', process.env)
 console.log(STRIPE_SK.slice(0, 8))
 const stripe = require('stripe')(STRIPE_SK),
   headers = {
