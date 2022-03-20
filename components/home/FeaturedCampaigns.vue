@@ -3,7 +3,7 @@
     <h2 class="px-8 mt-24 text-4xl lg:w-3/4 md:text-5xl lg:text-6xl font-headers">
       We help build sustainable Islamic communities
     </h2>
-    <div class="grid grid-cols-1 grid-rows-2 gap-6 p-6 lg:p-0 lg:grid-cols-2">
+    <div class="grid grid-cols-1 grid-rows-2 gap-6 p-6 xl:p-0 xl:grid-cols-2">
       <FeaturedCampaignCard
         :class="`${i === 0 ? 'lg:row-span-2' : ''}`"
         v-for="(campaign, i) in featuredCampaigns"

@@ -1,6 +1,9 @@
 <template>
   <NuxtLink :to="localePath(`/campaigns/${campaign.id}`)" :class="`relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
-    <div v-if="index !== 2" aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+    <div
+      v-if="index !== 2"
+      aria-hidden="true"
+      :class="`hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen`">
       <svg
         class="absolute -ml-3 top-8 left-1/2 lg:-right-8 lg:left-auto lg:top-12"
         width="404"
