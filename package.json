@@ -46,6 +46,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "4.0.0",
     "netlify-cli": "9.13.2",
+    "netlify-plugin-inline-functions-env": "^1.0.9",
     "path": "^0.12.7",
     "postcss": "^8.4.11",
     "prettier": "2.5.1",
