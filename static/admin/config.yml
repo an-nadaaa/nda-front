@@ -172,7 +172,7 @@ collections:
           - {
               label: Image url,
               name: imageUrl,
-              widget: string,
+              widget: markdown,
               i18n: duplicate,
               default: 'https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg',
               hint: 'Enter the url of the image that will be added to Shayh section',
@@ -298,7 +298,7 @@ collections:
     i18n: true
     fields:
       - { label: 'Member image URL', name: 'imageUrl', widget: string, i18n: duplicate, required: true }
-      - { label: 'Name', name: 'name', p widget: string, i18n: duplicate, required: true }
+      - { label: 'Name', name: 'name', widget: string, i18n: duplicate, required: true }
       - { label: 'Role', name: 'role', widget: string, i18n: duplicate, required: true }
       - { label: 'Linkedin profile', name: 'linkedin', widget: string, i18n: duplicate, required: true }
       - { label: 'Twitter profile', name: 'twitter', widget: string, i18n: duplicate, required: true }
