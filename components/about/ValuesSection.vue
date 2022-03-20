@@ -9,8 +9,8 @@
         {{ valueSection.description }}
       </p>
       <div class="mt-12">
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div v-for="feature in features" :key="feature.name" class="pt-6">
+        <div v-if="features.length > 0" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div v-for="feature in features" :key="feature.title" class="pt-6">
             <div class="flow-root px-6 pb-8 rounded-lg bg-gray-50">
               <div class="-mt-6">
                 <div>
@@ -28,7 +28,7 @@
                     <component :is="feature.icon" class="w-6 h-6" aria-hidden="true" />
                   </span>
                 </div>
-                <h3 class="mt-8 text-lg font-medium tracking-tight text-gray-900">{{ feature.name }}</h3>
+                <h3 class="mt-8 text-lg font-medium tracking-tight text-gray-900">{{ feature.title }}</h3>
                 <p class="mt-5 text-base text-gray-500">{{ feature.description }}</p>
               </div>
             </div>
@@ -43,40 +43,6 @@
 import { ListSearchIcon, LockAccessIcon, MedalIcon } from 'vue-tabler-icons'
 import * as VALUE_SECTION from '~/content/site/about/value_section.json'
 
-// needs to be pulled from our CMS
-const features = [
-  {
-    name: 'Excellence',
-    description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-    icon: MedalIcon,
-  },
-  {
-    name: 'Amanah',
-    description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-    icon: LockAccessIcon, // lock
-  },
-  {
-    name: 'Transparency',
-    description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-    icon: ListSearchIcon, // magnet
-  },
-  //   {
-  //     name: 'Advanced Security',
-  //     description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-  //     icon: ShieldCheckIcon,
-  //   },
-  //   {
-  //     name: 'Powerful API',
-  //     description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-  //     icon: CogIcon,
-  //   },
-  //   {
-  //     name: 'Database Backups',
-  //     description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-  //     icon: ServerIcon,
-  //   },
-]
-
 export default {
   components: {
     ListSearchIcon,
@@ -86,8 +52,11 @@ export default {
   data() {
     return {
       valueSection: VALUE_SECTION.en,
-      features,
+      features: [],
     }
+  },
+  async mounted() {
+    this.features = await this.$content('values', this.$i18n.locale).fetch()
   },
 }
 </script>

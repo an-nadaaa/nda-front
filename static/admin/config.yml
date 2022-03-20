@@ -291,7 +291,7 @@ collections:
     # Team members collection
   - label: 'Team members'
     name: 'members'
-    folder: 'content/team'
+    folder: 'content/members'
     create: true
     format: 'frontmatter'
     slug: '{{slug}}'
@@ -305,7 +305,7 @@ collections:
     # Values collection
   - label: 'Values'
     name: 'values'
-    folder: 'content/team'
+    folder: 'content/values'
     create: true
     format: 'frontmatter'
     slug: '{{slug}}'
