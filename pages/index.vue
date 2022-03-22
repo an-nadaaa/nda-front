@@ -23,7 +23,7 @@ export default {
       direction: 'dec',
     }
     const FEATURED_COUNT = 3
-    const CAMPAIGN_COUNT = 6
+    const CAMPAIGN_COUNT = 5
     let campaigns,
       featuredCampaigns,
       faqs,

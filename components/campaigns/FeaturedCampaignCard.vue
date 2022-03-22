@@ -32,8 +32,8 @@
           v-if="campaign.attributes.cover.data.attributes.url"
           :src="campaign.attributes.cover.data.attributes.url"
           alt="" />
-        <div class="absolute inset-0 bg-primary-600 opacity-30 mix-blend-multiply" />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary-700 via-primary-700 opacity-90" />
+        <div class="absolute inset-0 bg-primary-600 opacity-20 mix-blend-multiply" />
+        <div class="absolute inset-0 opacity-60 bg-gradient-to-t from-primary-700 via-primary-700" />
         <div class="relative px-8 pb-10">
           <div>
             <span
