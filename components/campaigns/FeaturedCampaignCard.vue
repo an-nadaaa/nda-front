@@ -3,7 +3,7 @@
     <div
       v-if="index !== 2"
       aria-hidden="true"
-      :class="`hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen`">
+      :class="`hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen pointer-events-none`">
       <svg
         class="absolute -ml-3 top-8 left-1/2 lg:-right-8 lg:left-auto lg:top-12"
         width="404"

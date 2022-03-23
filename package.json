@@ -28,6 +28,7 @@
     "qs": "6.10.3",
     "swiper": "^8.0.7",
     "v-click-outside": "^3.1.2",
+    "vue-cool-lightbox": "^2.7.4",
     "vue-plyr": "^7.0.0",
     "vue-spinner": "^1.0.4",
     "vue-tabler-icons": "^1.0",

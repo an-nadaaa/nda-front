@@ -2,11 +2,10 @@
   <div class="min-h-full mx-auto lg:mx-24">
     <section class="py-10">
       <!-- Page header -->
-      <div
-        class="max-w-3xl px-4 mx-auto sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
+      <div class="px-4 mx-auto sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:px-8">
         <div class="flex items-center space-x-5">
           <div>
-            <h1 class="text-4xl font-bold text-gray-900">{{ campaign.attributes.title }}</h1>
+            <h1 class="mb-2 text-4xl font-bold text-gray-900">{{ campaign.attributes.title }}</h1>
             <p class="text-sm font-medium text-gray-500">
               Created on
               <time datetime="2020-08-25">{{ formatDate(campaign.attributes.createdAt) }}</time>
@@ -15,450 +14,147 @@
         </div>
         <div
           class="flex flex-col-reverse mt-6 space-y-4 space-y-reverse justify-stretch sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
-          <button
-            type="button"
-            class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
-            Disqualify
-          </button>
-          <button
-            type="button"
-            class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
-            Advance to offer
-          </button>
+          <div class="p-4 text-xl font-semibold rounded-md bg-primary-100 text-primary-700">
+            Raising: {{ formateAmount(campaign.attributes.goal) }}
+          </div>
         </div>
       </div>
 
-      <div
-        class="grid max-w-3xl grid-cols-1 gap-6 mx-auto mt-8 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-6 mx-auto mt-8 sm:px-6 lg:grid-flow-col-dense lg:grid-cols-3">
+        <aside aria-labelledby="donation-section" class="lg:col-start-3 lg:col-span-1">
+          <div class="px-4 py-5 bg-white shadow-md sm:rounded-lg sm:px-6 lg:sticky lg:top-0">
+            <h2 id="donation-section" class="mb-3 text-2xl font-semibold text-gray-900">Donations</h2>
+            <span
+              :class="`inline-flex items-center px-2.5 py-0.5 rounded-md text-md mb-3 font-medium ${
+                campaign.attributes.closed ? 'bg-gary-100 text-gray-800' : 'bg-green-100 text-green-800'
+              }`">
+              <Component
+                class="-ml-0.5 mr-1.5 w-5 h-5"
+                :is="campaign.attributes.closed ? 'LockIcon' : 'LockOpenIcon'" />
+
+              {{ campaign.attributes.closed ? 'Closed' : 'Open' }}
+            </span>
+            <div class="h-2 my-3 overflow-hidden bg-gray-200 rounded-full">
+              <div class="h-2 bg-yellow-400 rounded-full" :style="`width: ${percentage}%`"></div>
+            </div>
+            <ul class="my-6 space-y-6">
+              <div>
+                <h2 class="text-lg font-medium text-gray-500">Raised</h2>
+                <ul role="list" class="mt-3 space-y-3">
+                  <li class="flex justify-start">
+                    <div class="flex items-center space-x-3">
+                      <div class="text-lg font-medium text-gray-900">
+                        {{ formateAmount(campaign.attributes.raised) }}
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 class="text-lg font-medium text-gray-500">Impact</h2>
+                <ul role="list" class="mt-3 space-y-3">
+                  <li class="flex justify-start">
+                    <div class="flex items-center space-x-3">
+                      <div class="text-lg font-medium text-gray-900">
+                        {{ campaign.attributes.impact }}
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- <li>Raised: {{ formateAmount(campaign.attributes.raised) }}</li> -->
+              <!-- <li>Impact: {{ campaign.attributes.impact }}</li> -->
+            </ul>
+            <ClientOnly placeholder="Loading...">
+              <form action="#" class="flex flex-col mt-12 sm:mx-auto sm:max-w-lg" @submit.prevent="donate">
+                <div class="flex-1 min-w-0">
+                  <label for="amount" class="sr-only">Amount</label>
+                  <div class="relative mt-1 rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <span class="text-gray-500 sm:text-sm"> $ </span>
+                    </div>
+                    <input
+                      type="number"
+                      name="amount"
+                      id="amount"
+                      class="block w-full px-5 py-3 mb-3 text-base text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-600"
+                      placeholder="0.00"
+                      aria-describedby="amount-currency"
+                      v-model="amount" />
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <span class="text-gray-500 sm:text-sm" id="amount-currency"> USD </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4 sm:mt-1">
+                  <StripeCheckout ref="checkoutRef" :pk="pk" :session-id="sessionId" />
+                  <button
+                    type="submit"
+                    class="relative flex items-center w-full px-5 py-3 text-base font-medium text-white border border-transparent rounded-md shadow bg-primary-600 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-700 sm:px-10">
+                    <MoonLoader class="absolute left-0 ml-4" :loading="loading" color="#fff" size="30px"></MoonLoader>
+                    <div class="mx-auto">Donate</div>
+                  </button>
+                </div>
+              </form>
+            </ClientOnly>
+          </div>
+        </aside>
+
         <div class="space-y-6 lg:col-start-1 lg:col-span-2">
-          <!-- Description list-->
-          <section aria-labelledby="applicant-information-title">
-            <div class="bg-white shadow sm:rounded-lg">
-              <div class="px-4 py-5 sm:px-6">
-                <h2 id="applicant-information-title" class="text-lg font-medium leading-6 text-gray-900">
-                  Applicant Information
-                </h2>
-                <p class="max-w-2xl mt-1 text-sm text-gray-500">Personal details and application.</p>
+          <!-- Cover -->
+          <section aria-labelledby="campaign-cover">
+            <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+              <div id="campaign-cover">
+                <img
+                  class="object-cover w-full aspect-video"
+                  v-if="campaign.attributes.cover.data.attributes.url && !campaign.attributes.video"
+                  :src="campaign.attributes.cover.data.attributes.url"
+                  alt="" />
+                <VideoPlayer v-else :showPlayer="true" :videoLocation="campaign.attributes.video" />
               </div>
               <div class="px-4 py-5 border-t border-gray-200 sm:px-6">
-                <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                  <div class="sm:col-span-1">
-                    <dt class="text-sm font-medium text-gray-500">Application for</dt>
-                    <dd class="mt-1 text-sm text-gray-900">Backend Developer</dd>
-                  </div>
-                  <div class="sm:col-span-1">
-                    <dt class="text-sm font-medium text-gray-500">Email address</dt>
-                    <dd class="mt-1 text-sm text-gray-900">ricardocooper@example.com</dd>
-                  </div>
-                  <div class="sm:col-span-1">
-                    <dt class="text-sm font-medium text-gray-500">Salary expectation</dt>
-                    <dd class="mt-1 text-sm text-gray-900">$120,000</dd>
-                  </div>
-                  <div class="sm:col-span-1">
-                    <dt class="text-sm font-medium text-gray-500">Phone</dt>
-                    <dd class="mt-1 text-sm text-gray-900">+1 555-555-5555</dd>
-                  </div>
-                  <div class="sm:col-span-2">
-                    <dt class="text-sm font-medium text-gray-500">About</dt>
-                    <dd class="mt-1 text-sm text-gray-900">
-                      Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat.
-                      Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia
-                      proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-                    </dd>
-                  </div>
-                  <div class="sm:col-span-2">
-                    <dt class="text-sm font-medium text-gray-500">Attachments</dt>
-                    <dd class="mt-1 text-sm text-gray-900">
-                      <ul role="list" class="border border-gray-200 divide-y divide-gray-200 rounded-md">
-                        <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                          <div class="flex items-center flex-1 w-0">
-                            <!-- Heroicon name: solid/paper-clip -->
-                            <svg
-                              class="flex-shrink-0 w-5 h-5 text-gray-400"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              aria-hidden="true">
-                              <path
-                                fill-rule="evenodd"
-                                d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
-                                clip-rule="evenodd" />
-                            </svg>
-                            <span class="flex-1 w-0 ml-2 truncate"> resume_front_end_developer.pdf </span>
-                          </div>
-                          <div class="flex-shrink-0 ml-4">
-                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Download </a>
-                          </div>
-                        </li>
-
-                        <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                          <div class="flex items-center flex-1 w-0">
-                            <!-- Heroicon name: solid/paper-clip -->
-                            <svg
-                              class="flex-shrink-0 w-5 h-5 text-gray-400"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              aria-hidden="true">
-                              <path
-                                fill-rule="evenodd"
-                                d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
-                                clip-rule="evenodd" />
-                            </svg>
-                            <span class="flex-1 w-0 ml-2 truncate"> coverletter_front_end_developer.pdf </span>
-                          </div>
-                          <div class="flex-shrink-0 ml-4">
-                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Download </a>
-                          </div>
-                        </li>
-                      </ul>
-                    </dd>
-                  </div>
-                </dl>
+                <h3 class="text-2xl font-semibold">Overview</h3>
+                <div class="prose lg:prose-lg" v-html="campaign.attributes.description"></div>
               </div>
-              <div>
-                <a
-                  href="#"
-                  class="block px-4 py-4 text-sm font-medium text-center text-gray-500 bg-gray-50 hover:text-gray-700 sm:rounded-b-lg"
-                  >Read full application</a
-                >
+              <div class="p-6">
+                <span
+                  v-for="(tag, i) in campaign.attributes.tags.data"
+                  :key="i"
+                  :class="`inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-primary-100 text-primary-800  ${
+                    i === 0 ? '' : 'ltr:mr-4 rtl:ml-4 mx-2'
+                  }`">
+                  {{ tag.attributes.value }}
+                </span>
               </div>
             </div>
           </section>
 
-          <!-- Comments-->
-          <section aria-labelledby="notes-title">
+          <!-- Body -->
+          <section aria-labelledby="campaign-information">
             <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden">
               <div class="divide-y divide-gray-200">
                 <div class="px-4 py-5 sm:px-6">
-                  <h2 id="notes-title" class="text-lg font-medium text-gray-900">Notes</h2>
+                  <h2 id="campaign-information" class="text-2xl font-semibold text-gray-900">Campaign Details</h2>
                 </div>
-                <div class="px-4 py-6 sm:px-6">
-                  <ul role="list" class="space-y-8">
-                    <li>
-                      <div class="flex space-x-3">
-                        <div class="flex-shrink-0">
-                          <img
-                            class="w-10 h-10 rounded-full"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="" />
-                        </div>
-                        <div>
-                          <div class="text-sm">
-                            <a href="#" class="font-medium text-gray-900">Leslie Alexander</a>
-                          </div>
-                          <div class="mt-1 text-sm text-gray-700">
-                            <p>
-                              Ducimus quas delectus ad maxime totam doloribus reiciendis ex. Tempore dolorem maiores.
-                              Similique voluptatibus tempore non ut.
-                            </p>
-                          </div>
-                          <div class="mt-2 space-x-2 text-sm">
-                            <span class="font-medium text-gray-500">4d ago</span>
-                            <span class="font-medium text-gray-500">&middot;</span>
-                            <button type="button" class="font-medium text-gray-900">Reply</button>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div class="flex space-x-3">
-                        <div class="flex-shrink-0">
-                          <img
-                            class="w-10 h-10 rounded-full"
-                            src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="" />
-                        </div>
-                        <div>
-                          <div class="text-sm">
-                            <a href="#" class="font-medium text-gray-900">Michael Foster</a>
-                          </div>
-                          <div class="mt-1 text-sm text-gray-700">
-                            <p>
-                              Et ut autem. Voluptatem eum dolores sint necessitatibus quos. Quis eum qui dolorem
-                              accusantium voluptas voluptatem ipsum. Quo facere iusto quia accusamus veniam id explicabo
-                              et aut.
-                            </p>
-                          </div>
-                          <div class="mt-2 space-x-2 text-sm">
-                            <span class="font-medium text-gray-500">4d ago</span>
-                            <span class="font-medium text-gray-500">&middot;</span>
-                            <button type="button" class="font-medium text-gray-900">Reply</button>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div class="flex space-x-3">
-                        <div class="flex-shrink-0">
-                          <img
-                            class="w-10 h-10 rounded-full"
-                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="" />
-                        </div>
-                        <div>
-                          <div class="text-sm">
-                            <a href="#" class="font-medium text-gray-900">Dries Vincent</a>
-                          </div>
-                          <div class="mt-1 text-sm text-gray-700">
-                            <p>
-                              Expedita consequatur sit ea voluptas quo ipsam recusandae. Ab sint et voluptatem
-                              repudiandae voluptatem et eveniet. Nihil quas consequatur autem. Perferendis rerum et.
-                            </p>
-                          </div>
-                          <div class="mt-2 space-x-2 text-sm">
-                            <span class="font-medium text-gray-500">4d ago</span>
-                            <span class="font-medium text-gray-500">&middot;</span>
-                            <button type="button" class="font-medium text-gray-900">Reply</button>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="px-4 py-6 bg-gray-50 sm:px-6">
-                <div class="flex space-x-3">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="w-10 h-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-                      alt="" />
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <form action="#">
-                      <div>
-                        <label for="comment" class="sr-only">About</label>
-                        <textarea
-                          id="comment"
-                          name="comment"
-                          rows="3"
-                          class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                          placeholder="Add a note"></textarea>
-                      </div>
-                      <div class="flex items-center justify-between mt-3">
-                        <a
-                          href="#"
-                          class="inline-flex items-start space-x-2 text-sm text-gray-500 group hover:text-gray-900">
-                          <!-- Heroicon name: solid/question-mark-circle -->
-                          <svg
-                            class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true">
-                            <path
-                              fill-rule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          <span> Some HTML is okay. </span>
-                        </a>
-                        <button
-                          type="submit"
-                          class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                          Comment
-                        </button>
-                      </div>
-                    </form>
+                <!-- Gallery -->
+                <div>
+                  <CoolLightBox :items="images" :index="index" :useZoomBar="true" @close="index = null" />
+                  <div class="flex px-6 py-1 overflow-y-scroll">
+                    <div
+                      class="h-40 mx-[2px] aspect-square cursor-pointer"
+                      v-for="(image, imageIndex) in images"
+                      :key="imageIndex"
+                      @click="index = imageIndex"
+                      :style="{ backgroundImage: 'url(' + image.thumb + ')' }"></div>
                   </div>
                 </div>
+                <div class="px-4 py-6 prose max-w-none sm:px-6 lg:prose-xl" v-html="campaign.attributes.body"></div>
               </div>
+              <!-- Other sections should be added here -->
             </div>
           </section>
         </div>
-
-        <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
-          <div class="px-4 py-5 bg-white shadow sm:rounded-lg sm:px-6">
-            <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Timeline</h2>
-
-            <!-- Activity Feed -->
-            <div class="flow-root mt-6">
-              <ul role="list" class="-mb-8">
-                <li>
-                  <div class="relative pb-8">
-                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-                    <div class="relative flex space-x-3">
-                      <div>
-                        <span
-                          class="flex items-center justify-center w-8 h-8 bg-gray-400 rounded-full ring-8 ring-white">
-                          <!-- Heroicon name: solid/user -->
-                          <svg
-                            class="w-5 h-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true">
-                            <path
-                              fill-rule="evenodd"
-                              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                              clip-rule="evenodd" />
-                          </svg>
-                        </span>
-                      </div>
-                      <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                        <div>
-                          <p class="text-sm text-gray-500">
-                            Applied to <a href="#" class="font-medium text-gray-900">Front End Developer</a>
-                          </p>
-                        </div>
-                        <div class="text-sm text-right text-gray-500 whitespace-nowrap">
-                          <time datetime="2020-09-20">Sep 20</time>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="relative pb-8">
-                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-                    <div class="relative flex space-x-3">
-                      <div>
-                        <span
-                          class="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full ring-8 ring-white">
-                          <!-- Heroicon name: solid/thumb-up -->
-                          <svg
-                            class="w-5 h-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true">
-                            <path
-                              d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-                          </svg>
-                        </span>
-                      </div>
-                      <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                        <div>
-                          <p class="text-sm text-gray-500">
-                            Advanced to phone screening by
-                            <a href="#" class="font-medium text-gray-900">Bethany Blake</a>
-                          </p>
-                        </div>
-                        <div class="text-sm text-right text-gray-500 whitespace-nowrap">
-                          <time datetime="2020-09-22">Sep 22</time>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="relative pb-8">
-                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-                    <div class="relative flex space-x-3">
-                      <div>
-                        <span
-                          class="flex items-center justify-center w-8 h-8 bg-green-500 rounded-full ring-8 ring-white">
-                          <!-- Heroicon name: solid/check -->
-                          <svg
-                            class="w-5 h-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true">
-                            <path
-                              fill-rule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clip-rule="evenodd" />
-                          </svg>
-                        </span>
-                      </div>
-                      <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                        <div>
-                          <p class="text-sm text-gray-500">
-                            Completed phone screening with
-                            <a href="#" class="font-medium text-gray-900">Martha Gardner</a>
-                          </p>
-                        </div>
-                        <div class="text-sm text-right text-gray-500 whitespace-nowrap">
-                          <time datetime="2020-09-28">Sep 28</time>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="relative pb-8">
-                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-                    <div class="relative flex space-x-3">
-                      <div>
-                        <span
-                          class="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full ring-8 ring-white">
-                          <!-- Heroicon name: solid/thumb-up -->
-                          <svg
-                            class="w-5 h-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true">
-                            <path
-                              d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-                          </svg>
-                        </span>
-                      </div>
-                      <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                        <div>
-                          <p class="text-sm text-gray-500">
-                            Advanced to interview by <a href="#" class="font-medium text-gray-900">Bethany Blake</a>
-                          </p>
-                        </div>
-                        <div class="text-sm text-right text-gray-500 whitespace-nowrap">
-                          <time datetime="2020-09-30">Sep 30</time>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="relative pb-8">
-                    <div class="relative flex space-x-3">
-                      <div>
-                        <span
-                          class="flex items-center justify-center w-8 h-8 bg-green-500 rounded-full ring-8 ring-white">
-                          <!-- Heroicon name: solid/check -->
-                          <svg
-                            class="w-5 h-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true">
-                            <path
-                              fill-rule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clip-rule="evenodd" />
-                          </svg>
-                        </span>
-                      </div>
-                      <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                        <div>
-                          <p class="text-sm text-gray-500">
-                            Completed interview with <a href="#" class="font-medium text-gray-900">Katherine Snyder</a>
-                          </p>
-                        </div>
-                        <div class="text-sm text-right text-gray-500 whitespace-nowrap">
-                          <time datetime="2020-10-04">Oct 4</time>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="flex flex-col mt-6 justify-stretch">
-              <button
-                type="button"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                Advance to offer
-              </button>
-            </div>
-          </div>
-        </section>
       </div>
     </section>
   </div>
@@ -466,8 +162,19 @@
 
 <script>
 import qs from 'qs'
+import { CURRENCY_NAME } from '~/config/config'
+import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
+import { LockIcon, LockOpenIcon } from 'vue-tabler-icons'
+import CoolLightBox from 'vue-cool-lightbox'
+import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 
 export default {
+  components: {
+    MoonLoader,
+    LockIcon,
+    LockOpenIcon,
+    CoolLightBox,
+  },
   async asyncData({ $axios, app, params, error }) {
     const STRAPI_API = process.env.NODE_ENV === 'production' ? process.env.STRAPI_API : 'http://localhost:5000/api'
     const campaignQuery = qs.stringify(
@@ -505,10 +212,60 @@ export default {
       })
     return { campaign }
   },
+  data() {
+    return {
+      pk: process.env.NODE_ENV === 'production' ? process.env.STRIPE_PK_PROD : process.env.STRIPE_PK_DEV,
+      sessionId: 'session_id',
+      amount: 0,
+      loading: false,
+      index: null,
+    }
+  },
   methods: {
+    async donate() {
+      if (this.amount >= 1) {
+        this.loading = true
+        await this.$axios
+          .$post(
+            `${process.env.functionBaseUrl}/create-checkout-session?locale=${this.$i18n.locale}&amount=${
+              this.amount * 100
+            }&product=${this.campaign.attributes.product}`
+          )
+          .then((session) => {
+            this.loading = false
+            this.sessionId = session.id
+            // You will be redirected to Stripe's secure checkout page
+            return this.$refs.checkoutRef.redirectToCheckout()
+          })
+      }
+    },
     formatDate(dateString) {
       const date = new Date(dateString)
       return new Intl.DateTimeFormat(this.$i18n.locale, { dateStyle: 'full' }).format(date) || ''
+    },
+    formateAmount(amount) {
+      return new Intl.NumberFormat(this.$i18n.locale, {
+        style: 'currency',
+        currency: CURRENCY_NAME,
+      }).format(amount)
+    },
+  },
+  computed: {
+    percentage() {
+      return (this.campaign.attributes.raised * 100) / this.campaign.attributes.goal
+    },
+    images() {
+      return this.campaign.attributes.gallery
+        ? this.campaign.attributes.gallery.data.map((image) => ({
+            src: image.attributes.url,
+            thumb: image.attributes.url.replace('photo', 'thumbnail_photo'),
+          }))
+        : [
+            {
+              src: this.campaign.attributes.cover.data.attributes.url,
+              thumb: this.campaign.attributes.cover.data.attributes.url.replace('photo', 'thumbnail_photo'),
+            },
+          ]
     },
   },
 }
