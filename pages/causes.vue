@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  layout: 'cause',
   async asyncData({ $axios, error, app }) {
     const STRAPI_API = process.env.NODE_ENV === 'production' ? process.env.STRAPI_API : 'http://localhost:5000/api'
 

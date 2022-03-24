@@ -84,6 +84,7 @@ export default {
     '@nuxt/postcss8',
     '@nuxtjs/svg',
     '@nuxtjs/pwa',
+    '@nuxtjs/html-validator',
   ],
   /*
    ** Nuxt.js modules
