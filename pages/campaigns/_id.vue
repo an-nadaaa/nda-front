@@ -67,7 +67,7 @@
               <!-- <li>Impact: {{ campaign.attributes.impact }}</li> -->
             </ul>
             <ClientOnly placeholder="Loading...">
-              <form action="#" class="flex flex-col mt-12 sm:mx-auto sm:max-w-lg" @submit.prevent="donate">
+              <form action="#" class="flex-col hidden mt-12 lg:flex sm:mx-auto sm:max-w-lg" @submit.prevent="donate">
                 <div class="flex-1 min-w-0">
                   <label for="amount" class="sr-only">Amount</label>
                   <div class="relative mt-1 rounded-md shadow-sm">
@@ -157,6 +157,43 @@
         </div>
       </div>
     </section>
+
+    <!-- Donation form for mobiles -->
+    <ClientOnly placeholder="Loading...">
+      <form
+        action="#"
+        class="sticky bottom-0 z-50 flex flex-col w-full px-6 py-3 mt-12 bg-white border-t border-gray-200 lg:hidden"
+        @submit.prevent="donate">
+        <div class="flex-1 min-w-0">
+          <label for="amount" class="sr-only">Amount</label>
+          <div class="relative mt-1 rounded-md shadow-sm">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <span class="text-gray-500 sm:text-sm"> $ </span>
+            </div>
+            <input
+              type="number"
+              name="amount"
+              id="amount"
+              class="block w-full px-5 py-3 mb-3 text-base text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-600"
+              placeholder="0.00"
+              aria-describedby="amount-currency"
+              v-model="amount" />
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <span class="text-gray-500 sm:text-sm" id="amount-currency"> USD </span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 sm:mt-1">
+          <StripeCheckout ref="checkoutRef" :pk="pk" :session-id="sessionId" />
+          <button
+            type="submit"
+            class="relative flex items-center w-full px-5 py-3 text-base font-medium text-white border border-transparent rounded-md shadow bg-primary-600 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-700 sm:px-10">
+            <MoonLoader class="absolute left-0 ml-4" :loading="loading" color="#fff" size="30px"></MoonLoader>
+            <div class="mx-auto">Donate</div>
+          </button>
+        </div>
+      </form>
+    </ClientOnly>
   </div>
 </template>
 
@@ -175,6 +212,7 @@ export default {
     LockOpenIcon,
     CoolLightBox,
   },
+  layout: 'cause',
   async asyncData({ $axios, app, params, error }) {
     const STRAPI_API = process.env.NODE_ENV === 'production' ? process.env.STRAPI_API : 'http://localhost:5000/api'
     const campaignQuery = qs.stringify(
