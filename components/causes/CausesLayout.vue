@@ -17,8 +17,15 @@
           From: "opacity-100"
           To: "opacity-0"
       -->
-        <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
-
+        <transition
+          enter-class="transition duration-300 ease-linear"
+          enter-active-class="opacity-0"
+          enter-to-class="opacity-100"
+          leave-class="transition-opacity duration-300 ease-linear"
+          leave-active-class="opacity-100"
+          leave-to-class="opacity-0">
+          <div v-show="showMenu" class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
+        </transition>
         <!--
         Off-canvas menu, show/hide based on off-canvas menu state.
 
@@ -29,124 +36,135 @@
           From: "translate-x-0"
           To: "translate-x-full"
       -->
-        <div
-          class="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl">
-          <div class="flex items-center justify-between px-4">
-            <h1 class="text-lg font-medium text-gray-900">Filters</h1>
-            <button
-              @click="showMenu = false"
-              type="button"
-              class="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md">
-              <span class="sr-only">Close menu</span>
-              <!-- Heroicon name: outline/x -->
-              <XIcon class="w-6 h-6" />
-            </button>
-          </div>
+        <transition
+          enter-class="transition duration-300 ease-in-out transform"
+          enter-active-class="translate-x-full"
+          enter-to-class="translate-x-0"
+          leave-class="transition duration-300 ease-in-out transform"
+          leave-active-class="translate-x-0"
+          leave-to-class="translate-x-full">
+          <div
+            v-show="showMenu"
+            class="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl">
+            <div class="flex items-center justify-between px-4">
+              <h1 class="text-lg font-medium text-gray-900">Filters</h1>
+              <button
+                @click="showMenu = false"
+                type="button"
+                class="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md">
+                <span class="sr-only">Close menu</span>
+                <!-- Heroicon name: outline/x -->
+                <XIcon class="w-6 h-6" />
+              </button>
+            </div>
 
-          <!-- Filters -->
-          <div class="mt-4 border-t border-gray-200">
-            <h2 class="sr-only">Categories</h2>
-            <ul v-for="(tab, i) in tabs" :key="i" role="list" class="px-2 py-3 font-medium text-gray-900">
-              <li
-                :class="`rounded-md ${selectedTab(tab) ? 'text-primary-700 bg-primary-100 hover:bg-primary-200' : ''}`">
-                <button @click="currentTab = tab" class="block px-2 py-3">{{ tab }}</button>
-              </li>
-            </ul>
+            <!-- Filters -->
+            <div class="mt-4 border-t border-gray-200">
+              <h2 class="sr-only">Categories</h2>
+              <ul v-for="(tab, i) in tabs" :key="i" role="list" class="px-2 py-3 font-medium text-gray-900">
+                <li
+                  :class="`rounded-md ${
+                    selectedTab(tab) ? 'text-primary-700 bg-primary-100 hover:bg-primary-200' : ''
+                  }`">
+                  <button @click="selectTab(tab)" class="block px-2 py-3">{{ tab }}</button>
+                </li>
+              </ul>
 
-            <div class="px-4 py-6 border-t border-gray-200">
-              <h2 class="flow-root -mx-2 -my-3">
-                <!-- Expand/collapse section button -->
-                <button
-                  type="button"
-                  class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500"
-                  aria-controls="filter-section-mobile-0"
-                  aria-expanded="false">
-                  <span class="font-medium text-gray-900"> Tags </span>
-                  <span class="flex items-center ml-6">
-                    <!--
+              <div class="px-4 py-6 border-t border-gray-200">
+                <h2 @click="expandTags = !expandTags" class="flow-root -mx-2 -my-3">
+                  <!-- Expand/collapse section button -->
+                  <button
+                    type="button"
+                    class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500"
+                    aria-controls="filter-section-mobile-0"
+                    aria-expanded="false">
+                    <span class="font-medium text-gray-900"> Tags </span>
+                    <span class="flex items-center ml-6">
+                      <!--
                       Expand icon, show/hide based on section open state.
 
                       Heroicon name: solid/plus-sm
                     -->
-                    <PlusIcon @click="expandTags = true" v-show="!expandTags" class="w-5 h-5" />
-                    <!--
+                      <PlusIcon v-show="!expandTags" class="w-5 h-5" />
+                      <!--
                       Collapse icon, show/hide based on section open state.
 
                       Heroicon name: solid/minus-sm
                     -->
-                    <MinusIcon @click="expandTags = false" v-show="expandTags" class="w-5 h-5" />
-                  </span>
-                </button>
-              </h2>
-              <!-- Filter section, show/hide based on section state. -->
-              <template v-for="(category, i) in categories">
-                <div v-if="expandTags" :key="i" class="pt-6" id="filter-section-mobile-0">
-                  <div class="space-y-6">
-                    <div class="flex items-center">
-                      <input
-                        id="filter-mobile-color-0"
-                        name="color[]"
-                        value="white"
-                        type="checkbox"
-                        class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
-                      <label for="filter-mobile-color-0" class="flex-1 min-w-0 ml-3 text-gray-500">
-                        {{ category.attributes.value }}
-                      </label>
+                      <MinusIcon v-show="expandTags" class="w-5 h-5" />
+                    </span>
+                  </button>
+                </h2>
+                <!-- Filter section, show/hide based on section state. -->
+                <template v-for="(category, i) in categories">
+                  <div v-if="expandTags" :key="i" class="pt-6" id="filter-section-mobile-0">
+                    <div class="space-y-6">
+                      <div class="flex items-center">
+                        <input
+                          id="filter-mobile-color-0"
+                          name="color[]"
+                          value="white"
+                          type="checkbox"
+                          class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
+                        <label for="filter-mobile-color-0" class="flex-1 min-w-0 ml-3 text-gray-500">
+                          {{ category.attributes.value }}
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </template>
-            </div>
+                </template>
+              </div>
 
-            <div class="px-4 py-6 border-t border-gray-200">
-              <h2 class="flow-root -mx-2 -my-3">
-                <!-- Expand/collapse section button -->
-                <button
-                  type="button"
-                  class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500"
-                  aria-controls="filter-section-mobile-1"
-                  aria-expanded="false">
-                  <span class="font-medium text-gray-900"> Category </span>
-                  <span class="flex items-center ml-6">
-                    <!--
+              <div class="px-4 py-6 border-t border-gray-200">
+                <h2 @click="expandCategories = !expandCategories" class="flow-root -mx-2 -my-3">
+                  <!-- Expand/collapse section button -->
+                  <button
+                    type="button"
+                    class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500"
+                    aria-controls="filter-section-mobile-1"
+                    aria-expanded="false">
+                    <span class="font-medium text-gray-900"> Category </span>
+                    <span class="flex items-center ml-6">
+                      <!--
                       Expand icon, show/hide based on section open state.
 
                       Heroicon name: solid/plus-sm
                     -->
-                    <PlusIcon @click="expandCategories = true" v-show="!expandCategories" class="w-5 h-5" />
-                    <!--
+                      <PlusIcon v-show="!expandCategories" class="w-5 h-5" />
+                      <!--
                       Collapse icon, show/hide based on section open state.
 
                       Heroicon name: solid/minus-sm
                     -->
-                    <MinusIcon @click="expandCategories = false" v-show="expandCategories" class="w-5 h-5" />
-                  </span>
-                </button>
-              </h2>
-              <!-- Filter section, show/hide based on section state. -->
-              <template v-for="(tag, i) in tags">
-                <div v-if="expandCategories" :key="i" class="pt-6" id="filter-section-mobile-1">
-                  <div class="space-y-6">
-                    <div class="flex items-center">
-                      <input
-                        id="filter-mobile-category-0"
-                        name="category[]"
-                        value="new-arrivals"
-                        type="checkbox"
-                        class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
-                      <label for="filter-mobile-category-0" class="flex-1 min-w-0 ml-3 text-gray-500">
-                        {{ tag.attributes.value }}
-                      </label>
+                      <MinusIcon v-show="expandCategories" class="w-5 h-5" />
+                    </span>
+                  </button>
+                </h2>
+                <!-- Filter section, show/hide based on section state. -->
+                <template v-for="(tag, i) in tags">
+                  <div v-if="expandCategories" :key="i" class="pt-6" id="filter-section-mobile-1">
+                    <div class="space-y-6">
+                      <div class="flex items-center">
+                        <input
+                          id="filter-mobile-category-0"
+                          name="category[]"
+                          value="new-arrivals"
+                          type="checkbox"
+                          class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
+                        <label for="filter-mobile-category-0" class="flex-1 min-w-0 ml-3 text-gray-500">
+                          {{ tag.attributes.value }}
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </template>
+                </template>
+              </div>
             </div>
           </div>
-        </div>
+        </transition>
       </div>
 
-      <main class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <main class="px-4 mx-auto lg:mx-24 sm:px-6 lg:px-8">
         <div class="relative flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
           <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Our Causes</h1>
 
@@ -154,6 +172,7 @@
             <div class="relative inline-block text-left">
               <div>
                 <button
+                  @click="showSortMenu = !showSortMenu"
                   type="button"
                   class="inline-flex justify-center text-sm font-medium text-gray-700 group hover:text-gray-900"
                   id="menu-button"
@@ -175,29 +194,38 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-              <div
-                class="absolute right-0 w-40 mt-2 origin-top-right bg-white rounded-md shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="menu-button"
-                tabindex="-1">
-                <div v-for="(filter, i) in sortFilters" class="py-1" role="none" :key="i">
-                  <!--
+              <transition
+                enter-class="transition duration-100 ease-out"
+                enter-active-class="transform scale-95 opacity-0"
+                enter-to-class="transform scale-100 opacity-100"
+                leave-class="transition duration-75 ease-in"
+                leave-active-class="transform scale-100 opacity-100"
+                leave-to-class="transform scale-95 opacity-0">
+                <div
+                  v-if="showSortMenu"
+                  class="absolute right-0 w-40 mt-2 origin-top-right bg-white rounded-md shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabindex="-1">
+                  <div v-for="(filter, i) in sortFilters" class="py-1" role="none" :key="i">
+                    <!--
                   Active: "bg-gray-100", Not Active: ""
 
                   Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
                 -->
-                  <button
-                    :class="`block px-4 py-2 text-sm font-medium ${
-                      filter === selectedSortFilter ? 'text-gray-900' : 'text-gray-500'
-                    }`"
-                    role="menuitem"
-                    tabindex="-1"
-                    id="menu-item-0">
-                    {{ filter }}
-                  </button>
+                    <button
+                      :class="`block px-4 py-2 text-sm font-medium ${
+                        filter === selectedSortFilter ? 'text-gray-900' : 'text-gray-500'
+                      }`"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-0">
+                      {{ filter }}
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </transition>
             </div>
 
             <button type="button" class="p-2 ml-5 -m-2 text-gray-400 sm:ml-7 hover:text-gray-500">
@@ -226,16 +254,18 @@
               <ul role="list" class="pb-6 text-sm font-medium text-gray-900 border-b border-gray-200">
                 <li
                   :class="`rounded-md p-4 text-lg ${
-                    selectedTab(tab) ? 'text-primary-700 bg-primary-100 hover:bg-primary-200' : ''
+                    selectedTab(tab)
+                      ? 'text-primary-700 bg-primary-100 hover:bg-primary-100 hover:text-primary-900'
+                      : 'hover:bg-primary-50 hover:text-primary-600'
                   }`"
                   v-for="(tab, i) in tabs"
                   :key="i">
-                  <button @click="currentTab = tab">{{ tab }}</button>
+                  <button @click="selectTab(tab)">{{ tab }}</button>
                 </li>
               </ul>
 
               <div class="py-6 border-b border-gray-200">
-                <h2 class="flow-root -my-3">
+                <h2 @click="expandTags = !expandTags" class="flow-root -my-3">
                   <!-- Expand/collapse section button -->
                   <button
                     type="button"
@@ -249,13 +279,13 @@
 
                       Heroicon name: solid/plus-sm
                     -->
-                      <PlusIcon @click="expandTags = true" v-show="!expandTags" class="w-5 h-5" />
+                      <PlusIcon v-show="!expandTags" class="w-5 h-5" />
                       <!--
                       Collapse icon, show/hide based on section open state.
 
                       Heroicon name: solid/minus-sm
                     -->
-                      <MinusIcon @click="expandTags = false" v-show="expandTags" class="w-5 h-5" />
+                      <MinusIcon v-show="expandTags" class="w-5 h-5" />
                     </span>
                   </button>
                 </h2>
@@ -280,7 +310,7 @@
               </div>
 
               <div class="py-6 border-b border-gray-200">
-                <h2 class="flow-root -my-3">
+                <h2 @click="expandCategories = !expandCategories" class="flow-root -my-3">
                   <!-- Expand/collapse section button -->
                   <button
                     type="button"
@@ -294,13 +324,13 @@
 
                       Heroicon name: solid/plus-sm
                     -->
-                      <PlusIcon @click="expandCategories = true" v-show="!expandCategories" class="w-5 h-5" />
+                      <PlusIcon v-show="!expandCategories" class="w-5 h-5" />
                       <!--
                       Collapse icon, show/hide based on section open state.
 
                       Heroicon name: solid/minus-sm
                     -->
-                      <MinusIcon @click="expandCategories = false" v-show="expandCategories" class="w-5 h-5" />
+                      <MinusIcon v-show="expandCategories" class="w-5 h-5" />
                     </span>
                   </button>
                 </h2>
@@ -326,9 +356,14 @@
             </div>
 
             <!-- Product grid -->
-            <div class="lg:col-span-3">
+            <div
+              :class="`lg:col-span-3 ${
+                loading ? 'flex justify-center items-center' : 'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
+              }`">
               <!-- Replace with your content -->
-              <div class="border-4 border-gray-200 border-dashed rounded-lg h-96 lg:h-full"></div>
+              <BounceLoader class="mx-auto" v-if="loading" :loading="loading" color="#06b6d4" size="60px" />
+              <CampaignCard v-for="card in cards" :key="card.id" :campaign="card" />
+
               <!-- /End replace -->
             </div>
           </div>
@@ -370,6 +405,7 @@
 
 <script>
 import { XIcon, ChevronDownIcon, PlusIcon, MinusIcon, LayoutGridIcon, FilterIcon } from 'vue-tabler-icons'
+import BounceLoader from 'vue-spinner/src/BounceLoader.vue'
 
 export default {
   components: {
@@ -379,8 +415,28 @@ export default {
     MinusIcon,
     LayoutGridIcon,
     FilterIcon,
+    BounceLoader,
   },
-  props: ['tags', 'categories', 'initialCampaigns', 'initialProjects'],
+  props: {
+    tags: {
+      required: true,
+      type: Array,
+    },
+    categories: {
+      required: true,
+      type: Array,
+    },
+    initialCampaigns: {
+      required: false,
+      type: Array,
+      default: () => [],
+    },
+    initialProjects: {
+      required: false,
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       tabs: ['All', 'Campaigns', 'Projects'],
@@ -390,11 +446,70 @@ export default {
       expandTags: false,
       expandCategories: false,
       showMenu: false,
+      showSortMenu: false,
+      loading: true,
+      cards: [],
     }
+  },
+  mounted() {
+    this.populateCards().filterCards().sortCards()
   },
   methods: {
     selectedTab(tab) {
       return this.currentTab === tab
+    },
+    selectTab(tab) {
+      this.$router.replace({
+        path: '/causes',
+        query: {
+          s: tab === 'All' ? '' : tab.toLowerCase()[0],
+        },
+      })
+    },
+    populateCards() {
+      this.loading = true
+      switch (this.$route.query.s) {
+        case 'c':
+          this.cards = this.initialCampaigns
+          break
+        case 'p':
+          this.cards = this.initialProjects
+          break
+        default:
+          this.cards = this.initialCampaigns.concat(this.initialProjects)
+          break
+      }
+      return this
+    },
+    filterCards() {
+      // do the filtering
+      return this
+    },
+    sortCards() {
+      // do the sort
+      this.loading = false
+      return this
+    },
+  },
+  watch: {
+    $route() {
+      switch (this.$route.query.s) {
+        case 'c':
+          this.currentTab = 'Campaigns'
+          break
+        case 'p':
+          this.currentTab = 'Projects'
+          break
+        default:
+          this.currentTab = 'All'
+          break
+      }
+    },
+    currentTab() {
+      this.populateCards().filterCards().sortCards()
+    },
+    selectedSortFilter() {
+      this.populateCards().filterCards().sortCards()
     },
   },
 }
