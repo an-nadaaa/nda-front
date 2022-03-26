@@ -28,7 +28,7 @@ export default {
             $eq: process.env.NODE_ENV,
           },
         },
-        sort: ['createdAt:desc'],
+        sort: ['featured:desc', 'createdAt:desc'],
         pagination: {
           page: 1,
           pageSize: PAGINATION_SIZE,
@@ -84,7 +84,7 @@ export default {
           message: 'No campaigns found',
         })
       })
-    console.log({ campaigns })
+    // TODO: add projects query
     const projects = []
 
     return { tags, categories, campaigns, projects }

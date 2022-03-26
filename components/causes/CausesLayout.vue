@@ -96,18 +96,18 @@
                   </button>
                 </h2>
                 <!-- Filter section, show/hide based on section state. -->
-                <template v-for="(category, i) in categories">
+                <template v-for="(tag, i) in tags">
                   <div v-if="expandTags" :key="i" class="pt-6" id="filter-section-mobile-0">
                     <div class="space-y-6">
                       <div class="flex items-center">
                         <input
-                          id="filter-mobile-color-0"
-                          name="color[]"
-                          value="white"
+                          :id="`filter-tag-${tag}`"
+                          :value="tag"
                           type="checkbox"
+                          v-model="tagsSelected"
                           class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
                         <label for="filter-mobile-color-0" class="flex-1 min-w-0 ml-3 text-gray-500">
-                          {{ category.attributes.value }}
+                          {{ tag.attributes.value }}
                         </label>
                       </div>
                     </div>
@@ -141,18 +141,18 @@
                   </button>
                 </h2>
                 <!-- Filter section, show/hide based on section state. -->
-                <template v-for="(tag, i) in tags">
+                <template v-for="(category, i) in categories">
                   <div v-if="expandCategories" :key="i" class="pt-6" id="filter-section-mobile-1">
                     <div class="space-y-6">
                       <div class="flex items-center">
                         <input
-                          id="filter-mobile-category-0"
-                          name="category[]"
-                          value="new-arrivals"
+                          :id="`filter-category-${category.id}`"
+                          :value="category"
                           type="checkbox"
+                          v-model="categoriesSelected"
                           class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
                         <label for="filter-mobile-category-0" class="flex-1 min-w-0 ml-3 text-gray-500">
-                          {{ tag.attributes.value }}
+                          {{ category.attributes.value }}
                         </label>
                       </div>
                     </div>
@@ -215,13 +215,14 @@
                   Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
                 -->
                     <button
+                      @click="sortFilterSelected = i"
                       :class="`block px-4 py-2 text-sm font-medium ${
-                        filter === selectedSortFilter ? 'text-gray-900' : 'text-gray-500'
+                        i === sortFilterSelected ? 'text-gray-900' : 'text-gray-500'
                       }`"
                       role="menuitem"
                       tabindex="-1"
                       id="menu-item-0">
-                      {{ filter }}
+                      {{ filter.text }}
                     </button>
                   </div>
                 </div>
@@ -296,9 +297,9 @@
                       <div class="flex items-center">
                         <input
                           :id="`filter-tag-${tag.id}`"
-                          name="tag[]"
-                          value="white"
+                          :value="tag"
                           type="checkbox"
+                          v-model="tagsSelected"
                           class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
                         <label :for="`filter-tag-${tag.id}`" class="ml-3 text-sm text-gray-600">
                           {{ tag.attributes.value }}
@@ -341,9 +342,9 @@
                       <div class="flex items-center">
                         <input
                           :id="`filter-category-${category.id}`"
-                          name="category[]"
-                          value="new-arrivals"
+                          :value="category"
                           type="checkbox"
+                          v-model="categoriesSelected"
                           class="w-4 h-4 border-gray-300 rounded text-primary-600 focus:ring-primary-500" />
                         <label :for="`filter-category-${category.id}`" class="ml-3 text-sm text-gray-600">
                           {{ category.attributes.value }}
@@ -406,6 +407,10 @@
 <script>
 import { XIcon, ChevronDownIcon, PlusIcon, MinusIcon, LayoutGridIcon, FilterIcon } from 'vue-tabler-icons'
 import BounceLoader from 'vue-spinner/src/BounceLoader.vue'
+import qs from 'qs'
+
+const PAGINATION_SIZE = 12
+const STRAPI_API = process.env.NODE_ENV === 'production' ? process.env.STRAPI_API : 'http://localhost:5000/api'
 
 export default {
   components: {
@@ -436,23 +441,65 @@ export default {
       type: Array,
       default: () => [],
     },
+    initialPaginationData: {
+      required: false,
+      type: Object,
+      default: () => ({
+        page: 1,
+        pageSize: 10,
+        pageCount: 1,
+        total: 0,
+      }),
+    },
   },
   data() {
     return {
       tabs: ['All', 'Campaigns', 'Projects'],
       currentTab: 'All',
-      sortFilters: ['Featured', 'Newest', 'Impact', 'Minimum Donation'],
-      selectedSortFilter: 'Featured',
+      sortFilters: [
+        {
+          text: 'Featured',
+          filter: 'featured:desc',
+        },
+        {
+          text: 'Newest',
+          filter: 'createdAt:desc',
+        },
+        // 'Impact',
+        // 'Minimum Donation'
+      ],
+      sortFilterSelected: 0,
+      tagsSelected: [],
+      categoriesSelected: [],
       expandTags: false,
       expandCategories: false,
       showMenu: false,
       showSortMenu: false,
       loading: true,
       cards: [],
+      paginationData: {},
+      paginationQuery: {
+        page: 1,
+        pageSize: PAGINATION_SIZE,
+        withCount: true,
+      },
     }
   },
   mounted() {
-    this.populateCards().filterCards().sortCards()
+    this.loading = true
+    switch (this.$route.query.s) {
+      case 'c':
+        this.cards = this.initialCampaigns
+        break
+      case 'p':
+        this.cards = this.initialProjects
+        break
+      default:
+        this.cards = this.initialCampaigns.concat(this.initialProjects)
+        break
+    }
+    this.pagination = this.initialPaginationData
+    this.loading = false
   },
   methods: {
     selectedTab(tab) {
@@ -466,29 +513,91 @@ export default {
         },
       })
     },
-    populateCards() {
+    async populateCards() {
       this.loading = true
+      const that = this
       switch (this.$route.query.s) {
         case 'c':
-          this.cards = this.initialCampaigns
+          await this.$axios
+            .$get(`${STRAPI_API}/campaigns?locale=${this.$i18n.locale}&${this.query}`, {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
+              },
+            })
+            .then(({ data, meta }) => {
+              that.cards = data
+              that.pagination = meta.pagination
+            })
           break
         case 'p':
+          // TODO: add projects query
           this.cards = this.initialProjects
           break
         default:
-          this.cards = this.initialCampaigns.concat(this.initialProjects)
+          await this.$axios
+            .$get(`${STRAPI_API}/campaigns?locale=${this.$i18n.locale}&${this.query}`, {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
+              },
+            })
+            .then(({ data, meta }) => {
+              that.cards = data
+              that.pagination = meta.pagination
+            })
           break
       }
-      return this
-    },
-    filterCards() {
-      // do the filtering
-      return this
-    },
-    sortCards() {
-      // do the sort
       this.loading = false
-      return this
+    },
+  },
+  computed: {
+    query() {
+      return qs.stringify(
+        {
+          populate: {
+            cover: {
+              fields: ['url'],
+            },
+            tags: {
+              fields: ['value'],
+            },
+            natures: {
+              fields: ['value'],
+            },
+          },
+          filters: {
+            environment: {
+              $eq: process.env.NODE_ENV,
+            },
+            // conditionally add tags filter if there are any selected
+            ...(this.tagsSelected.length > 0
+              ? {
+                  tags: {
+                    value: {
+                      $in: this.tagsSelected.map((tag) => tag.attributes.value),
+                    },
+                  },
+                }
+              : {}),
+            // conditionally add categories filter if there are any selected
+            ...(this.categoriesSelected.length > 0
+              ? {
+                  natures: {
+                    value: {
+                      $in: this.categoriesSelected.map((category) => category.attributes.value),
+                    },
+                  },
+                }
+              : {}),
+          },
+          sort: [this.sortFilters[this.sortFilterSelected].filter, 'createdAt:desc'],
+          pagination: this.paginationQuery,
+        },
+        {
+          encodeValuesOnly: true,
+        }
+      )
     },
   },
   watch: {
@@ -505,11 +614,17 @@ export default {
           break
       }
     },
-    currentTab() {
-      this.populateCards().filterCards().sortCards()
+    async currentTab() {
+      await this.populateCards()
     },
-    selectedSortFilter() {
-      this.populateCards().filterCards().sortCards()
+    async sortFilterSelected() {
+      await this.populateCards()
+    },
+    async tagsSelected() {
+      await this.populateCards()
+    },
+    async categoriesSelected() {
+      await this.populateCards()
     },
   },
 }
