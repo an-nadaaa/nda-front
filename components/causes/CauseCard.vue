@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     class="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl"
-    :to="localePath(`/cause/${cause.id}`)">
+    :to="localePath(`/causes/${cause.id}`)">
     <div class="flex-shrink-0">
       <img
         class="object-cover w-full h-64"

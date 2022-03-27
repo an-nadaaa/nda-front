@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="localePath(`/campaigns/${cause.id}`)" :class="`relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
+  <NuxtLink :to="localePath(`/causes/${cause.id}`)" :class="`relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
     <div
       v-if="index !== 2"
       aria-hidden="true"
