@@ -512,13 +512,14 @@ export default {
       return this.currentTab === tab
     },
     selectTab(tab) {
-      // TODO: add localization
-      this.$router.replace({
-        path: '/causes',
-        query: {
-          s: tab === 'All' ? '' : tab.toLowerCase()[0],
-        },
-      })
+      this.$router.replace(
+        this.localeLocation({
+          path: '/causes',
+          query: {
+            s: tab === 'All' ? '' : tab.toLowerCase()[0],
+          },
+        })
+      )
     },
     async populateCards() {
       this.loading = true
@@ -531,7 +532,6 @@ export default {
           },
         })
         .then(({ data, meta }) => {
-          console.log(data)
           that.cards = data
           that.paginationData = meta.pagination
         })
@@ -578,23 +578,23 @@ export default {
               $eq: process.env.NODE_ENV,
             },
             // conditionally add campaign or project filter based on query params
-            ...(this.$route.query.s === 'c'
-              ? {
-                  dynamicZone: {
-                    __component: {
-                      $eq: 'causes.campaign',
-                    },
-                  },
-                }
-              : this.$route.query.s === 'p'
-              ? {
-                  dynamicZone: {
-                    __component: {
-                      $eq: 'causes.project',
-                    },
-                  },
-                }
-              : {}),
+            // ...(this.$route.query.s === 'c'
+            //   ? {
+            //       dynamicZone: {
+            //         __component: {
+            //           $eq: 'causes.campaign',
+            //         },
+            //       },
+            //     }
+            //   : this.$route.query.s === 'p'
+            //   ? {
+            //       dynamicZone: {
+            //         __component: {
+            //           $eq: 'causes.project',
+            //         },
+            //       },
+            //     }
+            //   : {}),
             // conditionally add tags filter if there are any selected
             ...(this.tagsSelected.length > 0
               ? {
@@ -626,18 +626,21 @@ export default {
     },
   },
   watch: {
-    $route() {
-      switch (this.$route.query.s) {
-        case 'c':
-          this.currentTab = 'Campaigns'
-          break
-        case 'p':
-          this.currentTab = 'Projects'
-          break
-        default:
-          this.currentTab = 'All'
-          break
-      }
+    $route: {
+      handler() {
+        switch (this.$route.query.s) {
+          case 'c':
+            this.currentTab = 'Campaigns'
+            break
+          case 'p':
+            this.currentTab = 'Projects'
+            break
+          default:
+            this.currentTab = 'All'
+            break
+        }
+      },
+      immediate: true,
     },
     async currentTab() {
       await this.populateCards()
