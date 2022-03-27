@@ -363,7 +363,7 @@
               }`">
               <!-- Replace with your content -->
               <BounceLoader class="mx-auto" v-if="loading" :loading="loading" color="#06b6d4" size="60px" />
-              <CauseCard v-for="card in cards" :key="card.id" :cause="card" />
+              <CauseCard v-else v-for="card in cards" :key="card.id" :cause="card" />
 
               <!-- /End replace -->
             </div>
