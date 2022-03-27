@@ -431,32 +431,17 @@ export default {
       required: true,
       type: Array,
     },
-    initialCampaigns: {
+    initialCauses: {
       required: false,
       type: Array,
       default: () => [],
     },
-    initialProjects: {
-      required: false,
-      type: Array,
-      default: () => [],
-    },
-    initialCampaignsPaginationData: {
+    initialPaginationData: {
       required: false,
       type: Object,
       default: () => ({
         page: 1,
-        pageSize: 10,
-        pageCount: 1,
-        total: 0,
-      }),
-    },
-    initialProjectsPaginationData: {
-      required: false,
-      type: Object,
-      default: () => ({
-        page: 1,
-        pageSize: 10,
+        pageSize: PAGINATION_SIZE,
         pageCount: 1,
         total: 0,
       }),
@@ -487,14 +472,8 @@ export default {
       showSortMenu: false,
       loading: true,
       cards: [],
-      campaignsPaginationData: {},
-      campaignsPaginationQuery: {
-        page: 1,
-        pageSize: PAGINATION_SIZE,
-        withCount: true,
-      },
-      projectsPaginationData: {},
-      projectsPaginationQuery: {
+      paginationData: {},
+      paginationQuery: {
         page: 1,
         pageSize: PAGINATION_SIZE,
         withCount: true,
@@ -503,19 +482,8 @@ export default {
   },
   mounted() {
     this.loading = true
-    switch (this.$route.query.s) {
-      case 'c':
-        this.cards = this.initialCampaigns
-        break
-      case 'p':
-        this.cards = this.initialProjects
-        break
-      default:
-        this.cards = this.initialCampaigns.concat(this.initialProjects)
-        break
-    }
-    this.campaignsPaginationData = this.initialCampaignsPagination
-    this.projectsPaginationData = this.initialProjectsPagination
+    this.cards = this.initialCauses
+    this.paginationData = this.initialPaginationData
     this.loading = false
   },
   methods: {
@@ -533,38 +501,17 @@ export default {
     async populateCards() {
       this.loading = true
       const that = this
-      switch (this.$route.query.s) {
-        case 'c':
-          await this.$axios
-            .$get(`${STRAPI_API}/campaigns?locale=${this.$i18n.locale}&${this.query}`, {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
-              },
-            })
-            .then(({ data, meta }) => {
-              that.cards = data
-              that.pagination = meta.pagination
-            })
-          break
-        case 'p':
-          // TODO: add projects query
-          this.cards = this.initialProjects
-          break
-        default:
-          await this.$axios
-            .$get(`${STRAPI_API}/campaigns?locale=${this.$i18n.locale}&${this.query}`, {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
-              },
-            })
-            .then(({ data, meta }) => {
-              that.cards = data
-              that.pagination = meta.pagination
-            })
-          break
-      }
+      await this.$axios
+        .$get(`${STRAPI_API}/causes?locale=${this.$i18n.locale}&${this.query}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
+          },
+        })
+        .then(({ data, meta }) => {
+          that.cards = data
+          that.paginationData = meta.pagination
+        })
       this.loading = false
     },
   },
@@ -587,6 +534,24 @@ export default {
             environment: {
               $eq: process.env.NODE_ENV,
             },
+            // conditionally add campaign or project filter based on query params
+            ...(this.$route.query.s === 'c'
+              ? {
+                  dynamicZone: {
+                    __component: {
+                      $eq: 'causes.campaign',
+                    },
+                  },
+                }
+              : this.$route.query.s === 'p'
+              ? {
+                  dynamicZone: {
+                    __component: {
+                      $eq: 'causes.project',
+                    },
+                  },
+                }
+              : {}),
             // conditionally add tags filter if there are any selected
             ...(this.tagsSelected.length > 0
               ? {

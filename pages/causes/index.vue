@@ -1,5 +1,5 @@
 <template>
-  <CausesLayout :tags="tags" :categories="categories" :initialCauses="causes" :initialPagination="pagination" />
+  <CausesLayout :tags="tags" :categories="categories" :initialCauses="causes" :initialPaginationData="pagination" />
 </template>
 
 <script>
