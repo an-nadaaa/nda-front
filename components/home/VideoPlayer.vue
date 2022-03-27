@@ -5,23 +5,10 @@
         v-if="showPlayer"
         @click="closePlayer"
         class="absolute right-0 z-50 w-10 h-10 m-3 text-gray-400 cursor-pointer hover:text-gray-500" />
-      <Player playsinline ref="player" @vmPlaybackEnded="closePlayer" controls muted autoplay :style="styles">
+      <Player playsinline ref="player" @vmPlaybackEnded="closePlayer" controls autoplay :style="styles">
         <!-- Provider component is placed here. -->
         <Component :is="provider" :videoId="videoID">
           <source v-if="provider === 'Video'" :data-src="videoLocation" type="video/mp4" />
-          <!-- <track
-            default
-            kind="subtitles"
-            src="/media/subs/en.vtt"
-            srclang="en"
-            label="English"
-          />
-          <track
-            kind="captions"
-            src="/media/caps/es.vtt"
-            srclang="es"
-            label="Spanish"
-          /> -->
         </Component>
         <DefaultUi />
       </Player>
