@@ -2,9 +2,10 @@
   <div class="w-full mx-auto">
     <ClientOnly>
       <XIcon
+        v-if="showPlayer"
         @click="closePlayer"
         class="absolute right-0 z-50 w-10 h-10 m-3 text-gray-400 cursor-pointer hover:text-gray-500" />
-      <Player playsinline ref="player" @vmPlaybackEnded="closePlayer" controls autoplay :style="styles">
+      <Player playsinline ref="player" @vmPlaybackEnded="closePlayer" controls muted autoplay :style="styles">
         <!-- Provider component is placed here. -->
         <Component :is="provider" :videoId="videoID">
           <source v-if="provider === 'Video'" :data-src="videoLocation" type="video/mp4" />
@@ -85,13 +86,16 @@ export default {
     },
   },
   watch: {
-    async showPlayer(val) {
-      if (val) {
-        const canAutoplay = await this.player.canAutoplay()
-        if (!canAutoplay) {
-          this.player.play()
+    showPlayer: {
+      async handler(val) {
+        if (val) {
+          // const canAutoplay = await this.player.canAutoplay()
+          // if (!canAutoplay) {
+          //   this.player.play()
+          // }
         }
-      }
+      },
+      immediate: true,
     },
   },
   computed: {
