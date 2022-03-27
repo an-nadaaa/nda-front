@@ -29,10 +29,11 @@
         </div>
       </div>
     </div>
-    <VideoPlayer v-show="showPlayer" :showPlayer="showPlayer" />
+    <VideoPlayer v-show="showPlayer" :showPlayer="showPlayer" :videoLocation="videoLocation" />
   </section>
 </template>
 <script>
+import HERO_CONTENT from '~/content/site/home/hero_section.json'
 import { PlayerPlayIcon } from 'vue-tabler-icons'
 
 export default {
@@ -43,7 +44,7 @@ export default {
     return {
       bgUrl:
         'https://images.unsplash.com/photo-1500206329404-5057e0aefa48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2352&q=80',
-      // videoLocation: HERO_CONTENT.location,
+      videoLocation: HERO_CONTENT['en'].location,
       showPlayer: false,
     }
   },

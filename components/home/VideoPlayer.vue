@@ -2,25 +2,13 @@
   <div class="w-full mx-auto">
     <ClientOnly>
       <XIcon
+        v-if="showPlayer"
         @click="closePlayer"
         class="absolute right-0 z-50 w-10 h-10 m-3 text-gray-400 cursor-pointer hover:text-gray-500" />
-      <Player playsinline ref="player" @vmPlaybackEnded="closePlayer" controls autoplay>
+      <Player playsinline ref="player" @vmPlaybackEnded="closePlayer" controls autoplay :style="styles">
         <!-- Provider component is placed here. -->
         <Component :is="provider" :videoId="videoID">
           <source v-if="provider === 'Video'" :data-src="videoLocation" type="video/mp4" />
-          <!-- <track
-            default
-            kind="subtitles"
-            src="/media/subs/en.vtt"
-            srclang="en"
-            label="English"
-          />
-          <track
-            kind="captions"
-            src="/media/caps/es.vtt"
-            srclang="es"
-            label="Spanish"
-          /> -->
         </Component>
         <DefaultUi />
       </Player>
@@ -29,7 +17,6 @@
 </template>
 
 <script>
-import HERO_CONTENT from '~/content/site/home/hero_section.json'
 import { PRIMARY_COLOR } from '~/config/config'
 import { XIcon } from 'vue-tabler-icons'
 import { Player, DefaultUi, Video, Youtube, Vimeo } from '@vime/vue'
@@ -48,10 +35,9 @@ export default {
     Vimeo,
     XIcon,
   },
-  props: ['showPlayer'],
+  props: ['showPlayer', 'videoLocation'],
   data() {
     return {
-      videoLocation: HERO_CONTENT['en'].location,
       videoID: '',
       iframSrc: '',
       provider: 'Video',
@@ -87,13 +73,16 @@ export default {
     },
   },
   watch: {
-    async showPlayer(val) {
-      if (val) {
-        const canAutoplay = await this.player.canAutoplay()
-        if (!canAutoplay) {
-          this.player.play()
+    showPlayer: {
+      async handler(val) {
+        if (val) {
+          // const canAutoplay = await this.player.canAutoplay()
+          // if (!canAutoplay) {
+          //   this.player.play()
+          // }
         }
-      }
+      },
+      immediate: true,
     },
   },
   computed: {

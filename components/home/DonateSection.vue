@@ -74,7 +74,7 @@
                     type="submit"
                     class="relative flex items-center w-full px-5 py-3 text-base font-medium text-white border border-transparent rounded-md shadow bg-primary-600 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-700 sm:px-10">
                     <MoonLoader class="absolute left-0 ml-4" :loading="loading" color="#fff" size="30px"></MoonLoader>
-                    <div class="mx-5">Donate</div>
+                    <div class="mx-auto sm:mx-5">Donate</div>
                   </button>
                 </div>
               </form>
@@ -103,8 +103,6 @@ export default {
   },
   methods: {
     async donate() {
-      console.log(process.env.NODE_ENV)
-      console.log(this.pk.slice(0, 8))
       if (this.amount >= 1) {
         this.loading = true
         await this.$axios

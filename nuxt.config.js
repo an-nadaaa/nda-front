@@ -70,11 +70,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    { src: '~/plugins/event-bus.js' },
-    { src: '~/plugins/vue-stripe.js', ssr: false },
-    { src: '~/plugins/vue-plyr', mode: 'client' },
-  ],
+  plugins: [{ src: '~/plugins/event-bus.js' }, { src: '~/plugins/vue-stripe.js', ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -84,6 +80,7 @@ export default {
     '@nuxt/postcss8',
     '@nuxtjs/svg',
     '@nuxtjs/pwa',
+    '@nuxtjs/html-validator',
   ],
   /*
    ** Nuxt.js modules
@@ -96,7 +93,6 @@ export default {
     dirs: [
       '~/components',
       '~/components/about',
-      '~/components/campaigns',
       '~/components/global',
       '~/components/contact',
       '~/components/causes',
@@ -108,6 +104,7 @@ export default {
    ** Build configuration
    */
   build: {
+    // transpile: ['marked'],
     extractCSS: true,
     postcss: {
       plugins: {

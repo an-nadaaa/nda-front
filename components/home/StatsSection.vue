@@ -24,7 +24,7 @@
           nibh integer quis. Eu vulputate diam sit tellus quis at.
         </p>
         <div class="grid grid-cols-1 mt-12 justify-items-center lg:justify-items-start gap-y-12 gap-x-6 sm:grid-cols-2">
-          <p class="text-center" v-for="item in metrics" :key="item.id">
+          <p class="text-center lg:text-left" v-for="item in metrics" :key="item.id">
             <span class="block font-semibold text-white text-7xl">{{ item.value }}</span>
             <span class="block mt-1 text-base text-gray-300"
               ><span class="font-medium text-white">{{ item.name }}</span> {{ item.action }}</span

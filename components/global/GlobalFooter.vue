@@ -114,10 +114,6 @@ export default {
           link: '#',
         },
         {
-          title: 'Jobs',
-          link: '#',
-        },
-        {
           title: 'Press',
           link: '#',
         },
@@ -152,14 +148,6 @@ export default {
         {
           title: 'Projects',
           link: '/causes?s=p',
-        },
-        {
-          title: 'Volunteer',
-          link: '/contact',
-        },
-        {
-          title: 'Fundraise',
-          link: '/contact',
         },
       ],
       socialIcons: [

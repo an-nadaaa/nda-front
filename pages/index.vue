@@ -4,8 +4,8 @@
     <LogoCloud />
     <HomeStorySection />
     <StatsSection :metrics="metrics" />
-    <FeaturedCampaigns :featured-campaigns="featuredCampaigns" />
-    <CampaignsSection :campaigns="campaigns" />
+    <FeaturedCampaigns :featured-causes="featuredCauses" />
+    <CampaignsSection :causes="causes" />
     <DonateSection />
     <TestimonialsSection :testimonials="testimonials" />
     <FAQSection :faqs="faqs" />
@@ -23,28 +23,36 @@ export default {
       direction: 'dec',
     }
     const FEATURED_COUNT = 3
-    const CAMPAIGN_COUNT = 6
-    let campaigns,
-      featuredCampaigns,
+    const CAMPAIGN_COUNT = 5
+    let causes,
+      featuredCauses,
       faqs,
       metrics,
       testimonials = []
-    const campaignQuery = qs.stringify(
+    const causeQuery = qs.stringify(
       {
         populate: {
+          base: {
+            populate: '*',
+          },
+          dynamicZone: {
+            populate: '*',
+          },
           cover: {
             fields: ['url'],
           },
           tags: {
             fields: ['value'],
           },
-          natures: {
+          category: {
             fields: ['value'],
           },
         },
         filters: {
-          featured: {
-            $eq: false,
+          base: {
+            featured: {
+              $eq: false,
+            },
           },
           environment: {
             $eq: process.env.NODE_ENV,
@@ -63,19 +71,27 @@ export default {
     const featuredQuery = qs.stringify(
       {
         populate: {
+          base: {
+            populate: '*',
+          },
+          dynamicZone: {
+            populate: '*',
+          },
           cover: {
             fields: ['url'],
           },
           tags: {
             fields: ['value'],
           },
-          natures: {
+          category: {
             fields: ['value'],
           },
         },
         filters: {
-          featured: {
-            $eq: true,
+          base: {
+            featured: {
+              $eq: true,
+            },
           },
           environment: {
             $eq: process.env.NODE_ENV,
@@ -91,8 +107,8 @@ export default {
         encodeValuesOnly: true,
       }
     )
-    campaigns = await $axios
-      .$get(`${STRAPI_API}/campaigns?locale=${app.i18n.locale}&${campaignQuery}`, {
+    causes = await $axios
+      .$get(`${STRAPI_API}/causes?locale=${app.i18n.locale}&${causeQuery}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
@@ -105,8 +121,8 @@ export default {
           message: FEATURED_COUNT > 1 ? 'No Featured Campaigns to display' : 'Campaign not found',
         })
       })
-    featuredCampaigns = await $axios
-      .$get(`${STRAPI_API}/campaigns?locale=${app.i18n.locale}&${featuredQuery}`, {
+    featuredCauses = await $axios
+      .$get(`${STRAPI_API}/causes?locale=${app.i18n.locale}&${featuredQuery}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
@@ -137,7 +153,7 @@ export default {
       .catch((err) => {
         error({ statusCode: 404, message: 'No Testimonials to display' })
       })
-    return { campaigns, featuredCampaigns, faqs, metrics, testimonials }
+    return { causes, featuredCauses, faqs, metrics, testimonials }
   },
   head() {
     return {

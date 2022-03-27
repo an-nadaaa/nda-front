@@ -1,9 +1,9 @@
 <template>
-  <NuxtLink :to="localePath(`/campaigns/${campaign.id}`)" :class="`relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
+  <NuxtLink :to="localePath(`/causes/${cause.id}`)" :class="`relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
     <div
       v-if="index !== 2"
       aria-hidden="true"
-      :class="`hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen`">
+      :class="`hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen pointer-events-none`">
       <svg
         class="absolute -ml-3 top-8 left-1/2 lg:-right-8 lg:left-auto lg:top-12"
         width="404"
@@ -29,15 +29,15 @@
       <div class="relative flex flex-col justify-end h-full pt-64 pb-10 overflow-hidden shadow-xl rounded-2xl">
         <img
           class="absolute inset-0 object-cover w-full h-full"
-          v-if="campaign.attributes.cover.data.attributes.url"
-          :src="campaign.attributes.cover.data.attributes.url"
+          v-if="cause.attributes.cover.data.attributes.url"
+          :src="cause.attributes.cover.data.attributes.url"
           alt="" />
-        <div class="absolute inset-0 bg-primary-600 opacity-30 mix-blend-multiply" />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary-700 via-primary-700 opacity-90" />
+        <div class="absolute inset-0 bg-primary-600 opacity-20 mix-blend-multiply" />
+        <div class="absolute inset-0 opacity-60 bg-gradient-to-t from-primary-700 via-primary-700" />
         <div class="relative px-8 pb-10">
           <div>
             <span
-              v-for="(tag, i) in campaign.attributes.tags.data"
+              v-for="(tag, i) in cause.attributes.tags.data"
               :key="i"
               :class="`inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-primary-100 text-primary-800  ${
                 i === 0 ? '' : 'ltr:mr-4 rtl:ml-4 mx-2'
@@ -46,27 +46,39 @@
             </span>
           </div>
           <div :class="`mt-3 text-xl font-semibold text-white  ${index === 0 ? 'lg:text-5xl' : 'lg:text-3xl'}`">
-            {{ campaign.attributes.title }}
+            {{ cause.attributes.base.title }}
           </div>
           <section class="mt-8">
-            <div class="h-2 my-3 overflow-hidden bg-gray-200 rounded-full">
+            <div
+              v-if="cause.attributes.dynamicZone[0].goal && cause.attributes.dynamicZone[0].goal !== 0"
+              class="h-2 my-3 overflow-hidden bg-gray-200 rounded-full">
               <div class="h-2 bg-yellow-400 rounded-full" :style="`width: ${percentage}%`"></div>
             </div>
 
             <div class="relative text-lg font-medium text-white md:flex-grow">
               <p class="relative line-clamp-4">
-                {{ campaign.attributes.description }}
+                {{ cause.attributes.base.description }}
               </p>
             </div>
 
             <footer class="mt-4">
-              <p class="text-base text-primary-200">
+              <p
+                v-if="cause.attributes.dynamicZone[0].goal && cause.attributes.dynamicZone[0].goal !== 0"
+                class="text-base text-primary-200">
                 <span class="font-semibold text-primary-50">
-                  {{ currencySymbol }}{{ Intl.NumberFormat().format(campaign.attributes.raised) }}
+                  {{ currencySymbol }}{{ Intl.NumberFormat().format(cause.attributes.dynamicZone[0].raised) }}
                 </span>
                 <span> of </span>
-                <span> {{ currencySymbol }}{{ Intl.NumberFormat().format(campaign.attributes.goal) }} Raised </span>
+                <span>
+                  {{ currencySymbol }}{{ Intl.NumberFormat().format(cause.attributes.dynamicZone[0].goal) }} Raised
+                </span>
               </p>
+              <div v-else class="font-semibold text-primary-50">
+                Cost of {{ cause.attributes.dynamicZone[0].donation.action }}
+                {{ cause.attributes.dynamicZone[0].donation.value }}
+                {{ cause.attributes.dynamicZone[0].donation.subject }}:
+                {{ cause.attributes.dynamicZone[0].donation.cost }}
+              </div>
             </footer>
           </section>
         </div>
@@ -80,7 +92,7 @@ import { CURRENCY_SYMBOL } from '@/config/config'
 
 export default {
   props: {
-    campaign: {
+    cause: {
       require: true,
       type: Object,
     },
@@ -91,7 +103,9 @@ export default {
   },
   computed: {
     percentage() {
-      return (this.campaign.attributes.raised * 100) / this.campaign.attributes.goal
+      return this.cause.attributes.dynamicZone[0].goal
+        ? (this.cause.attributes.dynamicZone[0].raised * 100) / this.cause.attributes.dynamicZone[0].goal
+        : 0
     },
     currencySymbol() {
       return CURRENCY_SYMBOL
