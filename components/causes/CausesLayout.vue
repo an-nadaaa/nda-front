@@ -441,7 +441,17 @@ export default {
       type: Array,
       default: () => [],
     },
-    initialPaginationData: {
+    initialCampaignsPaginationData: {
+      required: false,
+      type: Object,
+      default: () => ({
+        page: 1,
+        pageSize: 10,
+        pageCount: 1,
+        total: 0,
+      }),
+    },
+    initialProjectsPaginationData: {
       required: false,
       type: Object,
       default: () => ({
@@ -477,8 +487,14 @@ export default {
       showSortMenu: false,
       loading: true,
       cards: [],
-      paginationData: {},
-      paginationQuery: {
+      campaignsPaginationData: {},
+      campaignsPaginationQuery: {
+        page: 1,
+        pageSize: PAGINATION_SIZE,
+        withCount: true,
+      },
+      projectsPaginationData: {},
+      projectsPaginationQuery: {
         page: 1,
         pageSize: PAGINATION_SIZE,
         withCount: true,
@@ -498,7 +514,8 @@ export default {
         this.cards = this.initialCampaigns.concat(this.initialProjects)
         break
     }
-    this.pagination = this.initialPaginationData
+    this.campaignsPaginationData = this.initialCampaignsPagination
+    this.projectsPaginationData = this.initialProjectsPagination
     this.loading = false
   },
   methods: {

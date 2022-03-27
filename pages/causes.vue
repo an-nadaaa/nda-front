@@ -1,5 +1,11 @@
 <template>
-  <CausesLayout :tags="tags" :categories="categories" :initialCampaigns="campaigns" :initialProjects="projects" />
+  <CausesLayout
+    :tags="tags"
+    :categories="categories"
+    :initialCampaigns="campaigns"
+    :initialProjects="projects"
+    :initialCampaignsPagination="campaignsPagination"
+    :initialProjectsPagination="projectsPagination" />
 </template>
 
 <script>
@@ -69,15 +75,32 @@ export default {
           message: 'Error fetching Categories',
         })
       })
-
-    const campaigns = await $axios
+    switch (this.$route.query.s) {
+      case 'c':
+        // query campaigns
+        break
+      case 'p':
+        // query projects
+        break
+      default:
+        // query all
+        break
+    }
+    let campaigns = []
+    let campaignsPagination = {}
+    let projects = []
+    let projectsPagination = {}
+    await $axios
       .$get(`${STRAPI_API}/campaigns?locale=${app.i18n.locale}&${campaignQuery}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.STRAPI_API_KEY}`,
         },
       })
-      .then(({ data }) => data)
+      .then(({ data, meta }) => {
+        campaigns = data
+        campaignsPagination = meta
+      })
       .catch((err) => {
         error({
           statusCode: 404,
@@ -85,9 +108,7 @@ export default {
         })
       })
     // TODO: add projects query
-    const projects = []
-
-    return { tags, categories, campaigns, projects }
+    return { tags, categories, campaigns, projects, campaignsPagination, projectsPagination }
   },
 }
 </script>
