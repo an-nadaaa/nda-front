@@ -97,7 +97,6 @@ export default {
     dirs: [
       '~/components',
       '~/components/about',
-      '~/components/campaigns',
       '~/components/global',
       '~/components/contact',
       '~/components/causes',

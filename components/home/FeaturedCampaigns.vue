@@ -18,10 +18,7 @@
 </template>
 
 <script>
-import FeaturedCampaignCard from '../campaigns/FeaturedCampaignCard.vue'
-
 export default {
-  components: { FeaturedCampaignCard },
   props: ['featuredCauses'],
 }
 </script>

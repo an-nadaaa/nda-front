@@ -10,10 +10,7 @@
 </template>
 
 <script>
-import CampaignCard from '../campaigns/CampaignCard.vue'
-
 export default {
-  components: { CampaignCard },
   props: ['causes'],
 }
 </script>
