@@ -109,6 +109,7 @@ export default {
    ** Build configuration
    */
   build: {
+    // transpile: ['marked'],
     extractCSS: true,
     postcss: {
       plugins: {

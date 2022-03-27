@@ -13,7 +13,7 @@ import qs from 'qs'
 
 export default {
   layout: 'cause',
-  async asyncData({ $axios, error, app }) {
+  async asyncData({ $axios, error, app, query }) {
     const STRAPI_API = process.env.NODE_ENV === 'production' ? process.env.STRAPI_API : 'http://localhost:5000/api'
     const PAGINATION_SIZE = 12
     const campaignQuery = qs.stringify(
@@ -75,7 +75,7 @@ export default {
           message: 'Error fetching Categories',
         })
       })
-    switch (this.$route.query.s) {
+    switch (query.s) {
       case 'c':
         // query campaigns
         break
