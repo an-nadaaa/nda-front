@@ -378,25 +378,45 @@
           <div class="hidden sm:block">
             <p class="text-sm text-gray-700">
               Showing
-              <span class="font-medium">1</span>
+              {{ ' ' }}
+              <span class="font-medium">{{ (paginationData.page - 1) * QUERY_SIZE + 1 }}</span>
+              {{ ' ' }}
               to
-              <span class="font-medium">10</span>
+              {{ ' ' }}
+              <span class="font-medium"
+                >{{
+                  paginationData.page === paginationData.pageCount
+                    ? paginationData.total % QUERY_SIZE === 0
+                      ? paginationData.page * QUERY_SIZE
+                      : paginationData.total % QUERY_SIZE
+                    : paginationData.page * QUERY_SIZE
+                }}
+              </span>
+              {{ ' ' }}
               of
-              <span class="font-medium">20</span>
+              {{ ' ' }}
+              <span class="font-medium">{{ paginationData.total }}</span>
+              {{ ' ' }}
               results
             </p>
           </div>
           <div class="flex justify-between flex-1 sm:justify-end">
-            <a
-              href="#"
-              class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            <button
+              :disabled="!hasPrev"
+              @click="prevPage"
+              :class="`mx-2 relative inline-flex items-center border-gray-300 px-4 py-2 text-sm font-medium bg-white border rounded-md ${
+                hasPrev ? 'text-gray-700  hover:bg-gray-50' : 'text-gray-300 cursor-not-allowed'
+              }`">
               Previous
-            </a>
-            <a
-              href="#"
-              class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            </button>
+            <button
+              :disabled="!hasNext"
+              @click="nextPage"
+              :class="`mx-2 relative inline-flex items-center border-gray-300 px-4 py-2 text-sm font-medium bg-white border rounded-md ${
+                hasNext ? 'text-gray-700  hover:bg-gray-50' : 'text-gray-300 cursor-not-allowed'
+              }`">
               Next
-            </a>
+            </button>
           </div>
         </nav>
       </main>
@@ -454,7 +474,7 @@ export default {
       sortFilters: [
         {
           text: 'Featured',
-          filter: 'featured:desc',
+          filter: 'base.featured:desc',
         },
         {
           text: 'Newest',
@@ -478,6 +498,7 @@ export default {
         pageSize: PAGINATION_SIZE,
         withCount: true,
       },
+      QUERY_SIZE: PAGINATION_SIZE,
     }
   },
   mounted() {
@@ -491,6 +512,7 @@ export default {
       return this.currentTab === tab
     },
     selectTab(tab) {
+      // TODO: add localization
       this.$router.replace({
         path: '/causes',
         query: {
@@ -509,24 +531,45 @@ export default {
           },
         })
         .then(({ data, meta }) => {
+          console.log(data)
           that.cards = data
           that.paginationData = meta.pagination
         })
       this.loading = false
     },
+    async nextPage() {
+      this.paginationQuery.page = this.paginationData.page + 1
+      await this.populateCards()
+    },
+    async prevPage() {
+      this.paginationQuery.page = this.paginationData.page - 1
+      await this.populateCards()
+    },
   },
   computed: {
+    hasPrev() {
+      return this.paginationData.page > 1
+    },
+    hasNext() {
+      return this.paginationData.page < this.paginationData.pageCount
+    },
     query() {
       return qs.stringify(
         {
           populate: {
+            base: {
+              populate: '*',
+            },
+            dynamicZone: {
+              populate: '*',
+            },
             cover: {
               fields: ['url'],
             },
             tags: {
               fields: ['value'],
             },
-            natures: {
+            category: {
               fields: ['value'],
             },
           },
@@ -565,7 +608,7 @@ export default {
             // conditionally add categories filter if there are any selected
             ...(this.categoriesSelected.length > 0
               ? {
-                  natures: {
+                  category: {
                     value: {
                       $in: this.categoriesSelected.map((category) => category.attributes.value),
                     },

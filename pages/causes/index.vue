@@ -178,7 +178,7 @@ export default {
       })
       .then(({ data, meta }) => {
         causes = data
-        pagination = meta
+        pagination = meta.pagination
       })
       .catch((err) => {
         error({
@@ -186,7 +186,6 @@ export default {
           message: 'No causes found',
         })
       })
-    console.log(causes)
     return { tags, categories, causes, pagination }
   },
 }
