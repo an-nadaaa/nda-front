@@ -85,7 +85,29 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/i18n'],
+  modules: [
+    '@nuxt/content',
+    '@nuxtjs/axios',
+    '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    [
+      'nuxt-social-meta',
+      {
+        url: 'https://new.an-nadaa.com/',
+        title: 'An-nadaa project, build your hereafter today',
+        site_name: 'An-nadaa Educational foundation',
+        description:
+          'An-nadaa project, build for your hereafter today,You can change the lives of millions by supporting educational and welfare projects of An-Nadaa that are bringing a huge positive impact to the community.',
+        img: 'https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg',
+        img_size: { width: '1200', height: '630 ' },
+        locale: 'en_US',
+        twitter: '@annadaaedu',
+        twitter_card: 'https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg',
+        theme_color: '#00bcd4',
+      },
+    ],
+  ],
   /*
    ** https://nuxtjs.org/docs/features/component-discovery/
    */
