@@ -31,7 +31,7 @@
           class="absolute inset-0 object-cover w-full h-full"
           v-if="cause.attributes.cover.data.attributes.url"
           :src="cause.attributes.cover.data.attributes.url"
-          alt="cause image" />
+          alt="Cover image" />
         <div class="absolute inset-0 bg-primary-600 opacity-20 mix-blend-multiply" />
         <div class="absolute inset-0 opacity-60 bg-gradient-to-t from-primary-700 via-primary-700" />
         <div class="relative px-8 pb-10">
