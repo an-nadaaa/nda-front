@@ -92,7 +92,6 @@ export default {
     '@nuxt/content',
     '@nuxtjs/axios',
     '@nuxtjs/i18n',
-    '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     [
       'nuxt-social-meta',
@@ -109,6 +108,8 @@ export default {
         twitter_card: 'https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg',
         theme_color: '#06b6d4',
       },
+      // always declare sitemap module at the end
+      '@nuxtjs/sitemap',
     ],
   ],
   /*
@@ -188,5 +189,9 @@ export default {
     strategy: 'prefix_except_default',
     langDir: 'translations',
     baseUrl: process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8888',
+  },
+  sitemap: {
+    // options
+    hostname: 'https://new.an-nadaa.com',
   },
 }

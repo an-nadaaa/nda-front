@@ -334,8 +334,8 @@ export default {
   head() {
     let cause = {
       title: this.cause.attributes.base.title,
-      createdAt: formatDate(this.cause.attributes.createdAt),
       goal: this.cause.attributes.dynamicZone[0].goal,
+      closed: this.cause.attributes.base.closed,
     }
 
     return {
@@ -345,10 +345,8 @@ export default {
           hid: 'description',
           name: 'description',
           content: `${cause.title} campaign was launched to ${cause.goal}, and their state is : ${
-            this.cause.attributes.base.closed ? 'Closed' : 'Opened'
-          } now.${
-            this.cause.attributes.base.closed ? '' : 'Build your hereafter today by contributing to this campaign'
-          } `,
+            cause.closed ? 'Closed' : 'Opened'
+          } now.${cause.closed ? '' : 'Build your hereafter today by contributing to this campaign'} `,
         },
       ],
     }
