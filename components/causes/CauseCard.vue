@@ -7,7 +7,7 @@
         class="object-cover w-full h-64"
         v-if="cause.attributes.cover.data.attributes.url"
         :src="cause.attributes.cover.data.attributes.url"
-        alt="cause image" />
+        alt="Cover image" />
     </div>
 
     <div class="bottom-0 flex-col justify-between flex-1 w-full p-6 bg-white bg-center bg-cover">

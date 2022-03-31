@@ -158,14 +158,6 @@ export default {
   head() {
     return {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
-      title: 'An-nadaa educational foundation | Educate, Empower, Improve',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Make support donations easy to bring change to the lives of the underprviliged muslims in Nigeria.',
-        },
-      ],
     }
   },
 }
