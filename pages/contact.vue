@@ -17,5 +17,24 @@ export default {
     }
   },
   components: { ContactForm, AddressSection },
+  head() {
+    let cause = {
+      title: this.cause.attributes.base.title,
+      createdAt: formatDate(this.cause.attributes.createdAt),
+      goal: this.cause.attributes.dynamicZone[0].goal,
+    }
+
+    return {
+      title: 'Contact us | An-nadaa educational foundation',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Get in touch with us for any inquiries, we will repond as fast as possible, email: contact@an-nadaa.com, Phone number:+234 706-244 4989',
+        },
+      ],
+    }
+  },
 }
 </script>

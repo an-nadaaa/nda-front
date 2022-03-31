@@ -10,7 +10,7 @@
             <h3 class="card-title">{{ post.title }}</h3>
             <p class="mt-2">{{ post.description }}</p>
           </span>
-          <img v-if="post.cover" class="cover-image" :src="post.cover" />
+          <img v-if="post.cover" class="cover-image" :src="post.cover" alt="Post cover" />
         </template>
 
         <template v-else>
