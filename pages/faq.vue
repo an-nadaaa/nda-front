@@ -45,5 +45,20 @@ export default {
 
     return { faqs }
   },
+
+  // addresses the most common questions
+  head() {
+    return {
+      title: 'Frequently asked questions | An-nadaa educational foundation',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Frequently asked questions addresses the most common questions asked for our educational foundation',
+        },
+      ],
+    }
+  },
 }
 </script>

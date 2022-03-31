@@ -188,5 +188,19 @@ export default {
       })
     return { tags, categories, causes, pagination }
   },
+  // addresses the most common questions
+  head() {
+    return {
+      title: 'Campaigns | An-nadaa educational foundation',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Donate to change the lives of millions of underprivilged muslims in Nigeria, by supporting educational and welfare projects of An-Nadaa',
+        },
+      ],
+    }
+  },
 }
 </script>

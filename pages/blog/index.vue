@@ -10,13 +10,25 @@
 <script>
 export default {
   async asyncData({ $content, error }) {
-    let posts;
+    let posts
     try {
-      posts = await $content("blog").fetch();
+      posts = await $content('blog').fetch()
     } catch (e) {
-      error({ message: "Blog posts not found" });
+      error({ message: 'Blog posts not found' })
     }
-    return { posts };
+    return { posts }
+  },
+  head() {
+    return {
+      title: 'Blog | An-nadaa education foundation',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Check our blog posts about charity, education, your donations positive impact and more !',
+        },
+      ],
+    }
   },
 }
 </script>
