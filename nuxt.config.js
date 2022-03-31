@@ -3,6 +3,9 @@ import { COLOR_MODE_FALLBACK } from './utils/globals.js'
 
 export default {
   target: 'static',
+  generate: {
+    fallback: true,
+  },
   components: true,
   server: {
     port: 3000, // default is 3000
