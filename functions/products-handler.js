@@ -41,12 +41,20 @@ exports.handler = async function (event, context) {
         }),
       }
     }
-
-    const product = await stripe.products.create({
-      name: entity.title,
-      description: entity.description,
-      images: [entity.cover],
-    })
+    let product
+    try {
+      product = await stripe.products.create({
+        name: entity.title,
+        description: entity.description,
+        images: [entity.cover],
+      })
+    } catch (error) {
+      return {
+        statusCode: 500,
+        headers,
+        error: JSON.stringify(error),
+      }
+    }
 
     return {
       statusCode: 200,
@@ -73,8 +81,16 @@ exports.handler = async function (event, context) {
       }
     }
 
-    const product = await stripe.products.del(entity.product)
-
+    let product
+    try {
+      product = await stripe.products.del(entity.product)
+    } catch (error) {
+      return {
+        statusCode: 500,
+        headers,
+        error: JSON.stringify(error),
+      }
+    }
     return {
       statusCode: 200,
       headers,

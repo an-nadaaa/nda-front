@@ -22,27 +22,36 @@ exports.handler = async function (event, context) {
     }
   }
   // your server-side functionality
-  const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price_data: {
-          unit_amount_decimal: event.queryStringParameters.amount,
-          currency: 'usd',
-          product: event.queryStringParameters.product ? event.queryStringParameters.product : STRIPE_GENERAL_PRODUCT,
+  let session
+  try {
+    session = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price_data: {
+            unit_amount_decimal: event.queryStringParameters.amount,
+            currency: 'usd',
+            product: event.queryStringParameters.product ? event.queryStringParameters.product : STRIPE_GENERAL_PRODUCT,
+          },
+          quantity: 1,
         },
-        quantity: 1,
-      },
-    ],
-    mode: 'payment',
-    success_url: `${BASE_URL}${
-      event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
-    }/success`,
-    cancel_url: `${BASE_URL}${
-      event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
-    }/causes`,
-    locale: event.queryStringParameters.locale,
-    // payment_method_types: ['card', 'fpx', 'grabpay', 'alipay'],
-  })
+      ],
+      mode: 'payment',
+      success_url: `${BASE_URL}${
+        event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
+      }/success`,
+      cancel_url: `${BASE_URL}${
+        event.queryStringParameters.locale === 'en' ? '' : `/${event.queryStringParameters.locale}`
+      }/causes`,
+      locale: event.queryStringParameters.locale,
+      // payment_method_types: ['card', 'fpx', 'grabpay', 'alipay'],
+    })
+  } catch (error) {
+    return {
+      statusCode: 500,
+      headers,
+      error: JSON.stringify(error),
+    }
+  }
 
   return {
     statusCode: 200,
