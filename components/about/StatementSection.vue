@@ -29,22 +29,12 @@
           <div class="sm:text-center md:max-w-2xl lg:col-span-6 lg:text-left">
             <h1 class="w-full">
               <span
-                class="
-                  block
-                  text-sm
-                  font-semibold
-                  tracking-wide
-                  uppercase
-                  text-primary-500
-                  sm:text-base
-                  lg:text-sm
-                  xl:text-base
-                "
+                class="block text-sm font-semibold tracking-wide uppercase text-primary-500 sm:text-base lg:text-sm xl:text-base"
                 >{{ statementSection.title }}</span
               >
               <span class="block mt-1 text-4xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl">
-                <span class="block text-gray-900">{{ statementSection.subtitle }}</span>
-                <span class="block text-primary-600">{{ statementSection.goal }}</span>
+                <span class="block text-gray-900">Educate, Empower</span>
+                <span class="block text-primary-600">& Improve</span>
               </span>
             </h1>
             <!-- <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
@@ -55,17 +45,7 @@
           <!-- Second column -->
           <div class="relative mt-12 sm:max-w-lg sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex">
             <svg
-              class="
-                absolute
-                top-0
-                origin-top
-                transform
-                scale-75
-                -translate-x-1/2 -translate-y-8
-                left-1/2
-                sm:scale-100
-                lg:hidden
-              "
+              class="absolute top-0 origin-top transform scale-75 -translate-x-1/2 -translate-y-8 left-1/2 sm:scale-100 lg:hidden"
               width="640"
               height="784"
               fill="none"
@@ -87,7 +67,9 @@
             </svg>
             <div class="relative w-full mx-auto lg:max-w-md">
               <p class="relative block w-full text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl">
-                {{ statementSection.description }}
+                Nigeria has a huge population under the poverty line and a lack of access to proper education. We took
+                the initiative of addressing this major problem in these underprivileged communities by helping to
+                educate, empower and improve the lives of many.
               </p>
             </div>
           </div>

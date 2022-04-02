@@ -18,12 +18,6 @@ export default {
   },
   components: { ContactForm, AddressSection },
   head() {
-    let cause = {
-      title: this.cause.attributes.title,
-      createdAt: formatDate(this.cause.attributes.createdAt),
-      goal: this.cause.attributes.dynamicZone[0].goal,
-    }
-
     return {
       title: 'Contact us | An-nadaa educational foundation',
       meta: [

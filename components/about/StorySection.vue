@@ -52,12 +52,17 @@
         </svg>
         <div class="relative md:bg-white md:p-6">
           <div class="lg:grid lg:grid-cols-2 lg:gap-6">
-            <div
-              class="prose prose-lg text-gray-500 prose-primary lg:max-w-none"
-              v-html="storySection.description1"></div>
-            <div
-              class="mt-6 prose prose-lg text-gray-500 prose-primary lg:mt-0"
-              v-html="storySection.description2"></div>
+            <div class="prose prose-lg text-gray-500 prose-primary lg:max-w-none">
+              An-Nadaa started with the renovation of a single school building in 2014, since then it has grown into an
+              organisation that has established Awqaaf and executed many projects and is building the community through
+              education and welfare causes. An-Nadaa is an officially registered Non-Profit Organisation by the
+              Malaysian and Nigerian governments.
+            </div>
+            <div class="mt-6 prose prose-lg text-gray-500 prose-primary lg:mt-0">
+              Our causes aim to build self-sustaining communities in which people who were once in need of support
+              transform into someone who supports and uplifts others. Although we started off in Zaria city in Nigeria
+              our vision is to cover the whole country and one day reach the whole of Africa.
+            </div>
           </div>
         </div>
       </div>

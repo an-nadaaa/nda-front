@@ -63,19 +63,20 @@
         <!-- Content area -->
         <div class="pt-12 sm:pt-16 lg:pt-20">
           <h2 class="text-4xl tracking-tight text-gray-900 sm:text-5xl">
-            An-Nadaa is bringing a huge positive impact for the underprivileged communities in Nigeria.
+            Through education and welfare we uplift underprivileged communities in Nigeria.
           </h2>
           <div class="mt-6 space-y-6 text-gray-500">
             <p class="text-lg">
-              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
-              pellentesque. Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi vel
-              porttitor vitae ut. Amet vitae fames senectus vitae.
+              An-Nadaa started with the renovation of a single school building in 2014, since then it has grown into an
+              organisation that has established Awqaaf and executed many projects and is building the community through
+              Education and welfare causes.
             </p>
             <p class="text-base leading-7">
-              Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium
-              arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna. Sollicitudin tristique eros erat
-              odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra donec
-              ut volutpat donec laoreet quam urna.
+              We want to leave a legacy where the Muslim communities are self sufficient in a world Where schools and
+              universities nurture the leaders and torch bearers of the Ummah. Where medical treatment is
+              available/accessible for all. Where sisters have safe and exclusive educational and medical facilities.
+              Where sisters are empowered to raise Muslim leaders as role models for the next generations to come. Where
+              financial institutions are free from Ribaa and serve the community rather than draining it.
             </p>
           </div>
         </div>

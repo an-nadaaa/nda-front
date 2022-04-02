@@ -2,7 +2,7 @@
   <div class="relative z-10 mx-auto lg:mx-24">
     <div class="flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
       <div class="cursor-pointer">
-        <NuxtLink :to="localePath('/')" class="flex">
+        <NuxtLink :to="localePath('/')" class="flex cursor-pointer">
           <span class="sr-only">An-Nadaa</span>
           <img class="w-auto sm:w-full" src="~/static/logo.svg" alt="logo" />
         </NuxtLink>

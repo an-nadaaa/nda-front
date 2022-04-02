@@ -4,8 +4,7 @@
       <div class="lg:w-0 lg:flex-1">
         <h2 class="text-3xl tracking-tight text-white font-headers">Join our newsletter</h2>
         <p class="max-w-3xl mt-4 text-lg text-primary-200">
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt amet
-          fugiat.
+          Get the latest new projects, updates on ongoing causes and new lectures right into your inbox.
         </p>
       </div>
       <div class="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1">
@@ -17,13 +16,11 @@
             type="email"
             autocomplete="email"
             required
-            class="w-full px-5 py-3 placeholder-gray-500 border-white rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white"
-            placeholder="Enter your email"
-          />
+            class="w-full px-5 py-3 placeholder-gray-500 border-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white"
+            placeholder="Enter your email" />
           <button
             type="submit"
-            class="flex items-center justify-center w-full px-5 py-3 mt-3 text-base font-medium text-white border border-transparent rounded-md  bg-primary-600 hover:bg-primary-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
-          >
+            class="flex items-center justify-center w-full px-5 py-3 mt-3 text-base font-medium text-white border border-transparent rounded-md bg-primary-600 hover:bg-primary-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0">
             Subscribe
           </button>
         </form>

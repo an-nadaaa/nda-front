@@ -11,7 +11,9 @@
               <dl class="mt-2 text-base text-gray-500">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd>salam@an-nadaa.com</dd>
+                  <dd>
+                    <a href="mailto:salam@an-nadaa.com">salam@an-nadaa.com</a>
+                  </dd>
                 </div>
                 <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
@@ -25,7 +27,9 @@
               <dl class="mt-2 text-base text-gray-500">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd>media@an-nadaa.com</dd>
+                  <dd>
+                    <a href="mailto:media@an-nadaa.com">media@an-nadaa.com</a>
+                  </dd>
                 </div>
                 <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
@@ -39,7 +43,9 @@
               <dl class="mt-2 text-base text-gray-500">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd>tech@an-nadaa.com</dd>
+                  <dd>
+                    <a href="mailto:tech@an-nadaa.com">tech@an-nadaa.com</a>
+                  </dd>
                 </div>
                 <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
@@ -53,7 +59,9 @@
               <dl class="mt-2 text-base text-gray-500">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd>career@an-nadaa.com</dd>
+                  <dd>
+                    <a href="mailto:volunteer@an-nadaa.com">volunteer@an-nadaa.com</a>
+                  </dd>
                 </div>
                 <!-- <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
