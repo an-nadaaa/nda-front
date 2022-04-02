@@ -474,7 +474,7 @@ export default {
       sortFilters: [
         {
           text: 'Featured',
-          filter: 'base.featured:desc',
+          filter: 'featured:desc',
         },
         {
           text: 'Newest',

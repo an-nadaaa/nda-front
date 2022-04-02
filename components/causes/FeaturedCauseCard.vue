@@ -46,7 +46,7 @@
             </span>
           </div>
           <div :class="`mt-3 text-xl font-semibold text-white  ${index === 0 ? 'lg:text-5xl' : 'lg:text-3xl'}`">
-            {{ cause.attributes.base.title }}
+            {{ cause.attributes.title }}
           </div>
           <section class="mt-8">
             <div
@@ -57,7 +57,7 @@
 
             <div class="relative text-lg font-medium text-white md:flex-grow">
               <p class="relative line-clamp-4">
-                {{ cause.attributes.base.description }}
+                {{ cause.attributes.description }}
               </p>
             </div>
 

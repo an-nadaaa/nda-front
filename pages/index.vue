@@ -54,6 +54,9 @@ export default {
               $eq: false,
             },
           },
+          private: {
+            $eq: false,
+          },
           environment: {
             $eq: process.env.NODE_ENV,
           },
@@ -92,6 +95,9 @@ export default {
             featured: {
               $eq: true,
             },
+          },
+          private: {
+            $eq: false,
           },
           environment: {
             $eq: process.env.NODE_ENV,

@@ -23,10 +23,10 @@
 
         <div class="block mt-2">
           <p class="text-xl font-semibold text-gray-900">
-            {{ cause.attributes.base.title }}
+            {{ cause.attributes.title }}
           </p>
           <p class="mt-3 text-base text-gray-500">
-            {{ cause.attributes.base.description }}
+            {{ cause.attributes.description }}
           </p>
         </div>
       </div>

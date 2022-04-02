@@ -5,7 +5,7 @@
       <div class="px-4 mx-auto sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:px-8">
         <div class="flex items-center space-x-5">
           <div>
-            <h1 class="mb-2 text-4xl font-bold text-gray-900">{{ cause.attributes.base.title }}</h1>
+            <h1 class="mb-2 text-4xl font-bold text-gray-900">{{ cause.attributes.title }}</h1>
             <p class="text-sm font-medium text-gray-500">
               Created on
               <time datetime="2020-08-25">{{ formatDate(cause.attributes.createdAt) }}</time>
@@ -35,13 +35,11 @@
             <h2 id="donation-section" class="mb-3 text-2xl font-semibold text-gray-900">Donations</h2>
             <span
               :class="`inline-flex items-center px-2.5 py-0.5 rounded-md text-md mb-3 font-medium ${
-                cause.attributes.base.closed ? 'bg-gary-100 text-gray-800' : 'bg-green-100 text-green-800'
+                cause.attributes.closed ? 'bg-gary-100 text-gray-800' : 'bg-green-100 text-green-800'
               }`">
-              <Component
-                class="-ml-0.5 mr-1.5 w-5 h-5"
-                :is="cause.attributes.base.closed ? 'LockIcon' : 'LockOpenIcon'" />
+              <Component class="-ml-0.5 mr-1.5 w-5 h-5" :is="cause.attributes.closed ? 'LockIcon' : 'LockOpenIcon'" />
 
-              {{ cause.attributes.base.closed ? 'Closed' : 'Open' }}
+              {{ cause.attributes.closed ? 'Closed' : 'Open' }}
             </span>
             <div
               v-if="cause.attributes.dynamicZone[0].goal && cause.attributes.dynamicZone[0].goal !== 0"
@@ -124,7 +122,7 @@
               </div>
               <div class="px-4 py-5 border-t border-gray-200 sm:px-6">
                 <h3 class="text-2xl font-semibold">Overview</h3>
-                <div class="prose lg:prose-lg" v-html="cause.attributes.base.description"></div>
+                <div class="prose lg:prose-lg" v-html="cause.attributes.description"></div>
               </div>
               <div class="p-6">
                 <span
@@ -315,7 +313,7 @@ export default {
         : 0
     },
     body() {
-      return sanitizeHtml(marked.parse(this.cause.attributes.base.body))
+      return sanitizeHtml(marked.parse(this.cause.attributes.body))
     },
     images() {
       return this.cause.attributes.gallery.data
@@ -333,9 +331,9 @@ export default {
   },
   head() {
     let cause = {
-      title: this.cause.attributes.base.title,
+      title: this.cause.attributes.title,
       goal: this.cause.attributes.dynamicZone[0].goal,
-      closed: this.cause.attributes.base.closed,
+      closed: this.cause.attributes.closed,
     }
 
     return {

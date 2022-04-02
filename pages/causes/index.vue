@@ -73,7 +73,7 @@ export default {
                 },
               },
             },
-            sort: ['base.featured:desc', 'createdAt:desc'],
+            sort: ['featured:desc', 'createdAt:desc'],
             pagination: {
               page: 1,
               pageSize: PAGINATION_SIZE,
@@ -116,7 +116,7 @@ export default {
                 },
               },
             },
-            sort: ['base.featured:desc', 'createdAt:desc'],
+            sort: ['featured:desc', 'createdAt:desc'],
             pagination: {
               page: 1,
               pageSize: PAGINATION_SIZE,
@@ -153,8 +153,11 @@ export default {
               environment: {
                 $eq: process.env.NODE_ENV,
               },
+              private: {
+                $eq: false,
+              },
             },
-            sort: ['base.featured:desc', 'createdAt:desc'],
+            sort: ['featured:desc', 'createdAt:desc'],
             pagination: {
               page: 1,
               pageSize: PAGINATION_SIZE,
