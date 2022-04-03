@@ -49,7 +49,7 @@ exports.handler = async function (event, context) {
     return {
       statusCode: 500,
       headers,
-      error: JSON.stringify(error),
+      body: JSON.stringify(error),
     }
   }
 

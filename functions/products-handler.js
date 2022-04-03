@@ -21,7 +21,9 @@ exports.handler = async function (event, context) {
     return {
       statusCode: 405,
       headers,
-      message: 'Method Not Allowed',
+      body: JSON.stringify({
+        message: 'Method Not Allowed',
+      }),
     }
   }
 
@@ -52,7 +54,7 @@ exports.handler = async function (event, context) {
       return {
         statusCode: 500,
         headers,
-        error: JSON.stringify(error),
+        body: JSON.stringify(error),
       }
     }
 
@@ -88,7 +90,7 @@ exports.handler = async function (event, context) {
       return {
         statusCode: 500,
         headers,
-        error: JSON.stringify(error),
+        body: JSON.stringify(error),
       }
     }
     return {
