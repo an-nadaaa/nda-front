@@ -557,9 +557,6 @@ export default {
       return qs.stringify(
         {
           populate: {
-            base: {
-              populate: '*',
-            },
             dynamicZone: {
               populate: '*',
             },
@@ -577,24 +574,27 @@ export default {
             environment: {
               $eq: process.env.NODE_ENV,
             },
+            private: {
+              $eq: false,
+            },
             // conditionally add campaign or project filter based on query params
-            ...(this.$route.query.s === 'c'
-              ? {
-                  dynamicZone: {
-                    __component: {
-                      $eq: 'causes.campaign',
-                    },
-                  },
-                }
-              : this.$route.query.s === 'p'
-              ? {
-                  dynamicZone: {
-                    __component: {
-                      $eq: 'causes.project',
-                    },
-                  },
-                }
-              : {}),
+            // ...(this.$route.query.s === 'c'
+            //   ? {
+            //       dynamicZone: {
+            //         __component: {
+            //           $eq: 'causes.campaign',
+            //         },
+            //       },
+            //     }
+            //   : this.$route.query.s === 'p'
+            //   ? {
+            //       dynamicZone: {
+            //         __component: {
+            //           $eq: 'causes.project',
+            //         },
+            //       },
+            //     }
+            //   : {}),
             // conditionally add tags filter if there are any selected
             ...(this.tagsSelected.length > 0
               ? {

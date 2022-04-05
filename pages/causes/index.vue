@@ -47,9 +47,6 @@ export default {
         causesQuery = qs.stringify(
           {
             populate: {
-              base: {
-                populate: '*',
-              },
               dynamicZone: {
                 populate: '*',
               },
@@ -67,11 +64,14 @@ export default {
               environment: {
                 $eq: process.env.NODE_ENV,
               },
-              dynamicZone: {
-                __component: {
-                  $eq: 'causes.campaign',
-                },
+              private: {
+                $eq: false,
               },
+              // dynamicZone: {
+              //   __component: {
+              //     $eq: 'causes.campaign',
+              //   },
+              // },
             },
             sort: ['featured:desc', 'createdAt:desc'],
             pagination: {
@@ -90,9 +90,6 @@ export default {
         causesQuery = qs.stringify(
           {
             populate: {
-              base: {
-                populate: '*',
-              },
               dynamicZone: {
                 populate: '*',
               },
@@ -110,11 +107,14 @@ export default {
               environment: {
                 $eq: process.env.NODE_ENV,
               },
-              dynamicZone: {
-                __component: {
-                  $eq: 'causes.project',
-                },
+              private: {
+                $eq: false,
               },
+              // dynamicZone: {
+              //   __component: {
+              //     $eq: 'causes.project',
+              //   },
+              // },
             },
             sort: ['featured:desc', 'createdAt:desc'],
             pagination: {
@@ -133,9 +133,6 @@ export default {
         causesQuery = qs.stringify(
           {
             populate: {
-              base: {
-                populate: '*',
-              },
               dynamicZone: {
                 populate: '*',
               },

@@ -32,9 +32,6 @@ export default {
     const causeQuery = qs.stringify(
       {
         populate: {
-          base: {
-            populate: '*',
-          },
           dynamicZone: {
             populate: '*',
           },
@@ -49,10 +46,8 @@ export default {
           },
         },
         filters: {
-          base: {
-            featured: {
-              $eq: false,
-            },
+          featured: {
+            $eq: false,
           },
           private: {
             $eq: false,
@@ -74,9 +69,6 @@ export default {
     const featuredQuery = qs.stringify(
       {
         populate: {
-          base: {
-            populate: '*',
-          },
           dynamicZone: {
             populate: '*',
           },
@@ -91,10 +83,8 @@ export default {
           },
         },
         filters: {
-          base: {
-            featured: {
-              $eq: true,
-            },
+          featured: {
+            $eq: true,
           },
           private: {
             $eq: false,
