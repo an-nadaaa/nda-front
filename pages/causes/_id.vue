@@ -104,6 +104,14 @@
                   </button>
                 </div>
               </form>
+              <div class="flex justify-center w-full">
+                <NuxtLink
+                  class="inline-flex px-3 py-1 my-4 rounded-lg bg-primary-100 text-primary-700 hover:bg-primary-700 hover:text-primary-100"
+                  :to="localePath('/direct')">
+                  <span>Direct Transfer</span>
+                  <ArrowNarrowRightIcon />
+                </NuxtLink>
+              </div>
             </ClientOnly>
           </div>
         </aside>
@@ -200,6 +208,14 @@
           </button>
         </div>
       </form>
+      <div class="flex justify-center w-full">
+        <NuxtLink
+          class="inline-flex px-3 py-1 my-4 rounded-lg bg-primary-100 text-primary-700 hover:bg-primary-700 hover:text-primary-100"
+          :to="localePath('/direct')">
+          <span>Direct Transfer</span>
+          <ArrowNarrowRightIcon />
+        </NuxtLink>
+      </div>
     </ClientOnly>
   </div>
 </template>
@@ -213,13 +229,14 @@ import CoolLightBox from 'vue-cool-lightbox'
 import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
-
+import { ArrowNarrowRightIcon } from 'vue-tabler-icons'
 export default {
   components: {
     MoonLoader,
     LockIcon,
     LockOpenIcon,
     CoolLightBox,
+    ArrowNarrowRightIcon,
   },
   layout: 'cause',
   async asyncData({ $axios, app, params, error }) {
