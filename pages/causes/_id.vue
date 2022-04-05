@@ -149,7 +149,7 @@
                   <CoolLightBox :items="images" :index="index" :useZoomBar="true" @close="index = null" />
                   <div class="flex px-6 py-1 overflow-y-scroll">
                     <div
-                      class="h-40 mx-[2px] aspect-square cursor-pointer"
+                      class="h-40 mx-[2px] aspect-square cursor-pointer bg-cover bg-center"
                       v-for="(image, imageIndex) in images"
                       :key="imageIndex"
                       @click="index = imageIndex"
@@ -227,9 +227,6 @@ export default {
     const causeQuery = qs.stringify(
       {
         populate: {
-          base: {
-            populate: '*',
-          },
           dynamicZone: {
             populate: '*',
           },
