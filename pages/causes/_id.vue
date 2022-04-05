@@ -208,7 +208,7 @@
           </button>
         </div>
       </form>
-      <div class="flex justify-center w-full">
+      <div class="flex justify-center w-full lg:hidden">
         <NuxtLink
           class="inline-flex px-3 py-1 my-4 rounded-lg bg-primary-100 text-primary-700 hover:bg-primary-700 hover:text-primary-100"
           :to="localePath('/direct')">
