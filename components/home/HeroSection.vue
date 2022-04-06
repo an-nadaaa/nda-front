@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-contain lg:h-screen" :style="`background-image: url(${bgUrl})`">
+  <section class="bg-cover lg:h-screen" :style="`background-image: url(${bgUrl})`">
     <div v-show="!showPlayer" class="w-full pt-16 pb-20 mx-auto text-center lg:mx-24 max-w-7xl lg:py-48 lg:text-left">
       <div class="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
         <h1 class="text-4xl text-white font-headers sm:text-5xl md:text-6xl xl:text-7xl">
@@ -42,8 +42,7 @@ export default {
   },
   data() {
     return {
-      bgUrl:
-        'https://images.unsplash.com/photo-1500206329404-5057e0aefa48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2352&q=80',
+      bgUrl: 'media/img/Sectionhero.png',
       videoLocation: HERO_CONTENT['en'].location,
       showPlayer: false,
     }
