@@ -1,5 +1,5 @@
 ---
-value: 33
-name: Masjids
-action: Built
+value: 10000
+name: Zakat
+action: Beneficial
 ---

@@ -3,7 +3,7 @@
     <HeroSection />
     <LogoCloud />
     <HomeStorySection />
-    <StatsSection :metrics="metrics" />
+    <MetricsSection :metrics="metrics" />
     <FeaturedCampaigns :featured-causes="featuredCauses" />
     <CampaignsSection :causes="causes" />
     <DonateSection />

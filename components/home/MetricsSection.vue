@@ -23,7 +23,7 @@
         </p>
         <div class="grid grid-cols-1 mt-12 justify-items-center lg:justify-items-start gap-y-12 gap-x-6 sm:grid-cols-2">
           <p class="text-center lg:text-left" v-for="item in metrics" :key="item.id">
-            <span class="block font-semibold text-white text-7xl">{{ item.value }}</span>
+            <span class="block font-semibold text-white text-7xl">{{ formatNumber(item.value) }}</span>
             <span class="block mt-1 text-base text-gray-300"
               ><span class="font-medium text-white">{{ item.name }}</span> {{ item.action }}</span
             >
@@ -42,6 +42,11 @@ export default {
       metricsUrl:
         'https://images.unsplash.com/photo-1489573280374-2e193c63726c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2340&q=80',
     }
+  },
+  methods: {
+    formatNumber(value) {
+      return new Intl.NumberFormat(this.$i18n.locale, { notation: 'compact' }).format(value)
+    },
   },
 }
 </script>
