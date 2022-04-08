@@ -24,7 +24,14 @@
               <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">Support</h3>
               <ul v-for="(sp, i) in support" :key="i" role="list" class="mt-4 space-y-4">
                 <li>
-                  <NuxtLink :to="localePath(sp.link)" class="text-base text-gray-200 hover:text-primary-500">
+                  <a
+                    v-if="sp.external"
+                    :href="sp.link"
+                    target="_blank"
+                    class="text-base text-gray-200 hover:text-primary-500">
+                    <span>{{ sp.title }} </span><ExternalLinkIcon />
+                  </a>
+                  <NuxtLink v-else :to="localePath(sp.link)" class="text-base text-gray-200 hover:text-primary-500">
                     {{ sp.title }}
                   </NuxtLink>
                 </li>
@@ -79,6 +86,7 @@ import {
   BrandInstagramIcon,
   BrandTelegramIcon,
   BrandSpotifyIcon,
+  ExternalLinkIcon,
 } from 'vue-tabler-icons'
 
 export default {
@@ -87,6 +95,7 @@ export default {
     BrandLinkedinIcon,
     BrandFacebookIcon,
     BrandYoutubeIcon,
+    ExternalLinkIcon,
   },
   data() {
     return {
@@ -133,7 +142,8 @@ export default {
         },
         {
           title: 'API Status',
-          link: '#',
+          link: 'https://uptime.api.an-nadaa.com/status/system',
+          external: true,
         },
       ],
       causes: [

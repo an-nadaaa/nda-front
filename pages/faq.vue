@@ -19,9 +19,7 @@
           <dt class="text-base font-medium text-gray-900">
             {{ faq.question }}
           </dt>
-          <dd class="mt-3 text-sm text-gray-500">
-            {{ faq.answer }}
-          </dd>
+          <dd class="mt-3 text-sm prose text-gray-500" v-html="answer(i)"></dd>
         </div>
       </dl>
     </div>
@@ -29,6 +27,9 @@
 </template>
 
 <script>
+import { marked } from 'marked'
+import sanitizeHtml from 'sanitize-html'
+
 export default {
   async asyncData({ $content, error, app }) {
     const sortBy = {
@@ -45,7 +46,11 @@ export default {
 
     return { faqs }
   },
-
+  methods: {
+    answer(i) {
+      return sanitizeHtml(marked(this.faqs[i].answer))
+    },
+  },
   // addresses the most common questions
   head() {
     return {

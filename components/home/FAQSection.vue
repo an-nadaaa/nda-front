@@ -23,9 +23,7 @@
               </button>
             </dt>
             <dd v-show="currentIndex(i)" class="pr-12 mt-2" id="faq-0">
-              <p class="text-base text-gray-500">
-                {{ question.answer }}
-              </p>
+              <div class="text-base prose text-gray-500" v-html="answer(i)"></div>
             </dd>
           </div>
         </dl>
@@ -36,6 +34,8 @@
 
 <script>
 import { CirclePlusIcon, CircleMinusIcon } from 'vue-tabler-icons'
+import { marked } from 'marked'
+import sanitizeHtml from 'sanitize-html'
 
 export default {
   components: {
@@ -51,6 +51,9 @@ export default {
   methods: {
     currentIndex(i) {
       return i === this.current
+    },
+    answer(i) {
+      return sanitizeHtml(marked.parse(this.faqs[i].answer))
     },
   },
 }

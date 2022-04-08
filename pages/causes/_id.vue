@@ -230,6 +230,7 @@ import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
 import { ArrowNarrowRightIcon } from 'vue-tabler-icons'
+
 export default {
   components: {
     MoonLoader,
