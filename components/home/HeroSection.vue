@@ -35,6 +35,7 @@
 <script>
 import HERO_CONTENT from '~/content/site/home/hero_section.json'
 import { PlayerPlayIcon } from 'vue-tabler-icons'
+import bg from '../../assets/img/Sectionhero.png'
 
 export default {
   components: {
@@ -42,7 +43,7 @@ export default {
   },
   data() {
     return {
-      bgUrl: 'media/img/Sectionhero.png',
+      bgUrl: bg,
       videoLocation: HERO_CONTENT['en'].location,
       showPlayer: false,
     }
