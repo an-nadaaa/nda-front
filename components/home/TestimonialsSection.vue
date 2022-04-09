@@ -91,6 +91,12 @@
 
 <script>
 import { Hooper, Slide, Navigation as HooperNavigation, Pagination as HooperPagination } from 'hooper'
+import img1 from '../../assets/img/1.png'
+import img2 from '../../assets/img/2.png'
+import img3 from '../../assets/img/3.png'
+import img4 from '../../assets/img/4.png'
+import img5 from '../../assets/img/5.png'
+import img6 from '../../assets/img/6.png'
 
 export default {
   components: {
@@ -104,31 +110,31 @@ export default {
     return {
       images: [
         {
-          url: 'https://images.unsplash.com/photo-1602938922928-5bede7cc98cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fG5pZ2VyaWF8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
+          url: img1,
           alt: '',
         },
         {
-          url: 'https://images.unsplash.com/photo-1596788068873-9ffd5cacd4c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fG5pZ2VyaWF8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+          url: img2,
           alt: '',
         },
         {
-          url: 'https://images.unsplash.com/photo-1600383962708-4f28dcbce116?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1335&q=80',
+          url: img3,
           alt: '',
         },
         {
-          url: 'https://images.unsplash.com/photo-1579552905294-f538096bf873?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTk1fHxuaWdlcmlhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+          url: img4,
           alt: '',
         },
         {
-          url: 'https://images.unsplash.com/photo-1543335547-334c05de28c2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGFmcmljYXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60',
+          url: img5,
           alt: '',
         },
         {
-          url: 'https://images.unsplash.com/photo-1582125701129-8ada9192f824?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2144&q=80',
+          url: img6,
           alt: '',
         },
         {
-          url: 'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
+          url: img1,
           alt: '',
         },
       ],
@@ -158,11 +164,17 @@ export default {
   justify-content: center;
 }
 
+.hooper-pagination {
+  @apply top-56;
+}
+
 .hooper-indicator {
-  background-color: white;
+  /* background-color: white; */
+  @apply bg-gray-50 rounded-full w-2 h-2;
 }
 .hooper-indicator.is-active {
-  background-color: #06b6d4;
+  /* background-color: #06b6d4; */
+  @apply bg-primary-500;
 }
 
 .hooper-next > svg > path {
