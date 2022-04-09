@@ -20,11 +20,18 @@
             Raising: {{ formateAmount(cause.attributes.dynamicZone[0].goal) }}
           </div>
           <div
-            class="p-4 text-xl font-semibold rounded-md bg-primary-100 text-primary-700"
+            class="inline-flex items-center p-4 text-xl font-semibold rounded-md bg-primary-100 text-primary-700"
             v-if="cause.attributes.dynamicZone[0].__component === 'causes.project'">
-            Cost of {{ cause.attributes.dynamicZone[0].donation.action }}
-            {{ cause.attributes.dynamicZone[0].donation.value }} {{ cause.attributes.dynamicZone[0].donation.subject }}:
-            {{ cause.attributes.dynamicZone[0].donation.cost }}
+            <span
+              >Cost of {{ cause.attributes.dynamicZone[0].donation.action }}
+              {{ cause.attributes.dynamicZone[0].donation.value }}
+              {{ cause.attributes.dynamicZone[0].donation.subject }}:
+              {{ formateAmount(cause.attributes.dynamicZone[0].donation.cost) }}</span
+            >
+            <InfoCircleIcon
+              class="w-5 h-5 mx-1"
+              content="Some costs are to our best estimates and additional variable costs might need to be covered"
+              v-tippy="{ placement: 'top' }" />
           </div>
         </div>
       </div>
@@ -229,7 +236,11 @@ import CoolLightBox from 'vue-cool-lightbox'
 import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
-import { ArrowNarrowRightIcon } from 'vue-tabler-icons'
+import { ArrowNarrowRightIcon, InfoCircleIcon } from 'vue-tabler-icons'
+import 'tippy.js/themes/light.css'
+import 'tippy.js/themes/light-border.css'
+import 'tippy.js/themes/google.css'
+import 'tippy.js/themes/translucent.css'
 
 export default {
   components: {
@@ -238,6 +249,7 @@ export default {
     LockOpenIcon,
     CoolLightBox,
     ArrowNarrowRightIcon,
+    InfoCircleIcon,
   },
   layout: 'cause',
   async asyncData({ $axios, app, params, error }) {

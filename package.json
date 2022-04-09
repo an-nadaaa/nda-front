@@ -35,7 +35,8 @@
     "v-click-outside": "^3.1.2",
     "vue-cool-lightbox": "^2.7.4",
     "vue-spinner": "^1.0.4",
-    "vue-tabler-icons": "^1.0"
+    "vue-tabler-icons": "^1.0",
+    "vue-tippy": "v4"
   },
   "devDependencies": {
     "@nuxt/postcss8": "^1.1.3",

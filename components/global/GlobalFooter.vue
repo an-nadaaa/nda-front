@@ -28,8 +28,8 @@
                     v-if="sp.external"
                     :href="sp.link"
                     target="_blank"
-                    class="text-base text-gray-200 hover:text-primary-500">
-                    <span>{{ sp.title }} </span><ExternalLinkIcon />
+                    class="inline-flex text-base text-gray-200 hover:text-primary-500">
+                    <span>{{ sp.title }} </span><ExternalLinkIcon class="w-5 h-5 mx-1" />
                   </a>
                   <NuxtLink v-else :to="localePath(sp.link)" class="text-base text-gray-200 hover:text-primary-500">
                     {{ sp.title }}

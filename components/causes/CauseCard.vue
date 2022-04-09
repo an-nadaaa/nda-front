@@ -36,6 +36,14 @@
         class="h-2 my-3 overflow-hidden bg-gray-200 rounded-full">
         <div class="h-2 bg-yellow-400 rounded-full" :style="`width: ${percentage}%`"></div>
       </div>
+      <div v-else class="inline-flex items-center my-3 text-green-800 bg-green-100 px-2.5 py-0.5 rounded-md">
+        <span class="">Project </span
+        ><InfoCircleIcon
+          class="w-5 h-5 mx-1"
+          content="Projects can either have an
+        indefinite duration (always open for donations) or an indefinite cost eg: Zakat"
+          v-tippy="{ placement: 'right' }" />
+      </div>
 
       <div class="flex items-center mt-6">
         <div>
@@ -50,10 +58,17 @@
               {{ currencySymbol }}{{ Intl.NumberFormat().format(cause.attributes.dynamicZone[0].goal) }} Raised
             </span>
           </div>
-          <div v-else class="flex space-x-1 text-base text-gray-500">
-            Cost of {{ cause.attributes.dynamicZone[0].donation.action }}
-            {{ cause.attributes.dynamicZone[0].donation.value }} {{ cause.attributes.dynamicZone[0].donation.subject }}:
-            {{ cause.attributes.dynamicZone[0].donation.cost }}
+          <div v-else-if="cause.attributes.dynamicZone[0].donation" class="flex space-x-1 text-base text-gray-500">
+            <span
+              >Cost of {{ cause.attributes.dynamicZone[0].donation.action }}
+              {{ cause.attributes.dynamicZone[0].donation.value }}
+              {{ cause.attributes.dynamicZone[0].donation.subject }}:
+              {{ formateAmount(cause.attributes.dynamicZone[0].donation.cost) }}
+            </span>
+            <InfoCircleIcon
+              class="w-5 h-5 mx-1"
+              content="Some costs are to our best estimates and additional variable costs might need to be covered"
+              v-tippy="{ placement: 'right' }" />
           </div>
         </div>
       </div>
@@ -62,13 +77,29 @@
 </template>
 
 <script>
-import { CURRENCY_SYMBOL } from '@/config/config'
+import { CURRENCY_NAME } from '@/config/config'
+import { InfoCircleIcon } from 'vue-tabler-icons'
+import 'tippy.js/themes/light.css'
+import 'tippy.js/themes/light-border.css'
+import 'tippy.js/themes/google.css'
+import 'tippy.js/themes/translucent.css'
 
 export default {
+  components: {
+    InfoCircleIcon,
+  },
   props: {
     cause: {
       require: true,
       type: Object,
+    },
+  },
+  methods: {
+    formateAmount(amount) {
+      return new Intl.NumberFormat(this.$i18n.locale, {
+        style: 'currency',
+        currency: CURRENCY_NAME,
+      }).format(amount)
     },
   },
   computed: {
@@ -76,9 +107,6 @@ export default {
       return this.cause.attributes.dynamicZone[0].goal
         ? (this.cause.attributes.dynamicZone[0].raised * 100) / this.cause.attributes.dynamicZone[0].goal
         : 0
-    },
-    currencySymbol() {
-      return CURRENCY_SYMBOL
     },
   },
 }
