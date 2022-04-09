@@ -21,7 +21,10 @@
           </div>
           <div
             class="inline-flex items-center p-4 text-xl font-semibold rounded-md bg-primary-100 text-primary-700"
-            v-if="cause.attributes.dynamicZone[0].__component === 'causes.project'">
+            v-if="
+              cause.attributes.dynamicZone[0].__component === 'causes.project' &&
+              cause.attributes.dynamicZone[0].donation
+            ">
             <span
               >Cost of {{ cause.attributes.dynamicZone[0].donation.action }}
               {{ cause.attributes.dynamicZone[0].donation.value }}
