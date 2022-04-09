@@ -52,7 +52,8 @@
           </div>
         </div>
         <div class="mt-8 lg:mt-0">
-          <div class="mx-auto text-base max-w-prose lg:max-w-none">
+          <div class="prose prose-lg text-gray-500" v-html="prosefy(shaykhBio)"></div>
+          <!-- <div class="mx-auto text-base max-w-prose lg:max-w-none">
             <p class="text-lg text-gray-500">
               Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
               pellentesque. Blandit amet, sed aenean erat arcu morbi.
@@ -80,17 +81,7 @@
               faucibus semper. Pellentesque in venenatis vestibulum consectetur nibh id. In id ut tempus egestas. Enim
               sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.
             </p>
-            <!-- <h3>How we helped</h3>
-            <p>
-              Tincidunt integer commodo, cursus etiam aliquam neque, et. Consectetur pretium in volutpat, diam. Montes,
-              magna cursus nulla feugiat dignissim id lobortis amet. Laoreet sem est phasellus eu proin massa, lectus.
-              Diam rutrum posuere donec ultricies non morbi. Mi a platea auctor mi.
-            </p>
-            <p>
-              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
-              pellentesque. Blandit amet, sed aenean erat arcu morbi.
-            </p> -->
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -100,6 +91,8 @@
 <script>
 import { CameraIcon } from 'vue-tabler-icons'
 import * as SHAYKH_SECTION from '~/content/site/about/shaykh_section.json'
+import { marked } from 'marked'
+import sanitizeHtml from 'sanitize-html'
 
 export default {
   components: {
@@ -108,7 +101,30 @@ export default {
   data() {
     return {
       shaykhSection: SHAYKH_SECTION.en,
+      shaykhBio: `<p className="lead">
+  Dr. Ibrahim Nuhu Tahir is the founder of An-Nadaa Educational Foundation. He personally supervises and monitors all the activities of the foundation to ensure that they are in line with the rules of Allah, objectives of the organization and maximise the benefit for the community. All this while also ensuring the rights of the donors, partners and beneficiaries are not violated in any way.
+</p>
+
+### Early Years
+Dr. Ibrahim Nuhu Tahir was born and raised in Nigeria. Sheikh started his Islamic education from a young age in the classical way with his father Dr. Nuhu Tahir (may Allah preserve him) and other scholars in that region. He completed his memorization at a young age and learnt different Islamic Sciences like Fiqh, Uloom ul Quran & hadith from his hometown and surrounding areas.
+
+Sheikh Ibrahim enjoys being around children which is why he started off as a primary School headmaster at Raudatul Qur’an School in Zaria city of Nigeria.
+
+### Madinah Education
+He was then accepted into the International Islamic University, Madinah. He graduated from the Dept of Shariah at the top of his class with his Bachelors in Shariah and Islamic Studies. He then followed that up with a Postgraduate Diploma (first class of honours) in Islamic Law and Islamic Political Science. Sheikh Ibrahim benefited greatly from his stay in this blessed city learning a lot from the knowledge and tarbiya of the scholars. This is where the idea of An-Nadaa was first developed.
+
+### Malaysia
+He then went on to complete his masters and PhD from Islamic International University of Malaysia. While he was doing his PhD he was also a teacher and the head of Islamic department in the International Islamic School Malaysia. After completing his PhD sheikh was invited to join the department of Economics and Management Sciences where he is now an associate professor. He is also a research fellow at the Center for Islamic Economics. Sheikh Ibrahim has also been invited by the Islamic Economic Club- Kuwait to conduct series of lectures on Islamic Economics and Fiqh. He has many articles and publications in research journals and conferences on a range of topics including, Business coaching, Cryptocurrencies, Waqf, Zakat management
+
+In addition to his official teaching and research responsibilities sheikh Ibrahim also constantly engages with the community especially the youth to spread the knowledge and the tarbiyyah of the deen. He conducts classes in Fiqh, Seerah, Akhlaaq, Tafseer, Faraid, essential knowledge for new muslims and also delivers Jumma Khutbah in IIUM Shah mosque. Sheikh Ibrahim also holds advisory roles with many organisations and student bodies.
+
+Sheikh Ibrahim allots a lot of his free time, and many times sacrifices his own family time, to cater to the religious needs of Muslim youth who would otherwise not have any access to students of knowledge. With his deep knowledge coupled with extreme humility, Sheikh Ibrahim has significantly single-handedly developed Islam in the lives of hundreds if not thousands of Muslim youth.`,
     }
+  },
+  methods: {
+    prosefy(content) {
+      return sanitizeHtml(marked.parse(content))
+    },
   },
 }
 </script>

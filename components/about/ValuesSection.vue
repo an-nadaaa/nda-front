@@ -6,7 +6,8 @@
         {{ valueSection.subtitle }}
       </h3>
       <p class="mx-auto mt-5 text-xl text-gray-500 max-w-prose">
-        {{ valueSection.description }}
+        <!-- {{ valueSection.description }} -->
+        We are committed to improving the lives of others. We believe that education is the key to a brighter future.
       </p>
       <div class="mt-12">
         <div v-if="features.length > 0" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -15,16 +16,7 @@
               <div class="-mt-6">
                 <div>
                   <span
-                    class="
-                      inline-flex
-                      items-center
-                      justify-center
-                      p-3
-                      rounded-md
-                      shadow-lg
-                      text-primary-500
-                      bg-primary-100
-                    ">
+                    class="inline-flex items-center justify-center p-3 rounded-md shadow-lg text-primary-500 bg-primary-100">
                     <component :is="feature.icon" class="w-6 h-6" aria-hidden="true" />
                   </span>
                 </div>
@@ -40,23 +32,39 @@
 </template>
 
 <script>
-import { ListSearchIcon, LockAccessIcon, MedalIcon } from 'vue-tabler-icons'
+import { BookIcon, LockAccessIcon, UserPlusIcon } from 'vue-tabler-icons'
 import * as VALUE_SECTION from '~/content/site/about/value_section.json'
 
 export default {
   components: {
-    ListSearchIcon,
     LockAccessIcon,
-    MedalIcon,
+    BookIcon,
+    UserPlusIcon,
   },
   data() {
     return {
       valueSection: VALUE_SECTION.en,
-      features: [],
+      features: [
+        {
+          icon: LockAccessIcon,
+          title: 'Amanah',
+          description: 'Amanah (Trustworthiness) in every step of what we do',
+        },
+        {
+          icon: BookIcon,
+          title: 'Tarbiyah',
+          description: 'Tarbiyyah of the community through the pure teachings of quran & Sunnah',
+        },
+        {
+          icon: UserPlusIcon,
+          title: 'Community',
+          description: 'Community empowerment through self sufficiency.',
+        },
+      ],
     }
   },
   async mounted() {
-    this.features = await this.$content('values', this.$i18n.locale).fetch()
+    // this.features = await this.$content('values', this.$i18n.locale).fetch()
   },
 }
 </script>
