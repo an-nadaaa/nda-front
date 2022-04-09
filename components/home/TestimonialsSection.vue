@@ -6,7 +6,7 @@
           <div class="relative pt-16 pb-16 sm:pb-24">
             <div class="sm:w-1/2">
               <blockquote>
-                <Hooper :infiniteScroll="true" :autoPlay="true" :playSpeed="2000">
+                <Hooper :infiniteScroll="true" :autoPlay="true" :playSpeed="7000">
                   <Slide class="slide" v-for="testimonial in testimonials" :key="testimonial.name">
                     <div>
                       <svg
