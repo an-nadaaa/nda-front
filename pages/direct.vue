@@ -1,7 +1,26 @@
 <template>
-  <section class="w-full mx-auto my-12 lg:max-w-2xl">
+  <section class="w-full p-6 mx-auto my-12 lg:max-w-2xl">
     <h1 class="text-4xl text-center">Direct Transfer</h1>
-    <p class="mb-24 text-center text-gray-500">For direct transfer please refer to the information below.</p>
+    <p class="mb-4 text-center text-gray-500">For direct transfer please refer to the information below.</p>
+
+    <div class="p-4 mb-24 border-l-4 border-primary-400 bg-primary-50">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <InfoCircleIcon class="w-5 h-5 text-primary-400" aria-hidden="true" />
+        </div>
+        <div class="ml-3">
+          <p class="text-primary-700">
+            When doing a direct transfer we need our donors to send us an email detailing the purpose of the donation
+            and a proof of transfer especially if it's for Zakat purpose.
+            {{ ' ' }}
+            <NuxtLink :to="localePath('/contact')" class="font-medium underline text-primary-700 hover:text-primary-600"
+              >Contact information can be found here
+            </NuxtLink>
+          </p>
+        </div>
+      </div>
+    </div>
+
     <div>
       <h2 class="text-2xl font-medium leading-6 text-gray-900">Nigeria Dollar Account</h2>
       <p class="mt-1 text-sm text-gray-500">You can transfer funds directly to our bank account in Nigeria (USD).</p>
@@ -20,7 +39,7 @@
       </fieldset>
     </div>
 
-    <div class="w-full mx-auto my-12 lg:max-w-2xl">
+    <div>
       <h2 class="text-2xl font-medium leading-6 text-gray-900">Malaysian Ringgit Account</h2>
       <p class="mt-1 text-sm text-gray-500">You can transfer funds directly to our bank account in Malaysia (MYR).</p>
       <fieldset class="mt-2">
@@ -48,7 +67,12 @@
 </template>
 
 <script>
+import { InfoCircleIcon } from 'vue-tabler-icons'
+
 export default {
+  components: {
+    InfoCircleIcon,
+  },
   data() {
     return {
       nigeria: [
