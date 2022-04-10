@@ -4,7 +4,7 @@ import { COLOR_MODE_FALLBACK } from './utils/globals.js'
 export default {
   target: 'static',
   generate: {
-    exclude: [/^\/causes\/\d+/],
+    exclude: [/^\/causes/],
     fallback: true,
   },
   components: true,
