@@ -172,12 +172,24 @@
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                     <a href="#" class="block p-3 -m-3 rounded-md hover:bg-gray-50">
-                      <p class="text-base font-medium text-gray-900">Blog</p>
+                      <p class="text-base font-medium text-gray-900">
+                        <span>Blog</span>
+                        <span
+                          class="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-primary-100 text-primary-800">
+                          Coming Soon
+                        </span>
+                      </p>
                       <p class="mt-1 text-sm text-gray-500">See the most recent educative posts.</p>
                     </a>
 
                     <a href="#" class="block p-3 -m-3 rounded-md hover:bg-gray-50">
-                      <p class="text-base font-medium text-gray-900">Lectures</p>
+                      <p class="text-base font-medium text-gray-900">
+                        <span>Lectures</span>
+                        <span
+                          class="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-primary-100 text-primary-800">
+                          Coming Soon
+                        </span>
+                      </p>
                       <p class="mt-1 text-sm text-gray-500">Brows through the lectures and videos of Shaykh Ibrahim.</p>
                     </a>
                   </div>
@@ -308,11 +320,19 @@
             </NuxtLink>
 
             <NuxtLink :to="localePath('/blog')" class="text-base font-medium text-gray-900 hover:text-gray-700">
-              Blogs
+              <span>Blogs</span>
+              <span
+                class="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-primary-100 text-primary-800">
+                Soon
+              </span>
             </NuxtLink>
 
             <NuxtLink :to="localePath('/lectures')" class="text-base font-medium text-gray-900 hover:text-gray-700">
-              Lectures
+              <span>Lectures</span>
+              <span
+                class="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-primary-100 text-primary-800">
+                Soon
+              </span>
             </NuxtLink>
 
             <NuxtLink :to="localePath('/faq')" class="text-base font-medium text-gray-900 hover:text-gray-700">
