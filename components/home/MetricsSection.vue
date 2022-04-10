@@ -16,7 +16,7 @@
     <div
       class="max-w-4xl px-4 mx-auto lg:mx-24 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
       <div class="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
-        <h2 class="text-sm font-semibold tracking-wide uppercase text-primary-300">Valuable Metrics</h2>
+        <h2 class="text-sm font-semibold tracking-wide uppercase text-primary-300">Our Achievements</h2>
         <h3 class="mt-3 text-5xl text-white">Since 2014 we have come a long way</h3>
         <p class="mt-5 text-lg text-gray-300">
           We are committed to making a lasting difference in the lives of people.
@@ -29,6 +29,7 @@
             >
           </p>
         </div>
+        <div class="absolute right-0 text-sm italic text-gray-300">*As of Sept 2021</div>
       </div>
     </div>
   </div>

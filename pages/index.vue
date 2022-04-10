@@ -4,8 +4,10 @@
     <LogoCloud />
     <HomeStorySection />
     <MetricsSection :metrics="metrics" />
-    <FeaturedCampaigns :featured-causes="featuredCauses" />
-    <CampaignsSection :causes="causes" />
+    <ClientOnly>
+      <FeaturedCampaigns :featured-causes="featuredCauses" />
+      <CampaignsSection :causes="causes" />
+    </ClientOnly>
     <DonateSection />
     <TestimonialsSection :testimonials="testimonials" />
     <FAQSection :faqs="faqs" />

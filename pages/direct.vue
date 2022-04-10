@@ -39,7 +39,7 @@
       </fieldset>
     </div>
 
-    <div>
+    <div class="mt-2">
       <h2 class="text-2xl font-medium leading-6 text-gray-900">Malaysian Ringgit Account</h2>
       <p class="mt-1 text-sm text-gray-500">You can transfer funds directly to our bank account in Malaysia (MYR).</p>
       <fieldset class="mt-2">
