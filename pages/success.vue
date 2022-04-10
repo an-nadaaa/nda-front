@@ -10,12 +10,17 @@
       <div class="py-16">
         <div class="text-center">
           <p class="text-sm font-semibold tracking-wide uppercase text-primary-600">Success</p>
-          <h1 class="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">Thank you!</h1>
-          <p class="mt-2 text-base text-gray-500">Your donation have been well received Jazakoum Allahu khayran.</p>
+          <h1 class="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+            Jazakoum Allahu khayran.
+          </h1>
+          <div class="mt-2 text-base text-gray-500">
+            <p>May Allah accept and increase you in goodness.</p>
+            <p>Please share with your friends and family and make du'aa for the success of this project.</p>
+          </div>
           <div class="mt-6">
-            <NuxtLink :to="localePath('/causes')" class="text-base font-medium text-primary-600 hover:text-primary-500"
-              >Explore more causes<span aria-hidden="true"> &rarr;</span></NuxtLink
-            >
+            <NuxtLink :to="localePath('/causes')" class="text-base font-medium text-primary-600 hover:text-primary-500">
+              Explore more causes<span aria-hidden="true"> &rarr;</span>
+            </NuxtLink>
           </div>
         </div>
       </div>
