@@ -71,12 +71,15 @@
               organisation that has established Awqaaf and executed many projects and is building the community through
               Education and welfare causes.
             </p>
-            <p class="text-base leading-7">
-              We want to leave a legacy where the Muslim communities are self sufficient in a world Where schools and
-              universities nurture the leaders and torch bearers of the Ummah. Where medical treatment is
-              available/accessible for all. Where sisters have safe and exclusive educational and medical facilities.
-              Where sisters are empowered to raise Muslim leaders as role models for the next generations to come. Where
-              financial institutions are free from Ribaa and serve the community rather than draining it.
+            <p class="text-base leading-7 prose">
+              We want to leave a legacy where the Muslim communities are self sufficient in a world:
+              <ul>
+                <li>where schools and universities nurture the leaders and torch bearers of the Ummah.</li>
+                <li>Where medical treatment is available/accessible for all.</li>
+                <li>Where sisters have safe and exclusive educational and medical facilities.</li>
+                <li>Where sisters are empowered to raise Muslim leaders as role models for the next generations to come.</li>
+                <li>Where financial institutions are free from Ribaa and serve the community rather than draining it.</li>
+              </ul>
             </p>
           </div>
         </div>
