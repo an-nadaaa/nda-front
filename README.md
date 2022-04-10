@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/323e23c5-01dd-44b1-ad3a-60a954cc714f/deploy-status)](https://app.netlify.com/sites/an-nadaa/deploys)
 
-**[Live Demo](https://new.an-nadaa.com/)**
+**[Live Demo](https://an-nadaa.com/)**
 
 This repo contains the code of our website frontend.
 

@@ -101,7 +101,7 @@ export default {
     [
       'nuxt-social-meta',
       {
-        url: 'https://new.an-nadaa.com/',
+        url: 'https://an-nadaa.com/',
         title: 'An-nadaa project, build your hereafter today',
         site_name: 'An-nadaa Educational foundation',
         description:
@@ -197,6 +197,6 @@ export default {
   },
   sitemap: {
     // options
-    hostname: 'https://new.an-nadaa.com',
+    hostname: 'https://an-nadaa.com',
   },
 }
