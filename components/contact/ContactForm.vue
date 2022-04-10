@@ -7,8 +7,7 @@
         height="404"
         fill="none"
         viewBox="0 0 404 404"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <defs>
           <pattern
             id="85737c0e-0916-41d7-917f-596dc7edfa27"
@@ -16,8 +15,7 @@
             y="0"
             width="20"
             height="20"
-            patternUnits="userSpaceOnUse"
-          >
+            patternUnits="userSpaceOnUse">
             <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
           </pattern>
         </defs>
@@ -29,8 +27,7 @@
         height="404"
         fill="none"
         viewBox="0 0 404 404"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <defs>
           <pattern
             id="85737c0e-0916-41d7-917f-596dc7edfa27"
@@ -38,8 +35,7 @@
             y="0"
             width="20"
             height="20"
-            patternUnits="userSpaceOnUse"
-          >
+            patternUnits="userSpaceOnUse">
             <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
           </pattern>
         </defs>
@@ -53,8 +49,7 @@
         <form
           :action="`https://formsubmit.co/${email}`"
           method="POST"
-          class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-        >
+          class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
           <div>
             <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
             <div class="mt-1">
@@ -63,8 +58,7 @@
                 name="first-name"
                 id="first-name"
                 autocomplete="given-name"
-                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm  focus:ring-indigo-500 focus:border-indigo-500"
-              />
+                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
           </div>
           <div>
@@ -75,8 +69,7 @@
                 name="last-name"
                 id="last-name"
                 autocomplete="family-name"
-                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm  focus:ring-indigo-500 focus:border-indigo-500"
-              />
+                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
           </div>
           <div class="sm:col-span-2">
@@ -87,8 +80,7 @@
                 name="company"
                 id="company"
                 autocomplete="organization"
-                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm  focus:ring-indigo-500 focus:border-indigo-500"
-              />
+                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
           </div>
           <div class="sm:col-span-2">
@@ -99,8 +91,7 @@
                 name="email"
                 type="email"
                 autocomplete="email"
-                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm  focus:ring-indigo-500 focus:border-indigo-500"
-              />
+                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
           </div>
           <div class="sm:col-span-2">
@@ -111,8 +102,7 @@
                 name="phone"
                 type="tel"
                 autocomplete="tel"
-                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm  focus:ring-indigo-500 focus:border-indigo-500"
-              />
+                class="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
           </div>
           <div class="sm:col-span-2">
@@ -122,8 +112,7 @@
                 id="message"
                 name="message"
                 rows="4"
-                class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm  focus:ring-indigo-500 focus:border-indigo-500"
-              ></textarea>
+                class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
             </div>
           </div>
           <div class="sm:col-span-2">
@@ -160,8 +149,7 @@
             <input type="hidden" name="_template" value="box" />
             <button
               type="submit"
-              class="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm  bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-            >
+              class="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
               Send
             </button>
           </div>
@@ -172,13 +160,10 @@
 </template>
 
 <script>
-import * as SITE_INFO from '~/content/site/info.json'
-const email = process.env.NODE_ENV === 'production' ? SITE_INFO.contact : 'tech@an-nadaa.com'
-
 export default {
   data() {
     return {
-      email: email,
+      email: 'b9a6d9877fa1aca555140617b2ec027b',
     }
   },
 }
