@@ -1,9 +1,8 @@
 import * as SITE_INFO from './content/site/info.json'
 import { COLOR_MODE_FALLBACK } from './utils/globals.js'
-import { libDirPath } from '@builder.io/partytown/utils'
+import { copyLibFiles, libDirPath } from '@builder.io/partytown/utils'
 import { promises as fsp } from 'fs'
 import { join } from 'path'
-import { cwd } from 'process'
 import serveStatic from 'serve-static'
 
 export default async () => {
@@ -56,7 +55,6 @@ export default async () => {
           hid: 'partytown-config',
           innerHTML: `partytown = {
             debug: ${process.env.NODE_ENV === 'production' ? 'false' : 'true'},
-            forward: ['hj', 'hj.q', 'hj.q.push', '_hjSettings'],
           }`,
         },
         { hid: 'partytown', innerHTML: partytownSnippet },
@@ -133,15 +131,35 @@ export default async () => {
       ],
     },
 
+    /*
+     ** Server Middleware configuration
+     ** See https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware#the-servermiddleware-property
+     */
+
     serverMiddleware:
       process.env.NODE_ENV === 'production'
         ? []
         : [
+            // Serve the partytown library directly from node_modules in development
             {
               path: '/~partytown/',
               handler: serveStatic(libDirPath()),
             },
           ],
+
+    /*
+
+    ** Hooks configuration
+    ** See https://nuxtjs.org/docs/configuration-glossary/configuration-hooks
+    */
+    hooks: {
+      build: {
+        async done(builder) {
+          // Copy partytown directory into the dist directory for production
+          await copyLibFiles(join('dist', '/~partytown/'), { debugDir: false })
+        },
+      },
+    },
     /*
      ** Build configuration
      */
