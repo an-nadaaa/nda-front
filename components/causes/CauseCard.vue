@@ -1,7 +1,7 @@
 <template>
-  <NuxtLink
-    class="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl"
-    :to="localePath(`/causes/${cause.id}`)">
+  <a
+    class="flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer hover:shadow-xl"
+    @click="goTo(`/causes/${cause.id}`)">
     <div class="flex-shrink-0">
       <img
         class="object-cover w-full h-64"
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-  </NuxtLink>
+  </a>
 </template>
 
 <script>
@@ -100,6 +100,13 @@ export default {
         style: 'currency',
         currency: CURRENCY_NAME,
       }).format(amount)
+    },
+    goTo(path) {
+      this.$router.push(this.localePath(path))
+      this.$segment.track('Cause Clicked', {
+        title: this.cause.attributes.title,
+        causeID: this.cause.id,
+      })
     },
   },
   computed: {

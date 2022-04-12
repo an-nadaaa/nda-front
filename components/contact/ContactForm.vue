@@ -49,6 +49,7 @@
         <form
           :action="`https://formsubmit.co/${email}`"
           method="POST"
+          id="contact-form"
           class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
           <div>
             <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
@@ -165,6 +166,10 @@ export default {
     return {
       email: 'b9a6d9877fa1aca555140617b2ec027b',
     }
+  },
+  mounted() {
+    const form = document.getElementById('contact-form')
+    analytics.trackForm(form, 'Contacted Us')
   },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="localePath(`/causes/${cause.id}`)" :class="`relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
+  <a @click="goTo(`/causes/${cause.id}`)" :class="`cursor-pointer relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
     <div
       v-if="index !== 2"
       aria-hidden="true"
@@ -98,7 +98,7 @@
         </div>
       </div>
     </div>
-  </NuxtLink>
+  </a>
 </template>
 
 <script>
@@ -129,6 +129,13 @@ export default {
         style: 'currency',
         currency: CURRENCY_NAME,
       }).format(amount)
+    },
+    goTo(path) {
+      this.$router.push(this.localePath(path))
+      this.$segment.track('Featured Cause Clicked', {
+        title: this.cause.attributes.title,
+        causeID: this.cause.id,
+      })
     },
   },
   computed: {

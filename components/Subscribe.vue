@@ -46,4 +46,11 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  mounted() {
+    const form = document.getElementById('mc-embedded-subscribe-form')
+    analytics.trackForm(form, 'Subscribed to newsletter')
+  },
+}
+</script>

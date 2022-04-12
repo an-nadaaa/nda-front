@@ -158,5 +158,8 @@ export default {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
     }
   },
+  mounted() {
+    this.$segment.page('Home')
+  },
 }
 </script>

@@ -46,6 +46,9 @@ export default {
 
     return { faqs }
   },
+  mounted() {
+    this.$segment.page('FAQ')
+  },
   methods: {
     answer(i) {
       return sanitizeHtml(marked(this.faqs[i].answer))

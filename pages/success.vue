@@ -27,3 +27,12 @@
     </main>
   </div>
 </template>
+
+<script>
+export default {
+  mounted() {
+    this.$segment.track('Donation Complete')
+    this.$segment.page('Jazakoum Allahou Khayran')
+  },
+}
+</script>

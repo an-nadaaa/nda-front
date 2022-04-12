@@ -13,7 +13,7 @@
                 class="flex items-start justify-between w-full text-left text-gray-400"
                 :aria-controls="`faq-${i}`"
                 aria-expanded="false"
-                @click="current = i">
+                @click="switchIndex(i)">
                 <span class="font-medium text-gray-900"> {{ question.question }} </span>
                 <span class="flex items-center ml-6 h-7">
                   <Component
@@ -49,6 +49,10 @@ export default {
     }
   },
   methods: {
+    switchIndex(i) {
+      this.current = i
+      this.$segment.track('FAQ clicked', { q: this.faqs[i].question })
+    },
     currentIndex(i) {
       return i === this.current
     },

@@ -114,13 +114,13 @@
                   </button>
                 </div>
               </form>
-              <div class="flex justify-center w-full">
-                <NuxtLink
+              <div class="justify-center hidden w-full lg:flex">
+                <button
                   class="inline-flex px-3 py-1 my-4 rounded-lg bg-primary-100 text-primary-700 hover:bg-primary-700 hover:text-primary-100"
-                  :to="localePath('/direct')">
+                  @click="goTo('/direct')">
                   <span>Direct Transfer</span>
                   <ArrowNarrowRightIcon />
-                </NuxtLink>
+                </button>
               </div>
             </ClientOnly>
           </div>
@@ -187,7 +187,7 @@
     <ClientOnly placeholder="Loading...">
       <form
         action="#"
-        class="sticky bottom-0 z-50 flex flex-col w-full px-6 py-3 mt-12 bg-white border-t border-gray-200 lg:hidden"
+        class="sticky z-50 flex flex-col w-full px-6 py-3 bg-white border-t border-gray-200 bottom-14 lg:hidden"
         @submit.prevent="donate">
         <div class="flex-1 min-w-0">
           <label for="amount" class="sr-only">Amount</label>
@@ -218,13 +218,13 @@
           </button>
         </div>
       </form>
-      <div class="flex justify-center w-full lg:hidden">
-        <NuxtLink
+      <div class="sticky bottom-0 z-50 flex justify-center w-full bg-white lg:hidden">
+        <button
           class="inline-flex px-3 py-1 my-4 rounded-lg bg-primary-100 text-primary-700 hover:bg-primary-700 hover:text-primary-100"
-          :to="localePath('/direct')">
+          @click="goTo('/direct')">
           <span>Direct Transfer</span>
           <ArrowNarrowRightIcon />
-        </NuxtLink>
+        </button>
       </div>
     </ClientOnly>
   </div>
@@ -307,6 +307,9 @@ export default {
       index: null,
     }
   },
+  mounted() {
+    this.$segment.page('Cause', `${this.cause.attributes.title}`)
+  },
   methods: {
     async donate() {
       if (this.amount >= 1) {
@@ -320,6 +323,12 @@ export default {
           .then((session) => {
             this.loading = false
             this.sessionId = session.id
+            this.$segment.track('Donation Started', {
+              amount: this.amount * 100,
+              sessionId: session.id,
+              cause: this.cause.attributes.title,
+              causeID: this.cause.id,
+            })
             // You will be redirected to Stripe's secure checkout page
             return this.$refs.checkoutRef.redirectToCheckout()
           })
@@ -334,6 +343,13 @@ export default {
         style: 'currency',
         currency: CURRENCY_NAME,
       }).format(amount)
+    },
+    goTo(path) {
+      this.$router.push(this.localePath(path))
+      this.$segment.track('Direct Transfer Clicked', {
+        cause: this.cause.attributes.title,
+        causeID: this.cause.id,
+      })
     },
   },
   computed: {

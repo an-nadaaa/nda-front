@@ -16,6 +16,9 @@ export default {
       email: SITE_INFO.contact,
     }
   },
+  mounted() {
+    this.$segment.page('Contact')
+  },
   components: { ContactForm, AddressSection },
   head() {
     return {

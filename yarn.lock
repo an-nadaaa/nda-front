@@ -1096,6 +1096,18 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
+"@dansmaculotte/nuxt-segment@^0.2.13":
+  version "0.2.13"
+  resolved "https://registry.yarnpkg.com/@dansmaculotte/nuxt-segment/-/nuxt-segment-0.2.13.tgz#5ffc220ce5975437f7ccf17832b9fd2747b227bf"
+  integrity sha512-owJ1p2t10aJFvf7gda3mDqXZYxaJTKpnttGN5Z3wz5xkjUsznzeHBI4UfWfSgnjPQmwt3+G1D5CA+fCbohq6gw==
+  dependencies:
+    "@dansmaculotte/vue-segment" "^0.2.9"
+
+"@dansmaculotte/vue-segment@^0.2.9":
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/@dansmaculotte/vue-segment/-/vue-segment-0.2.9.tgz#a1c1cac858ba84f9655e6045cca9b055ffb5a257"
+  integrity sha512-EinGLB3IfjRpjLBPqgOg0fZOGlheSedAUi9qjajkUhxLQF632uClSNLX4+OgtQ5loAlOGx+ISArhwUML0RK0BA==
+
 "@eslint/eslintrc@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.2.1.tgz#8b5e1c49f4077235516bc9ec7d41378c0f69b8c6"

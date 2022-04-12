@@ -13,7 +13,7 @@
         <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
           <div class="rounded-md shadow">
             <button
-              @click="showPlayer = true"
+              @click="showVideoPlayer"
               class="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-gray-700 bg-white border border-transparent rounded-md hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
               <PlayerPlayIcon class="mr-3" />
               Watch Now
@@ -52,6 +52,12 @@ export default {
     this.$bus.$on('player:close', () => {
       this.showPlayer = false
     })
+  },
+  methods: {
+    showVideoPlayer() {
+      this.showPlayer = true
+      this.$segment.track('Home Video Played')
+    },
   },
 }
 </script>

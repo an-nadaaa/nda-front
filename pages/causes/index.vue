@@ -188,6 +188,9 @@ export default {
       })
     return { tags, categories, causes, pagination }
   },
+  mounted() {
+    this.$segment.page('Causes')
+  },
   // addresses the most common questions
   head() {
     return {

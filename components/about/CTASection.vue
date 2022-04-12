@@ -6,27 +6,11 @@
         <span class="block">{{ ctaSection.title }} </span>
       </h2>
       <p class="mt-4 text-lg leading-6 text-gray-700">{{ ctaSection.subtitle }}</p>
-      <NuxtLink
-        :to="localePath(ctaSection.btnUrl)"
-        class="
-          inline-flex
-          items-center
-          justify-center
-          w-full
-          px-5
-          py-3
-          mt-8
-          text-base
-          font-medium
-          text-white
-          border border-transparent
-          rounded-md
-          bg-primary-600
-          hover:bg-primary-700
-          sm:w-auto
-        ">
+      <button
+        @click="goTo(ctaSection.btnUrl)"
+        class="inline-flex items-center justify-center w-full px-5 py-3 mt-8 text-base font-medium text-white border border-transparent rounded-md bg-primary-600 hover:bg-primary-700 sm:w-auto">
         {{ ctaSection.btnText }}
-      </NuxtLink>
+      </button>
     </div>
   </div>
 </template>
@@ -39,6 +23,12 @@ export default {
     return {
       ctaSection: CTA_SECTION.en,
     }
+  },
+  methods: {
+    goTo(path) {
+      this.$router.push(this.localePath(path))
+      this.$segment.track('CTA About clicked')
+    },
   },
 }
 </script>

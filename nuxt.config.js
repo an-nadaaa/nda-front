@@ -98,6 +98,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/i18n',
     '@nuxtjs/robots',
+    '@dansmaculotte/nuxt-segment',
     [
       'nuxt-social-meta',
       {
@@ -113,9 +114,9 @@ export default {
         twitter_card: 'https://an-nadaa-media.s3.us-west-004.backblazeb2.com/website/photo_2022-03-17_13-50-53.jpg',
         theme_color: '#06b6d4',
       },
-      // always declare sitemap module at the end
-      '@nuxtjs/sitemap',
     ],
+    // always declare sitemap module at the end
+    '@nuxtjs/sitemap',
   ],
   /*
    ** https://nuxtjs.org/docs/features/component-discovery/
@@ -198,5 +199,11 @@ export default {
   sitemap: {
     // options
     hostname: 'https://an-nadaa.com',
+  },
+  // https://github.com/dansmaculotte/nuxt-segment
+  segment: {
+    writeKey: process.env.SEGMENT_WRITE_KEY,
+    disabled: false,
+    useRouter: true,
   },
 }

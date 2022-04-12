@@ -114,6 +114,10 @@ export default {
           .then((session) => {
             this.loading = false
             this.sessionId = session.id
+            this.$segment.track('General Donation Started', {
+              amount: this.amount * 100,
+              sessionId: session.id,
+            })
             // You will be redirected to Stripe's secure checkout page
             return this.$refs.checkoutRef.redirectToCheckout()
           })

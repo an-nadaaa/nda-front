@@ -90,5 +90,8 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.$segment.page('Direct Transfer')
+  },
 }
 </script>

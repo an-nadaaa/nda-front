@@ -24,5 +24,8 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.$segment.page('About')
+  },
 }
 </script>
