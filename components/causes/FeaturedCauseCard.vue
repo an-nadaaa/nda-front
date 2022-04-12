@@ -74,12 +74,10 @@
                 v-if="cause.attributes.dynamicZone[0].goal && cause.attributes.dynamicZone[0].goal !== 0"
                 class="text-base text-primary-200">
                 <span class="font-semibold text-primary-50">
-                  {{ currencySymbol }}{{ Intl.NumberFormat().format(cause.attributes.dynamicZone[0].raised) }}
+                  {{ formateAmount(cause.attributes.dynamicZone[0].raised) }}
                 </span>
                 <span> of </span>
-                <span>
-                  {{ currencySymbol }}{{ Intl.NumberFormat().format(cause.attributes.dynamicZone[0].goal) }} Raised
-                </span>
+                <span> {{ formateAmount(cause.attributes.dynamicZone[0].goal) }} Raised </span>
               </p>
               <div v-else-if="cause.attributes.dynamicZone[0].donation" class="font-semibold text-primary-50">
                 <span
