@@ -153,7 +153,7 @@ export default async () => {
     ** See https://nuxtjs.org/docs/configuration-glossary/configuration-hooks
     */
     hooks: {
-      build: {
+      generate: {
         async done(builder) {
           // Copy partytown directory into the dist directory for production
           await copyLibFiles(join('dist', '/~partytown/'), { debugDir: false })
