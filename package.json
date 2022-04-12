@@ -15,6 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@builder.io/partytown": "0.5.2",
     "@dansmaculotte/nuxt-segment": "^0.2.13",
     "@nuxt/content": "^1.13.1",
     "@nuxtjs/axios": "^5.13.1",
