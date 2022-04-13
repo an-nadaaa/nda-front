@@ -324,7 +324,7 @@ export default {
             this.loading = false
             this.sessionId = session.id
             this.$segment.track('Donation Started', {
-              amount: this.amount * 100,
+              amount: this.amount,
               sessionId: session.id,
               cause: this.cause.attributes.title,
               causeID: this.cause.id,

@@ -58,7 +58,7 @@ export default async () => {
           }`,
         },
         { hid: 'partytown', innerHTML: partytownSnippet },
-        { text: 'text/partytown', src: 'js/hotjar/hotjar.js' },
+        { text: 'text/partytown', src: '/js/hotjar/hotjar.js' },
       ],
     },
     /*

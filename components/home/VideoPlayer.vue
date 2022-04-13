@@ -21,11 +21,6 @@ import { PRIMARY_COLOR } from '~/config/config'
 import { XIcon } from 'vue-tabler-icons'
 import { Player, DefaultUi, Video, Youtube, Vimeo } from '@vime/vue'
 
-// Default theme. ~960B
-import '@vime/core/themes/default.css'
-// Optional light theme (extends default). ~400B
-import '@vime/core/themes/light.css'
-
 export default {
   components: {
     Player,
@@ -36,6 +31,20 @@ export default {
     XIcon,
   },
   props: ['showPlayer', 'videoLocation'],
+  head() {
+    return {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/@vime/core@^5/themes/default.css',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/@vime/core@^5/themes/light.css',
+        },
+      ],
+    }
+  },
   data() {
     return {
       videoID: '',
