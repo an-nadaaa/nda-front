@@ -21,5 +21,9 @@
   from = "/admin#/"
   to = "/admin/"
 
+[[redirects]]
+  from = "/ramadan"
+  to   = "/causes/2"
+
 [[plugins]]
 package = "netlify-plugin-inline-functions-env"
