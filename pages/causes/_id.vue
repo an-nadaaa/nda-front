@@ -107,14 +107,19 @@
                 <div class="mt-4 sm:mt-1">
                   <StripeCheckout ref="checkoutRef" :pk="pk" :session-id="sessionId" />
                   <button
+                    :disabled="cause.attributes.closed"
                     type="submit"
-                    class="relative flex items-center w-full px-5 py-3 text-base font-medium text-white border border-transparent rounded-md shadow bg-primary-600 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-700 sm:px-10">
+                    :class="`relative flex items-center w-full px-5 py-3 text-base font-medium  border border-transparent rounded-md shadow sm:px-10 ${
+                      cause.attributes.closed
+                        ? 'bg-gray-300 text-gray-600'
+                        : 'text-white bg-primary-600 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-700'
+                    }`">
                     <MoonLoader class="absolute left-0 ml-4" :loading="loading" color="#fff" size="30px"></MoonLoader>
                     <div class="mx-auto">Donate</div>
                   </button>
                 </div>
               </form>
-              <div class="justify-center hidden w-full lg:flex">
+              <div v-if="!cause.attributes.closed" class="justify-center hidden w-full lg:flex">
                 <button
                   class="inline-flex px-3 py-1 my-4 rounded-lg bg-primary-100 text-primary-700 hover:bg-primary-700 hover:text-primary-100"
                   @click="goTo('/direct')">
@@ -211,14 +216,19 @@
         <div class="mt-4 sm:mt-1">
           <StripeCheckout ref="checkoutRef" :pk="pk" :session-id="sessionId" />
           <button
+            :disabled="cause.attributes.closed"
             type="submit"
-            class="relative flex items-center w-full px-5 py-3 text-base font-medium text-white border border-transparent rounded-md shadow bg-primary-600 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-700 sm:px-10">
+            :class="`relative flex items-center w-full px-5 py-3 text-base font-medium  border border-transparent rounded-md shadow sm:px-10 ${
+              cause.attributes.closed
+                ? 'bg-gray-300 text-gray-600'
+                : 'text-white bg-primary-600 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-700'
+            }`">
             <MoonLoader class="absolute left-0 ml-4" :loading="loading" color="#fff" size="30px"></MoonLoader>
             <div class="mx-auto">Donate</div>
           </button>
         </div>
       </form>
-      <div class="sticky bottom-0 z-50 flex justify-center w-full bg-white lg:hidden">
+      <div v-if="!cause.attributes.closed" class="sticky bottom-0 z-50 flex justify-center w-full bg-white lg:hidden">
         <button
           class="inline-flex px-3 py-1 my-4 rounded-lg bg-primary-100 text-primary-700 hover:bg-primary-700 hover:text-primary-100"
           @click="goTo('/direct')">
