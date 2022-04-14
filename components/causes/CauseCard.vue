@@ -1,7 +1,8 @@
 <template>
-  <a
-    class="flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer hover:shadow-xl"
-    @click="goTo(`/causes/${cause.id}`)">
+  <NuxtLink
+    :id="`cause-link-${cause.id}`"
+    class="flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer cause-link hover:shadow-xl"
+    :to="localePath(`/causes/${cause.id}`)">
     <div class="flex-shrink-0">
       <img
         class="object-cover w-full h-64"
@@ -25,7 +26,7 @@
           <p class="text-xl font-semibold text-gray-900">
             {{ cause.attributes.title }}
           </p>
-          <p class="mt-3 text-base text-gray-500">
+          <p class="mt-3 text-base text-gray-500 line-clamp-3">
             {{ cause.attributes.description }}
           </p>
         </div>
@@ -71,7 +72,7 @@
         </div>
       </div>
     </div>
-  </a>
+  </NuxtLink>
 </template>
 
 <script>
@@ -92,19 +93,19 @@ export default {
       type: Object,
     },
   },
+  mounted() {
+    const link = document.getElementById(`cause-link-${this.cause.id}`)
+    this.$segment.trackLink(link, 'Cause Clicked', {
+      title: this.cause.attributes.title,
+      causeID: this.cause.id,
+    })
+  },
   methods: {
     formateAmount(amount) {
       return new Intl.NumberFormat(this.$i18n.locale, {
         style: 'currency',
         currency: CURRENCY_NAME,
       }).format(amount)
-    },
-    goTo(path) {
-      this.$router.push(this.localePath(path))
-      this.$segment.track('Cause Clicked', {
-        title: this.cause.attributes.title,
-        causeID: this.cause.id,
-      })
     },
   },
   computed: {

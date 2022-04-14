@@ -1,5 +1,8 @@
 <template>
-  <a @click="goTo(`/causes/${cause.id}`)" :class="`cursor-pointer relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
+  <NuxtLink
+    :id="`featured-cause-link-${cause.id}`"
+    :to="localePath(`/causes/${cause.id}`)"
+    :class="`cursor-pointer relative bg-white ${index !== 2 ? 'pt-16' : ''}`">
     <div
       v-if="index !== 2"
       aria-hidden="true"
@@ -96,7 +99,7 @@
         </div>
       </div>
     </div>
-  </a>
+  </NuxtLink>
 </template>
 
 <script>
@@ -121,19 +124,19 @@ export default {
       type: Number,
     },
   },
+  mounted() {
+    const link = document.getElementById(`featured-cause-link-${this.cause.id}`)
+    this.$segment.trackLink(link, 'Featured Cause Clicked', {
+      title: this.cause.attributes.title,
+      causeID: this.cause.id,
+    })
+  },
   methods: {
     formateAmount(amount) {
       return new Intl.NumberFormat(this.$i18n.locale, {
         style: 'currency',
         currency: CURRENCY_NAME,
       }).format(amount)
-    },
-    goTo(path) {
-      this.$router.push(this.localePath(path))
-      this.$segment.track('Featured Cause Clicked', {
-        title: this.cause.attributes.title,
-        causeID: this.cause.id,
-      })
     },
   },
   computed: {

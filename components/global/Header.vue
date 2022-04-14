@@ -216,6 +216,7 @@
             Sign up
           </a> -->
           <a
+            id="nav-donate-link"
             href="/#donate"
             class="items-center justify-center hidden w-full px-24 py-3 text-base font-medium text-center text-white border border-transparent rounded-md cursor-pointer lg:flex bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
             Donate Now
@@ -398,6 +399,10 @@ export default {
         { path: '/contact', name: 'contact' },
       ],
     }
+  },
+  mounted() {
+    const link = document.getElementById('nav-donate-link')
+    this.$segment.trackLink(link, 'Navbar Donate Button Clicked')
   },
   methods: {
     clickOutsideLearn(e) {
