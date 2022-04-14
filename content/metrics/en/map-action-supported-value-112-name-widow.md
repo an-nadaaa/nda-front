@@ -1,5 +1,5 @@
 ---
 value: 6000
-name: Orphan & Widowed
+name: Orphans & Widows
 action: Supported
 ---
