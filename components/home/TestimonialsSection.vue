@@ -21,8 +21,8 @@
                         {{ testimonial.testimony }}
                       </p>
                       <footer class="mt-6">
-                        <p class="text-base font-medium text-primary-500">{{ testimonial.name }}</p>
-                        <p class="text-base font-medium text-indigo-100">{{ testimonial.title }}</p>
+                        <p class="text-base font-medium text-primary-500">{{ testimonial.title }}</p>
+                        <p class="text-base font-medium text-indigo-100">{{ testimonial.name }}</p>
                       </footer>
                     </div>
                   </Slide>
