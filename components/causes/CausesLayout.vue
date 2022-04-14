@@ -359,7 +359,9 @@
             <!-- Product grid -->
             <div
               :class="`lg:col-span-3 ${
-                loading ? 'flex justify-center items-center' : 'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
+                loading
+                  ? 'flex justify-center items-center'
+                  : 'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-min'
               }`">
               <!-- Replace with your content -->
               <BounceLoader class="mx-auto" v-if="loading" :loading="loading" color="#06b6d4" size="60px" />
