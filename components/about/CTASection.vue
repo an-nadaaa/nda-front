@@ -7,7 +7,7 @@
       </h2>
       <p class="mt-4 text-lg leading-6 text-gray-700">{{ ctaSection.subtitle }}</p>
       <NuxtLink
-        :to="LocalePath(ctaSection.btnUrl)"
+        :to="localePath(ctaSection.btnUrl)"
         id="about-cta-link"
         class="inline-flex items-center justify-center w-full px-5 py-3 mt-8 text-base font-medium text-white border border-transparent rounded-md bg-primary-600 hover:bg-primary-700 sm:w-auto">
         {{ ctaSection.btnText }}
