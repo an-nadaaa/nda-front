@@ -106,19 +106,14 @@ export default {
 </p>
 
 ### Early Years
-Dr. Ibrahim Nuhu Tahir was born and raised in Nigeria. Sheikh started his Islamic education from a young age in the classical way with his father Dr. Nuhu Tahir (may Allah preserve him) and other scholars in that region. He completed his memorization at a young age and learnt different Islamic Sciences like Fiqh, Uloom ul Quran & hadith from his hometown and surrounding areas.
-
+Dr. Ibrahim Nuhu Tahir was born and raised in Nigeria. Sheikh started his Islamic education from a young age in the classical way with his father Dr. Nuhu Tahir (may Allah preserve him) and other scholars in that region.
 Sheikh Ibrahim enjoys being around children which is why he started off as a primary School headmaster at Raudatul Qur’an School in Zaria city of Nigeria.
-
 ### Madinah Education
 He was then accepted into the International Islamic University, Madinah. He graduated from the Dept of Shariah at the top of his class with his Bachelors in Shariah and Islamic Studies. He then followed that up with a Postgraduate Diploma (first class of honours) in Islamic Law and Islamic Political Science. Sheikh Ibrahim benefited greatly from his stay in this blessed city learning a lot from the knowledge and tarbiya of the scholars. This is where the idea of An-Nadaa was first developed.
-
 ### Malaysia
-He then went on to complete his masters and PhD from Islamic International University of Malaysia. While he was doing his PhD he was also a teacher and the head of Islamic department in the International Islamic School Malaysia. After completing his PhD sheikh was invited to join the department of Economics and Management Sciences where he is now an associate professor. He is also a research fellow at the Center for Islamic Economics. Sheikh Ibrahim has also been invited by the Islamic Economic Club- Kuwait to conduct series of lectures on Islamic Economics and Fiqh. He has many articles and publications in research journals and conferences on a range of topics including, Business coaching, Cryptocurrencies, Waqf, Zakat management
-
-In addition to his official teaching and research responsibilities sheikh Ibrahim also constantly engages with the community especially the youth to spread the knowledge and the tarbiyyah of the deen. He conducts classes in Fiqh, Seerah, Akhlaaq, Tafseer, Faraid, essential knowledge for new muslims and also delivers Jumma Khutbah in IIUM Shah mosque. Sheikh Ibrahim also holds advisory roles with many organisations and student bodies.
-
-Sheikh Ibrahim allots a lot of his free time, and many times sacrifices his own family time, to cater to the religious needs of Muslim youth who would otherwise not have any access to students of knowledge. With his deep knowledge coupled with extreme humility, Sheikh Ibrahim has significantly single-handedly developed Islam in the lives of hundreds if not thousands of Muslim youth.`,
+He then went on to complete his masters and PhD from Islamic International University of Malaysia. While he was doing his PhD he was also a teacher and the head of Islamic department in the International Islamic School Malaysia. After completing his PhD sheikh was invited to join the department of Economics and Management Sciences where he is now an associate professor. He is also a research fellow at the Center for Islamic Economics.
+### Youth Empowerment
+Sheikh Ibrahim allots a lot of his free time, and many times sacrifices his own family time, to engage with youth and spread the knowledge and the tarbiyyah of the deen. He conducts classes in Fiqh, Seerah, Akhlaaq, Tafseer, Faraid, essential knowledge for new muslims. Sheikh Ibrahim also holds advisory roles with many organisations and student bodies. With his deep knowledge coupled with extreme humility, Sheikh Ibrahim has significantly single-handedly developed Islam in the lives of hundreds if not thousands of Muslim youth.`,
     }
   },
   methods: {
