@@ -54,11 +54,13 @@ export default async () => {
         {
           hid: 'partytown-config',
           innerHTML: `partytown = {
+            forward: ["dataLayer.push"],
             debug: ${process.env.NODE_ENV === 'production' ? 'false' : 'true'},
           }`,
         },
         { hid: 'partytown', innerHTML: partytownSnippet },
         { text: 'text/partytown', src: '/js/hotjar/hotjar.js' },
+        { text: 'text/partytown', src: '/js/gta/gta.js' },
       ],
     },
     /*
