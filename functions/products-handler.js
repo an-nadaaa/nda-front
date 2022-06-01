@@ -51,6 +51,7 @@ exports.handler = async function (event, context) {
         images: [entity.cover],
       })
     } catch (error) {
+      console.error('Error Creating product:', error)
       return {
         statusCode: 500,
         headers,
@@ -87,6 +88,7 @@ exports.handler = async function (event, context) {
     try {
       product = await stripe.products.del(entity.product)
     } catch (error) {
+      console.error('Error Deleting Product:', error)
       return {
         statusCode: 500,
         headers,
