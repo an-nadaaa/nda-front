@@ -33,5 +33,13 @@
   from = "/causes/hospital"
   to   = "/causes/12"
 
+[[redirects]]
+  from = "/udhiya"
+  to = "/causes/15"
+
+[[redirects]]
+  from = "/udhiyah"
+  to = "/causes/15"
+
 [[plugins]]
 package = "netlify-plugin-inline-functions-env"
