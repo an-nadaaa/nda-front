@@ -94,4 +94,6 @@ yarn generate
 
 ## More info
 
-> This project was bootstrapped with `create-nuxt-app`. There are more detailed explanations of how everything works in the [Nuxt.js docs](https://nuxtjs.org).
+> This project was bootstrapped with `create-nuxt-app`. There are more detailed explanations of how everything works in the [Nuxt.js docs](https://nuxtjs.org§
+
+TODO: migrate to Nuxt3
