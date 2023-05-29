@@ -35,11 +35,11 @@
 
 [[redirects]]
   from = "/udhiya"
-  to = "/causes/15"
+  to = "/causes/23"
 
 [[redirects]]
   from = "/udhiyah"
-  to = "/causes/15"
+  to = "/causes/23"
 
 [[plugins]]
 package = "netlify-plugin-inline-functions-env"
