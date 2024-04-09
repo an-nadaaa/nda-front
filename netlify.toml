@@ -27,11 +27,19 @@
 
 [[redirects]]
   from = "/hospital"
-  to   = "/causes/12"
+  to   = "/causes/29"
   
 [[redirects]]
   from = "/causes/hospital"
-  to   = "/causes/12"
+  to   = "/causes/29"
+
+[[redirects]]
+  from = "/shcool"
+  to   = "/causes/28"
+  
+[[redirects]]
+  from = "/causes/school"
+  to   = "/causes/28"
 
 [[redirects]]
   from = "/udhiya"
