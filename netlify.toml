@@ -26,6 +26,10 @@
   to   = "/causes/25"
 
 [[redirects]]
+  from = "/ramadan"
+  to   = "/causes/25"
+
+[[redirects]]
   from = "/hospital"
   to   = "/causes/29"
   
@@ -43,11 +47,19 @@
 
 [[redirects]]
   from = "/udhiya"
-  to = "/causes/23"
+  to = "/causes/31"
 
 [[redirects]]
   from = "/udhiyah"
-  to = "/causes/23"
+  to = "/causes/31"
+
+[[redirects]]
+  from = "/causes/udhiya"
+  to = "/causes/31"
+
+[[redirects]]
+  from = "/causes/udhiyah"
+  to = "/causes/31"
 
 [[plugins]]
 package = "netlify-plugin-inline-functions-env"
