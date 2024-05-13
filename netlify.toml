@@ -26,10 +26,6 @@
   to   = "/causes/25"
 
 [[redirects]]
-  from = "/ramadan"
-  to   = "/causes/25"
-
-[[redirects]]
   from = "/hospital"
   to   = "/causes/29"
   
